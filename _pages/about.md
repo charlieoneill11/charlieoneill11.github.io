@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "This is a personal page for dumping all my stuff in one place (research, writing, etc etc)."
+title: "About Me"
 author_profile: true
 redirect_from: 
   - /about/
