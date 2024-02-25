@@ -14,7 +14,7 @@ name                     : &name "Charlie O'Neill"
 description              : &description "Maths + CS @ ANU. I research interpretability and planning in language models. I also like literature, philosophy and the Oklahoma City Thunder."
 url                      : https://charlieoneill11.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "charlieoneill11.github.io"
+repository               : "charlieoneill11/charlieoneill11.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -22,13 +22,13 @@ repository               : "charlieoneill11.github.io"
 author:
   # Biographic information
   avatar           : "images/charlie.png"
-  name             : "Your Sidebar Name"
+  name             : "Charlie O'Neill"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "Maths + CS @ ANU."
   location         : "Earth"
   employer         : "Red Brick University"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "charles.oneill@anu.edu.au" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
