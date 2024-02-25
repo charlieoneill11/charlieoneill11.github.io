@@ -7,11 +7,11 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "en-US"
+locale                   : "en-AU"
 title                    : "Charlie O'Neill"
 title_separator          : "-"
 name                     : &name "Charlie O'Neill"
-description              : &description "personal description"
+description              : &description "Maths + CS @ ANU. I research interpretability and planning in language models. I also like literature, philosophy and the Oklahoma City Thunder."
 url                      : https://charlieoneill11.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "charlieoneill11.github.io"
@@ -21,7 +21,7 @@ repository               : "charlieoneill11.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "images/charlie.png"
   name             : "Your Sidebar Name"
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
