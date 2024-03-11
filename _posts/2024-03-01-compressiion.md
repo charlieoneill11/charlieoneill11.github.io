@@ -29,5 +29,5 @@ I think GPT-4.5 / GPT-5 will be something like this. In reality, it will probabl
 Without a cluster of H100s it's probably difficult to get in on any of this action. However, I'm currently looking at:
 * Creating multiple levels of abstraction over language by controlling the number of codes in a vocabulary learnt by a VQ-VAE. Can we compress chunks of 256 tokens down to 128, 64, 32, 16, even 8?
 * Should we have use variable length sequences to compress certain sequences down? This makes the most sense - there's no direct mapping between the original sequence length and how many abstract concepts it contains.
-* What if we just learn a VQ-VAE over Matryshoka embeddings? You could cut off at various lengths and learn the vocabulary this way. 
+* What if we just learn a VQ-VAE over [Matryoshka embeddings](https://arxiv.org/abs/2205.13147)? You could cut off at various lengths and learn the vocabulary this way. 
 * Create small algorithmic pixelated videos and see if various levels of abstraction can capture the dynamics of the video.
