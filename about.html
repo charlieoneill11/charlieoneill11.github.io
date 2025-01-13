@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet">
-    <title>Charlie O'Neill</title>
+    <title>About - Charlie O'Neill</title>
     
-    <!-- Simple CSS for clean academic styling -->
+    <!-- Using the same CSS from index.html -->
     <style>
         body {
-            /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
             font-family: "Lusitana", serif;
             line-height: 1.6;
             max-width: 800px;
@@ -40,7 +39,7 @@
         
         .about-section {
             display: flex;
-            align-items: center;
+            align-items: start;
             margin: 2em 0;
             gap: 1.5em;
         }
@@ -79,40 +78,19 @@
             text-decoration: underline;
         }
     </style>
-    
-    <!-- MathJax Configuration -->
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true
-            }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <nav>
         <a href="index.html">Home</a>
+        <a href="about.html">About</a>
         <a href="research.html">Research</a>
         <a href="/posts/">Posts</a>
-        <a href="about.html">About</a>
     </nav>
 
     <main>
-        <h1>Charlie O'Neill</h1>
+        <h1>About</h1>
         
-        <!-- <section class="about-section">
-            <img src="images/charles_photo.jpeg" alt="Charlie O'Neill" class="profile-photo">
-            <div class="bio-content">
-                <p>I am currently an Honours student at the Australian National University, supervised by <a href="https://thangbui.github.io/">Dr. Thang Bui</a>. My Honours project is looking at how to interpret transformer residual streams as computational primitives expressible as executable code.</p>
-                <p>In general, I like playing around with the internals of pre-trained transformers and figuring out what's going on. I also think this is one of the best ways to form new ideas about how to improve them.</p>
-                <p>I run a startup called <a href="https://rake.news/">Rake News</a> along with Max Kirkby, where we are building a peer-to-peer personalised news platform that uses large language models for debiasing, aggregation, and synthesis of news stories tailored to each individual reader.</p>
-            </div>
-        </section> -->
-
-        <!-- <section class="about-section">
+        <section class="about-section">
             <img src="images/charles_photo.jpeg" alt="Charlie O'Neill" class="profile-photo">
             <div class="bio-content">
                 <p>I am a researcher and entrepreneur working at the intersection of machine learning, interpretability, and scientific applications. Currently, I'm preparing to begin my DPhil in Computer Science at <a href="https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/computer-science">Oxford</a> as a <a href="https://www.johnmonash.com/">General Sir John Monash Scholar</a>, where I'll continue my work on understanding and improving AI architectures.</p>
@@ -125,21 +103,10 @@
         
                 <p>I'm particularly interested in two core questions: understanding the architectures of learning and meta-learning, and leveraging these insights to build better AI systems.</p>
             </div>
-        </section> -->
-
-        <section class="about-section">
-        <img src="images/charles_photo.jpeg" alt="Charlie O'Neill" class="profile-photo">
-        <div class="bio-content">
-            <p>I am a researcher and entrepreneur working at the intersection of machine learning, interpretability, and scientific applications. Currently, I'm preparing to begin my DPhil in Computer Science at <a href="https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/computer-science">Oxford</a> as a <a href="https://www.johnmonash.com/">General Sir John Monash Scholar</a>, focusing on mechanistic interpretability and meta-learning in transformers and language models. I've <a href="https://scholar.google.com.au/citations?user=-P4K8hsAAAAJ&hl=en">published</a> on topics ranging from sparse autoencoders for neural embeddings to category theoretical perspectives on self-attention.</p>
-        
-            <p>Beyond academic research, I co-founded <a href="https://rake.news/">Rake News</a>, which evolved from a peer-to-peer personalized news platform using LLMs into enterprise-grade RAG software solutions. I'm now working on Iris, a stealth project applying mechanistic interpretability to medical applications. Through my work at <a href="https://www.imc.com/ap">IMC Trading</a>, <a href="https://www.macuject.com/">Macuject</a> (AI for ophthalmology), and <a href="https://www.csiro.au/en/">CSIRO</a> (climate forecasting), I've gained experience applying ML to diverse domains.</p>
-        
-            <p>As a <a href="https://tuckwell.anu.edu.au/">Tuckwell Scholar</a> at ANU, I've had the privilege of working with Neel Nanda at Google DeepMind through the <a href="https://www.matsprogram.org/">MATS program</a> and <a href="https://www.cshl.edu/research/faculty-staff/david-klindt/">David Klindt</a> at Cold Spring Harbor Laboratory, exploring the intersection of neuroscience and ML interpretability. My primary interests lie in understanding the architectures of learning and meta-learning, and leveraging these insights to build better AI systems.</p>
-        </div>
         </section>
 
         <section class="contact">
-            <h2 id="contact">Contact</h2>
+            <h2>Contact</h2>
             <div class="contact-info">
                 <p>
                     <a href="mailto:charles.oneill@anu.edu.au">charles.oneill@anu.edu.au</a>
