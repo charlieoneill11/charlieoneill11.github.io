@@ -1,13 +1,31 @@
 ---
 layout: default
-title: Posts
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts - {{ site.title }}</title>
+    <title>{{ page.title }} - {{ site.title }}</title>
+    
+    <!-- MathJax Configuration -->
+    {% if page.math %}
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    {% endif %}
     
     <style>
         body {
@@ -31,32 +49,28 @@ title: Posts
             text-decoration: none;
         }
         
-        .post-preview {
-            margin-bottom: 3em;
+        .post-header {
+            margin-bottom: 2em;
         }
         
-        .post-preview h2 {
+        .post-title {
             margin-bottom: 0.2em;
-        }
-        
-        .post-preview h2 a {
-            color: #24292e;
-            text-decoration: none;
-            font-size: 1.5em;
-        }
-        
-        .post-preview h2 a:hover {
-            text-decoration: underline;
         }
         
         .post-date {
             color: #666;
             font-size: 0.9em;
-            margin-bottom: 0.5em;
+            margin-bottom: 2em;
         }
         
-        .post-description {
-            color: #444;
+        .post-content {
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+        
+        h2 {
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
         }
         
         footer {
@@ -72,21 +86,22 @@ title: Posts
     <nav>
         <a href="/index.html">Home</a>
         <a href="/research.html">Research</a>
-        <a href="/posts/">Posts</a>
-        <a href="#contact">Contact</a>
+        <a href="/posts">Posts</a>
     </nav>
 
-    <main>
-        {% for post in site.posts %}
-        <div class="post-preview">
-            <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-            <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
-            {% if post.description %}
-            <div class="post-description">{{ post.description }}</div>
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <div class="post-date">{{ page.date | date: "%B %d, %Y" }}</div>
+            {% if page.description %}
+            <div class="post-description">{{ page.description }}</div>
             {% endif %}
+        </header>
+
+        <div class="post-content">
+            {{ content }}
         </div>
-        {% endfor %}
-    </main>
+    </article>
 
     <footer>
         <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
