@@ -1,26 +1,18 @@
----
-layout: default
-title: Posts
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts - {{ site.title }}</title>
-    
-    <!-- Add Google Fonts: Merriweather for titles, Inter for body text -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <title>Posts - Charlie O'Neill</title>
     
     <style>
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             color: #333;
-            font-weight: 400;
         }
         
         nav {
@@ -33,6 +25,14 @@ title: Posts
             margin-right: 1em;
             color: #0366d6;
             text-decoration: none;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        h1, h2, h3 {
+            color: #24292e;
         }
         
         .year-divider {
@@ -63,31 +63,31 @@ title: Posts
         
         .post-preview h2 {
             margin-bottom: 0.2em;
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
+            font-family: inherit;
+            font-weight: 500;
         }
         
         .post-preview h2 a {
             color: #24292e;
             text-decoration: none;
-            font-size: 1.5em;
+            font-size: 1em;
             transition: color 0.2s ease;
         }
         
         .post-preview h2 a:hover {
             color: #0366d6;
+            text-decoration: underline;
         }
         
         .post-metadata {
             display: flex;
             align-items: center;
-            margin-bottom: 0.8em;
             font-size: 0.9em;
             color: #666;
         }
         
         .post-date {
-            font-weight: 500;
+            font-weight: normal;
         }
         
         .metadata-separator {
@@ -96,9 +96,7 @@ title: Posts
         }
         
         .post-description {
-            color: #444;
-            font-size: 1em;
-            line-height: 1.6;
+            color: #666;
         }
         
         footer {
@@ -108,12 +106,33 @@ title: Posts
             font-size: 0.9em;
             color: #666;
         }
+
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
+    
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <nav>
-        <a href="/index.html">Home</a>
-        <a href="/research.html">Research</a>
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
         <a href="/posts/">Posts</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -138,7 +157,7 @@ title: Posts
     </main>
 
     <footer>
-        <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
+        Last updated: January 2024
     </footer>
 </body>
 </html>
