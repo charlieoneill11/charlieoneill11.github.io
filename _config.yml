@@ -1,0 +1,9 @@
+title: Charlie O'Neill
+description: Personal website
+url: "https://charlieoneill11.github.io"
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  
+# Build settings
+permalink: /posts/:title/
