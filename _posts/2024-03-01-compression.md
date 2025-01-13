@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Some quick thoughts on learning compressed representations and GPT-5 speculation
+title: Learning compressed representations and GPT-5 speculation
 date: 2024-03-01
 description: Why language models probably get too much from the abstraction we give them for free
 ---
