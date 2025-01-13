@@ -2,101 +2,13 @@
 layout: default
 title: Posts
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts - {{ site.title }}</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: "Lusitana", serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-        }
-        
-        nav {
-            margin-bottom: 2em;
-            padding-bottom: 1em;
-            border-bottom: 1px solid #eee;
-        }
-        
-        nav a {
-            margin-right: 1em;
-            color: #0366d6;
-            text-decoration: none;
-        }
-        
-        .post-preview {
-            margin-bottom: 1.5em;
-        }
-        
-        .post-preview h2 {
-            margin: 0;
-            margin-bottom: 0.2em;
-            font-family: "Lusitana", serif;
-            font-weight: 700;
-            font-size: 1.15em;
-        }
-        
-        .post-preview h2 a {
-            color: #24292e;
-            text-decoration: none;
-        }
-        
-        .post-preview h2 a:hover {
-            text-decoration: underline;
-        }
-        
-        .post-date {
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 0.2em;
-        }
-        
-        .post-description {
-            color: #444;
-            font-size: 0.95em;
-            margin-top: 0.2em;
-        }
-        
-        footer {
-            margin-top: 2em;
-            padding-top: 1em;
-            border-top: 1px solid #eee;
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <a href="/index.html">Home</a>
-        <a href="/research.html">Research</a>
-        <a href="/posts/">Posts</a>
-        <a href="#contact">Contact</a>
-    </nav>
 
-    <main>
-        {% for post in site.posts %}
-        <div class="post-preview">
-            <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-            <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
-            {% if post.description %}
-            <div class="post-description">{{ post.description }}</div>
-            {% endif %}
-        </div>
-        {% endfor %}
-    </main>
-
-    <footer>
-        <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
-    </footer>
-</body>
-</html>
+{% for post in site.posts %}
+<div class="post-preview">
+    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+    <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+    {% if post.description %}
+    <div class="post-description">{{ post.description }}</div>
+    {% endif %}
+</div>
+{% endfor %}
