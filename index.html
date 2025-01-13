@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Academic Website</title>
+    
+    <!-- Simple CSS for clean academic styling -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        
+        nav {
+            margin-bottom: 2em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid #eee;
+        }
+        
+        nav a {
+            margin-right: 1em;
+            color: #0366d6;
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        h1, h2, h3 {
+            color: #24292e;
+        }
+        
+        .math-example {
+            background-color: #f6f8fa;
+            padding: 1em;
+            border-radius: 4px;
+            margin: 1em 0;
+        }
+        
+        footer {
+            margin-top: 2em;
+            padding-top: 1em;
+            border-top: 1px solid #eee;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+    
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+        <h1>Your Name</h1>
+        <p>Welcome to my academic website! I am a [your position] at [your institution], working on [your research areas].</p>
+
+        <h2 id="research">Research</h2>
+        <p>My research focuses on [your research description]. Here's an example of my work involving mathematical equations:</p>
+
+        <div class="math-example">
+            <p>The Euler-Lagrange equation in the calculus of variations is:</p>
+            $$\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'} = 0$$
+            
+            <p>And here's an example of inline math: Consider a function $f(x) = x^2$ and its derivative $f'(x) = 2x$.</p>
+        </div>
+
+        <h2 id="publications">Publications</h2>
+        <ul>
+            <li>Your Publication 1 (2024)</li>
+            <li>Your Publication 2 (2023)</li>
+        </ul>
+
+        <h2 id="teaching">Teaching</h2>
+        <ul>
+            <li>Course 1 (Spring 2024)</li>
+            <li>Course 2 (Fall 2023)</li>
+        </ul>
+
+        <h2 id="contact">Contact</h2>
+        <p>Email: your.email@institution.edu<br>
+        Office: Your Office Location</p>
+    </main>
+
+    <footer>
+        Last updated: January 2024
+    </footer>
+</body>
+</html>
