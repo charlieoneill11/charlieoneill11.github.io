@@ -27,7 +27,12 @@ An alternative view is to represent colour as a point on a continuous "colour ma
 
 Any chosen point on this manifold defines a one‐dimensional "ray." Scaling the chosen point (multiplying by a scalar) produces a change in intensity without leaving the ray. In effect, the multidimensional feature supports the same operations as a one‐dimensional feature along any fixed direction through the manifold. The network may represent an infinite collection of one‐dimensional features corresponding to different positions on the manifold.
 
-
+<figure>
+  <img src="/images/manifold.png" alt="Multidimensional colour feature diagram" style="width: 100%; height: auto;">
+  <figcaption>
+    A multidimensional colour feature in activation space. Individual points on the circular manifold correspond to different colours. Each point defines a ray (shown in red, green, and blue) that represents different intensities of that specific colour. The concentric ellipses show how the entire feature scales together while maintaining its structure. This demonstrates how a multidimensional feature can still exhibit linear behaviour <em>when the ray is fixed</em> - both in composition (adding features) and intensity (scaling along rays).
+  </figcaption>
+</figure>
 
 A multidimensional colour feature in activation space. Individual points on the circular manifold correspond to different colours. Each point defines a ray (shown in red, green, and blue) that represents different intensities of that specific colour. The concentric ellipses show how the entire feature scales together while maintaining its structure. This demonstrates how a multidimensional feature can still exhibit linear behaviour when the ray is fixed - both in composition (adding features) and intensity (scaling along rays).
 
