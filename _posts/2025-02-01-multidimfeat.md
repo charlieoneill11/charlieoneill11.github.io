@@ -16,7 +16,9 @@ Consider a simple scenario: representing colour using separate dimensions. One c
 
 In this model, each feature is a scalar value. The presence of a particular property (e.g. redness) is indicated by a number that scales the corresponding direction. Increasing the intensity of redness corresponds to moving further along the red direction. Feature composition is linear: 
 
-\\[\text{Activation} = x_{\text{red}}\,W_{\text{red}} + x_{\text{green}}\,W_{\text{green}} + x_{\text{blue}}\,W_{\text{blue}}\\]
+\\[\text{Activation} = x_{\text{red}}\, W_{\text{red}} + x_{\text{green}}\, W_{\text{green}} + x_{\text{blue}}\, W_{\text{blue}}\\]
+
+\\[S = A/4G\bar{h}\\]
 
 ## Multidimensional Features
 
