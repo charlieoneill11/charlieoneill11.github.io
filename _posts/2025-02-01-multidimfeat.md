@@ -5,7 +5,7 @@ date: 2025-02-01
 description: How to stop conflating with 768 dimensions
 ---
 
-> Chris Olah's “What is a Linear Representation? What is a Multidimensional Feature?” (July Circuits Update) prompted a moment of pause for me regarding the term "one-dimensional feature." I initially conflated that phrase with the number of dimensions in the activation space (for example, the 768 dimensions in GPT‑2 Small). However, Olah uses "one-dimensional" to describe a property of the feature's structure - not the width of the activation vector. In this post, I clarify this distinction and explain the difference between one‑dimensional and multidimensional features in the context of SAEs and linear representations.
+> Chris Olah's ["What is a Linear Representation? What is a Multidimensional Feature?"](https://transformer-circuits.pub/2024/july-update/index.html#linear-representations) (July Circuits Update) prompted a moment of pause for me regarding the term "one-dimensional feature." I initially conflated that phrase with the number of dimensions in the activation space (for example, the 768 dimensions in GPT‑2 Small). However, Olah uses "one-dimensional" to describe a property of the feature's structure - not the width of the activation vector. In this post, I clarify this distinction and explain the difference between one‑dimensional and multidimensional features in the context of SAEs and linear representations.
 
  
 Here I explain the distinction between one‐dimensional and multidimensional features as they relate to SAEs and linear representations. It uses the example of colour representation and then relates the intuition back to neuron activations in SAEs.
