@@ -46,6 +46,6 @@ This approach implies that even though individual neurons provide one‐dimensio
 
 Probing techniques that extract linear directions remain valid even in the presence of multidimensional features. When one is interested in a specific property (for example, a particular shade of orange on a colour disk), a probe can lock onto the corresponding one‐dimensional ray within the overall manifold. The linear behaviour - composition by addition and intensity by scaling - persists on the ray even if the full feature is multidimensional.
 
----
+<div style="margin: 4em 0;"></div>
 
 Hopefully this explanation clarified how one can reconcile the idea of linear representations with the possibility of multidimensional features, particularly given confusion around the actual dimensionality of the activation space being conflated with "one-dimensional feature". 
