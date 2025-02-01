@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Information Bounds in Quantum Gravity
+title: Information bounds in quantum gravity
 date: 2025-01-13
 description: How information theory links quantum mechanics and general relativity
 math: true
