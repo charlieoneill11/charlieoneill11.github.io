@@ -6,6 +6,7 @@
     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter+Variable:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@tabler/icons-webfont@latest/tabler-icons.min.css">
     
     <!-- MathJax Configuration -->
     {% if page.math %}
@@ -47,4 +48,16 @@
         <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
     </footer>
 </body>
+<script>
+const btn = document.getElementById('themeToggle');
+btn.onclick = () => {
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
+    localStorage.setItem('prefers-dark',
+        document.body.classList.contains('dark'));
+};
+if (localStorage.getItem('prefers-dark') === 'true') {
+    document.body.classList.add('dark');
+}
+</script>
 </html>
