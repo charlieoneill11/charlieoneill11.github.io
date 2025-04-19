@@ -14,6 +14,7 @@ title: Posts
       {% if post.description %}
         <div class="post-description">{{ post.description }}</div>
       {% endif %}
+      <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
     </div>
   {% endfor %}
 </div>
