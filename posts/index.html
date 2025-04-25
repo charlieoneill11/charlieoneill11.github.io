@@ -7,6 +7,7 @@ title: Posts
 
 <div class="posts-list">
   {% for post in site.posts %}
+    {% unless post.hidden %}
     <div class="post-preview fade-in delay-{{ forloop.index | modulo: 4 | plus: 1 }}">
       <h2>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -16,6 +17,7 @@ title: Posts
       {% endif %}
       <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
     </div>
+    {% endunless %}
   {% endfor %}
 </div>
 
