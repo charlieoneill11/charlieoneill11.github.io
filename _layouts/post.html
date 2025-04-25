@@ -1,23 +1,82 @@
 ---
 layout: default
 ---
-<article class="post fade-in">
-    <header class="post-header">
-        <h1 class="post-title">{{ page.title }}</h1>
-        {% if page.description %}
-        <div class="post-description">{{ page.description }}</div>
-        {% endif %}
-    </header>
+<div class="post-container">
+    {% assign headers = content | split: '<h1 ' %}
+    {% if headers.size > 1 %}
+    <aside class="contents">
+        <h3>Contents</h3>
+        <div class="contents-list">
+            {% for header in headers offset: 1 %}
+                {% assign header_content = header | split: '</h1>' | first %}
+                {% assign header_text = header_content | split: '>' | last | strip %}
+                {% assign header_id = header_text | slugify %}
+                <a href="#{{ header_id }}" class="toc-link">{{ header_text }}</a>
+            {% endfor %}
+        </div>
+    </aside>
+    {% endif %}
 
-    <div class="post-content">
-        {{ content }}
-    </div>
-</article>
+    <article class="post fade-in">
+        <header class="post-header">
+            <h1 class="post-title">{{ page.title }}</h1>
+            {% if page.description %}
+            <div class="post-description">{{ page.description }}</div>
+            {% endif %}
+        </header>
+
+        <div class="post-content">
+            {{ content }}
+        </div>
+    </article>
+</div>
 
 <style>
+    .post-container {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .contents {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+        width: 200px;
+        padding-right: 1rem;
+        flex-shrink: 0;
+        font-size: 0.9em;
+    }
+    
+    .contents h3 {
+        margin-top: 0;
+        color: var(--color-heading);
+    }
+    
+    .contents-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .toc-link {
+        color: var(--color-meta);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+        line-height: 1.4;
+    }
+    
+    .toc-link:hover, .toc-link.active {
+        color: var(--color-link);
+    }
+    
+    .post {
+        flex: 1;
+        min-width: 0; /* Ensure the post can shrink if needed */
+    }
+    
     .post-description {
         font-style: italic;
-        color: #666;
+        color: var(--color-meta);
         margin: 1.5em 0;
         font-size: 1.1em;
     }
@@ -25,7 +84,7 @@ layout: default
     .footnotes {
         margin-top: 2em;
         padding-top: 1em;
-        border-top: 1px solid #eee;
+        border-top: 1px solid var(--color-border);
         font-size: 0.9em;
     }
 
@@ -41,7 +100,82 @@ layout: default
     figcaption {
         margin-top: 1em;
         font-size: 0.8em;
-        color: #666;
+        color: var(--color-meta);
         text-align: center;
     }
+    
+    @media (max-width: 768px) {
+        .post-container {
+            flex-direction: column;
+        }
+        
+        .contents {
+            position: relative;
+            width: 100%;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .contents-list {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Only run if we have a table of contents
+        if (document.querySelector('.contents')) {
+            // Add IDs to h1 headings if they don't have them
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+            
+            // Setup scrollspy functionality
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+            
+            function setActiveLink() {
+                let currentActive = null;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100; // Offset to highlight slightly before reaching section
+                    
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+                
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+            
+            // Add smooth scrolling to TOC links
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Initial check and event listener
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
