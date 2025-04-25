@@ -1,50 +1,50 @@
 ---
 layout: default
 ---
-<div class="post-container">
-    {% assign headers = content | split: '<h1 ' %}
-    {% if headers.size > 1 %}
-    <aside class="contents">
-        <h3>Contents</h3>
-        <div class="contents-list">
-            {% for header in headers offset: 1 %}
-                {% assign header_content = header | split: '</h1>' | first %}
-                {% assign header_text = header_content | split: '>' | last | strip %}
-                {% assign header_id = header_text | slugify %}
-                <a href="#{{ header_id }}" class="toc-link">{{ header_text }}</a>
-            {% endfor %}
-        </div>
-    </aside>
-    {% endif %}
+{% assign headers = content | split: '<h1 ' %}
+{% if headers.size > 1 %}
+<aside class="contents">
+    <h3>Contents</h3>
+    <div class="contents-list">
+        {% for header in headers offset: 1 %}
+            {% assign header_content = header | split: '</h1>' | first %}
+            {% assign header_text = header_content | split: '>' | last | strip %}
+            {% assign header_id = header_text | slugify %}
+            <a href="#{{ header_id }}" class="toc-link">{{ header_text }}</a>
+        {% endfor %}
+    </div>
+</aside>
+{% endif %}
 
-    <article class="post fade-in">
-        <header class="post-header">
-            <h1 class="post-title">{{ page.title }}</h1>
-            {% if page.description %}
-            <div class="post-description">{{ page.description }}</div>
-            {% endif %}
-        </header>
+<article class="post fade-in">
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        {% if page.description %}
+        <div class="post-description">{{ page.description }}</div>
+        {% endif %}
+    </header>
 
-        <div class="post-content">
-            {{ content }}
-        </div>
-    </article>
-</div>
+    <div class="post-content">
+        {{ content }}
+    </div>
+</article>
 
 <style>
-    .post-container {
-        display: flex;
-        gap: 2rem;
+    .post {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
     }
     
     .contents {
-        position: sticky;
-        top: 2rem;
+        position: fixed;
+        left: max(20px, calc(50% - 500px));
+        top: 150px;
+        width: 180px;
         height: fit-content;
-        width: 200px;
-        padding-right: 1rem;
-        flex-shrink: 0;
+        padding: 1rem;
         font-size: 0.9em;
+        z-index: 10;
     }
     
     .contents h3 {
@@ -67,11 +67,6 @@ layout: default
     
     .toc-link:hover, .toc-link.active {
         color: var(--color-link);
-    }
-    
-    .post {
-        flex: 1;
-        min-width: 0; /* Ensure the post can shrink if needed */
     }
     
     .post-description {
@@ -104,23 +99,9 @@ layout: default
         text-align: center;
     }
     
-    @media (max-width: 768px) {
-        .post-container {
-            flex-direction: column;
-        }
-        
+    @media (max-width: 1200px) {
         .contents {
-            position: relative;
-            width: 100%;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--color-border);
-        }
-        
-        .contents-list {
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 1rem;
+            display: none;
         }
     }
 </style>
