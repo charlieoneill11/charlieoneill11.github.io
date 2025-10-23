@@ -2,6 +2,7 @@
 layout: post
 title: The Bitter Lesson of LLM evals
 date: 2025-07-15
+description: Scaling care beats scaling compute
 math: true
 ---
 
