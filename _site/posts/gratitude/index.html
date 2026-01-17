@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On gratitude - </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">On gratitude</h1>
+        
+        <div class="post-description">And consumption of gratitude</div>
+        
+    </header>
+
+    <div class="post-content">
+        <p>But isn’t it meaningful to just want these feelings and connections? And I feel lucky to have these people in my life. The meaning I derive from these moments in my life, including the final goodbyes, is simply this: I get overwhelmed by the branching factor of my life. I think about all the sliding doors moments I can see, and all those I can’t, and the sheer number of different alternative universes out there scares and staggers me, and fills me with awe. So when I find a moment meaningful, the meaning I derive is from the gratitude I feel for how lucky I am to live in a universe where I got to feel this emotion. I don’t know how many other universes I would have got to experience it in, I don’t know if it’s all of them or none, I don’t know what feelings I’m missing out on because I’m not in the right universe. But that’s how I feel.</p>
+
+<p>Sometimes, however, the gratitude doesn’t require consumption. The meaning is not in the feeling itself, but in the cosmic accident that I get to be the one who feels it.</p>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.contents')) {
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+
+            function setActiveLink() {
+                let currentActive = null;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100;
+
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>
