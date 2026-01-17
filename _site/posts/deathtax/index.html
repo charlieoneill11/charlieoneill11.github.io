@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Born on Third Base - </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">Born on Third Base</h1>
+        
+        <div class="post-description">The Case for Inheriting Nothing and Building Everything</div>
+        
+    </header>
+
+    <div class="post-content">
+        <p>The idea that wealth should be inherited is so ingrained in our thinking that we rarely question it. But step back for a moment, and it becomes a curious thing—this notion that assets, land, fortunes should be passed down from one generation to the next without scrutiny. The debate over wealth distribution is usually framed in extremes: on one side, Marxism, condemning private inheritance as exploitation, advocating for collective ownership. On the other, laissez-faire capitalism, defending property rights even when they entrench privilege. A 100% death tax emerges as a synthesis of these views rather than an attack on individual success. It preserves incentives for personal achievement while preventing wealth from pooling in the hands of those who have done nothing to earn it.</p>
+
+<p>The idea is not as radical as it seems. Consider John Rawls, who argued that many of the advantages we inherit—wealth, talent, social position—are arbitrary. Society should not reward the accident of birth.<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> Robert Nozick, a staunch defender of individual liberty, saw taxation on inheritance as a violation of property rights, the state interfering in the fruits of one’s labour. But the question remains: whose labour? The transfer of wealth through inheritance bypasses the effort that property is meant to represent. Even Locke’s notion of property, grounded in labour, seems at odds with the idea that wealth can simply be handed down. If wealth is to be earned, it must be earned by those who receive it, not those who bequeath it.</p>
+
+<p>There is something fundamentally compelling about the idea that every generation should start fresh, free from the accumulated advantages or disadvantages of their ancestors. We talk often about meritocracy, but do we really mean it? Vast fortunes pass from one generation to the next without regard to effort or ability. A child born into wealth enters a world cushioned against failure, while another, equally capable, is born into struggle. The death tax does not punish success—it prevents success from becoming hereditary. It ensures that the cycle of opportunity begins anew with each generation.</p>
+
+<p>This is largely a matter of economic dynamism. Societies with greater social mobility tend to be more innovative. Capital is not hoarded within dynastic families but recirculated, reinvested into public goods—education, healthcare, infrastructure. The world changes when wealth is not locked away in trust funds but directed toward the collective advancement of society. The benefits are not theoretical; research consistently shows that high social mobility correlates with stronger economies, more resilient democracies, and greater national well-being.</p>
+
+<p>Of course, implementing such a system requires careful thought. Inheritance often comes in the form of assets, not cash—family businesses, real estate, art. A fair system of valuation is essential, and practical accommodations—installment payments, deferred taxation—could prevent disruption. There will be resistance, as there always is when privilege is challenged. Some will seek loopholes, stashing wealth offshore or transferring it through trusts. A tax structure would need to close these gaps, treating all lifetime wealth transfers as taxable events. Family-run businesses, often cited as collateral damage in such discussions, could be granted transitional arrangements to ensure they remain viable while still upholding the principle that wealth should not be inherited unearned.</p>
+
+<p>We have built tax systems before, have adjusted them as necessary, have refined our methods for assessing and collecting wealth. A phased implementation, clear reinvestment strategies, and public transparency would help smooth the transition. At first glance, it seems like an obvious corrective, a step toward true equality of opportunity. But radical reforms do not fail because they are unappealing in the abstract; they fail because reality is less pliable than idealism.</p>
+
+<p>The hardest problems in inheritance reform define its limits, and its hardest problems are formidable indeed. The resistance to such a policy is largely about ideology rather than about feasibility. It is about the quiet but pervasive belief that those born into privilege should remain there.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Of course, one may argue that inheritance is the most efficient prior we have of distributing wealth based on who is most likely to be competent, due to autocorrelation between generations. But I think it’s fairly clear to see why this is a shaky argument indeed. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.contents')) {
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+
+            function setActiveLink() {
+                let currentActive = null;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100;
+
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>

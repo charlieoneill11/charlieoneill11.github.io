@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Middlemarch - </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">Middlemarch</h1>
+        
+        <div class="post-description">My thoughts</div>
+        
+    </header>
+
+    <div class="post-content">
+        <p><em>Middlemarch</em> quietly captured something beautiful about ordinary lives. Eliot gently insists, “People are almost always better than their neighbours think they are,” and reading this, I felt that to be true. Her world isn’t one of heroes or villains, but everyday people whose aspirations quietly shape the world around them. She writes about character as something fluid (“not cut in marble,” she says, but “living and changing”) and that felt comforting. We aren’t defined solely by our mistakes, but continuously reshaped by the small choices we make.</p>
+
+<p>I was struck most by how Eliot portrayed ambition. Not flashy ambition, but the quieter kind ie the desire simply to live meaningfully. Tertius Lydgate, with all his early dreams of changing medicine forever, felt deeply familiar; “I had some ambition…but the most terrible obstacles are such as nobody can see except oneself.” It felt almost personal seeing how easily even the most earnest idealism can crumble under the weight of romantic disappointments or mundane struggles. Eliot makes clear that real life doesn’t allow for unchallenged idealism. There’s always compromise, adaptation, and sacrifice involved.</p>
+
+<p>Unexpectedly, I found a charming humour scattered throughout the novel, particularly in its romantic subplots. Rosamond inventing feelings from Will, Fred’s awkward but earnest attempts with Mary, and Dorothea stumbling upon Rosamond and Will, all felt like moments plucked straight from a modern sitcom or chick flick. That these romantic tropes existed and thrived so long ago genuinely surprised me. It was a delightful reminder that while societies change, some human behaviours are enduring and timelessly relatable.</p>
+
+<p>Patrick Collison’s insights gave me even more appreciation for the subtle historical undercurrents in <em>Middlemarch</em>. The railway, quietly disruptive yet transformative, mirrors how large societal shifts subtly alter individual lives and interactions. History, Collison suggests, is lived experiences and subtle vibes that novels capture better than history books. This perspective aligned with how Eliot’s narrative felt: history not as distant facts, but as personal realities quietly evolving.</p>
+
+<p>Ultimately, what stays with me most vividly from <em>Middlemarch</em> is Eliot’s insistence that everything has consequences, and that life is profoundly shaped by small, unhistoric acts. Her closing idea (that “the growing good of the world is partly dependent on unhistoric acts”) resonates deeply. It reminded me powerfully of Creed’s speech at the end of <em>The Office</em>: “It all seemed so very arbitrary… but no matter how you get there, or where you end up, human beings have this miraculous gift to make that place home.” <em>Middlemarch</em> echoed exactly that truth: life’s beauty is inseparable from its messy complexity, its quiet tensions between ideals and reality, and the humble yet remarkable capacity we have to make meaning from wherever we find ourselves.</p>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.contents')) {
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+
+            function setActiveLink() {
+                let currentActive = null;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100;
+
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>

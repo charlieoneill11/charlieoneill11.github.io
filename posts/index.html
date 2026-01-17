@@ -3,22 +3,21 @@ layout: default
 title: Posts
 ---
 
-<h1 class="fade-in">Posts</h1>
+<h1>Posts</h1>
 
 <div class="posts-list">
-  {% for post in site.posts %}
-    {% unless post.hidden %}
-    <div class="post-preview fade-in delay-{{ forloop.index | modulo: 4 | plus: 1 }}">
-      <h2>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h2>
+{% assign posts_by_year = site.posts | where_exp: "post", "post.hidden != true" | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year in posts_by_year %}
+  <div class="year-header">{{ year.name }}</div>
+  {% for post in year.items %}
+    <div class="post-preview">
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       {% if post.description %}
         <div class="post-description">{{ post.description }}</div>
       {% endif %}
-      <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
     </div>
-    {% endunless %}
   {% endfor %}
+{% endfor %}
 </div>
 
 {% if site.posts.size == 0 %}

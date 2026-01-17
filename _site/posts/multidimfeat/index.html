@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-dimensional vs multi-dimensional features in interpretability - </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<aside class="contents">
+    <h3>Contents</h3>
+    <div class="contents-list">
+        
+            
+            
+            
+            <a href="#one-dimensional-features" class="toc-link">One‐Dimensional Features</a>
+        
+            
+            
+            
+            <a href="#multidimensional-features" class="toc-link">Multidimensional Features</a>
+        
+            
+            
+            
+            <a href="#application-to-saes" class="toc-link">Application to SAEs</a>
+        
+            
+            
+            
+            <a href="#implications-for-probing-and-interpretation" class="toc-link">Implications for Probing and Interpretation</a>
+        
+    </div>
+</aside>
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">One-dimensional vs multi-dimensional features in interpretability</h1>
+        
+        <div class="post-description">How to stop conflating with 768 dimensions</div>
+        
+    </header>
+
+    <div class="post-content">
+        <blockquote>
+  <p>Chris Olah’s <a href="https://transformer-circuits.pub/2024/july-update/index.html#linear-representations">“What is a Linear Representation? What is a Multidimensional Feature?”</a> (July Circuits Update) prompted a moment of pause for me regarding the term “one-dimensional feature.” I initially conflated that phrase with the number of dimensions in the activation space (for example, the 768 dimensions in GPT‑2 Small). However, Olah uses “one-dimensional” to describe a property of the feature’s structure - not the width of the activation vector. In this post, I clarify this distinction and explain the difference between one‑dimensional and multidimensional features in the context of SAEs and linear representations.</p>
+</blockquote>
+
+<p>Here I explain the distinction between one‐dimensional and multidimensional features as they relate to SAEs and linear representations. It uses the example of colour representation and then relates the intuition back to neuron activations in SAEs.</p>
+
+<h1 id="onedimensional-features">One‐Dimensional Features</h1>
+
+<p>Consider a simple scenario: representing colour using separate dimensions. One could imagine a network that has three independent directions in its activation space - a “redness” direction, a “greenness” direction, and a “blueness” direction.</p>
+
+<p>In this model, each feature is a scalar value. The presence of a particular property (e.g. redness) is indicated by a number that scales the corresponding direction. Increasing the intensity of redness corresponds to moving further along the red direction. Feature composition is linear:</p>
+
+<p>\[ \text{Activation} = x_{\text{red}}\,W_{\text{red}} + x_{\text{green}}\,W_{\text{green}} + x_{\text{blue}}\,W_{\text{blue}} \]</p>
+
+<p>Here, each \(W\) represents a fixed direction and each \(x\) is a single scalar value. This is the one‐dimensional case.</p>
+
+<h1 id="multidimensional-features">Multidimensional Features</h1>
+
+<p>An alternative view is to represent colour as a point on a continuous “colour manifold.” In this view, a colour is not defined solely by independent red, green, and blue scalars. Instead, it occupies a position in a multidimensional space where similar colours are nearby. For example, a circular disk could represent hues, with each point corresponding to a particular shade.</p>
+
+<p>Any chosen point on this manifold defines a one‐dimensional “ray.” Scaling the chosen point (multiplying by a scalar) produces a change in intensity without leaving the ray. In effect, the multidimensional feature supports the same operations as a one‐dimensional feature along any fixed direction through the manifold. The network may represent an infinite collection of one‐dimensional features corresponding to different positions on the manifold.</p>
+
+<figure>
+  <img src="/images/manifold.png" alt="Multidimensional colour feature diagram" style="width: 100%; height: auto;" />
+  <figcaption>
+    A multidimensional colour feature in activation space. Individual points on the circular manifold correspond to different colours. Each point defines a ray (shown in red, green, and blue) that represents different intensities of that specific colour. The concentric ellipses show how the entire feature scales together while maintaining its structure. This demonstrates how a multidimensional feature can still exhibit linear behaviour <em>when the ray is fixed</em> - both in composition (adding features) and intensity (scaling along rays).
+  </figcaption>
+</figure>
+
+<p>A multidimensional colour feature in activation space. Individual points on the circular manifold correspond to different colours. Each point defines a ray (shown in red, green, and blue) that represents different intensities of that specific colour. The concentric ellipses show how the entire feature scales together while maintaining its structure. This demonstrates how a multidimensional feature can still exhibit linear behaviour when the ray is fixed - both in composition (adding features) and intensity (scaling along rays).</p>
+
+<h1 id="application-to-saes">Application to SAEs</h1>
+
+<p>SAEs are typically trained to produce sparse, independent features. Each neuron’s activation is a scalar, representing a one‐dimensional feature. In practice, however, several neurons may activate together in a structured way. Analysis may reveal that neurons can consistently fire together, potentially indicating a latent, multidimensional feature. When plotted, the activation vectors of such neurons could form a continuous shape in activation space. Furthermore, if scaling the co-activations produces a clear change in intensity while preserving the geometric structure, the behaviour is analogous to scaling along a ray in a multidimensional manifold.</p>
+
+<p>This approach implies that even though individual neurons provide one‐dimensional signals, groups of neurons can be interpreted as sampling a continuous manifold. In that sense, one can think of a multidimensional feature as a collection of one‐dimensional features arranged in a continuous geometric structure.</p>
+
+<h1 id="implications-for-probing-and-interpretation">Implications for Probing and Interpretation</h1>
+
+<p>Probing techniques that extract linear directions remain valid even in the presence of multidimensional features. When one is interested in a specific property (for example, a particular shade of orange on a colour disk), a probe can lock onto the corresponding one‐dimensional ray within the overall manifold. The linear behaviour - composition by addition and intensity by scaling - persists on the ray even if the full feature is multidimensional.</p>
+
+<div style="margin: 4em 0;"></div>
+
+<p>Hopefully this explanation clarified how one can reconcile the idea of linear representations with the possibility of multidimensional features, particularly given confusion around the actual dimensionality of the activation space being conflated with “one-dimensional feature”.</p>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.contents')) {
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+
+            function setActiveLink() {
+                let currentActive = null;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100;
+
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five Hinge‑Questions That Decide Whether AGI Is Five Years Away or Twenty - </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<aside class="contents">
+    <h3>Contents</h3>
+    <div class="contents-list">
+        
+            
+            
+            
+            <a href="#tl-dr" class="toc-link">TL;DR</a>
+        
+            
+            
+            
+            <a href="#shared-premises" class="toc-link">Shared premises</a>
+        
+            
+            
+            
+            <a href="#hinge-1-which-curve-do-we-extrapolate" class="toc-link">Hinge #1: Which curve do we extrapolate?</a>
+        
+            
+            
+            
+            <a href="#hinge-2-can-software-only-recursive-self-improvement-outrun-atoms" class="toc-link">Hinge #2: Can software‑only recursive self‑improvement outrun atoms?</a>
+        
+            
+            
+            
+            <a href="#hinge-3-how-efficient-and-how-sudden-is-the-leap-from-compute-to-economic-value" class="toc-link">Hinge #3: How efficient (and how sudden) is the leap from compute to economic value?</a>
+        
+            
+            
+            
+            <a href="#hinge-4-must-we-automate-everything-or-is-half-enough" class="toc-link">Hinge #4: Must we automate everything, or is half enough?</a>
+        
+            
+            
+            
+            <a href="#hinge-5-alignment-driven-and-institutional-drag" class="toc-link">Hinge #5: Alignment‑driven and institutional drag</a>
+        
+            
+            
+            
+            <a href="#dependency-structure" class="toc-link">Dependency Structure</a>
+        
+    </div>
+</aside>
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">Five Hinge‑Questions That Decide Whether AGI Is Five Years Away or Twenty</h1>
+        
+        <div class="post-description">For people who care about falsifiable stakes rather than vibes</div>
+        
+    </header>
+
+    <div class="post-content">
+        <h1 id="tldr">TL;DR</h1>
+
+<p>All timeline arguments ultimately turn on five quantitative pivots. Pick optimistic answers to three of them and your median forecast collapses into the 2026–2029 range; pick pessimistic answers to any two and you drift past 2040. The pivots (I think) are:</p>
+
+<p>Which empirical curve matters (hardware spend, algorithmic efficiency, or revenue)</p>
+
+<p>Whether software‑only recursive self‑improvement (RSI) can accelerate capabilities faster than hardware can be installed.</p>
+
+<p>How sharply compute translates into economic value once broad “agentic” reliability is reached.</p>
+
+<p>Whether automating half of essential tasks ignites runaway growth or whether Baumol’s law keeps aggregate productivity anchored until all bottlenecks fall</p>
+
+<p>How much alignment fear, regulation, and supply‑chain friction slow scale‑up</p>
+
+<p>The rest of this post traces how the canonical short‑timeline narrative <a href="https://ai-2027.com/">AI 2027</a> and the long‑timeline essays by <a href="https://epoch.ai/gradient-updates/the-case-for-multi-decade-ai-timelines">Ege Erdil</a> and <a href="https://zhengdongwang.com/2023/06/27/why-transformative-ai-is-really-really-hard-to-achieve.html">Zhendong Zheng + Arjun Ramani</a> diverge on each hinge, and proposes concrete bets that will force regular public updates.</p>
+
+<h1 id="shared-premises">Shared premises</h1>
+
+<ul>
+  <li>Six doublings in frontier training compute between GPT‑2 (2019) and GPT‑4 (2023)</li>
+  <li>GPT‑4‑level systems demonstrably replace some cognitive tasks</li>
+  <li>Alignment is non‑trivial; nobody claims a free deployment lunch</li>
+</ul>
+
+<p>Agreement in the forecasting/timelines community ends at the tempo question.</p>
+
+<h1 id="hinge-1-which-curve-do-we-extrapolate">Hinge #1: Which curve do we extrapolate?</h1>
+
+<p>The first divide concerns what exactly we should project into the future. Short‑timeline advocates emphasise frontier‑training compute and algorithmic efficiency, or even just the general amalgamation of all benchmarks as “intelligence extrapolation”. They point to six straight doublings in effective training FLOP between GPT‑2 and GPT‑4, and they cite scaling‑law papers showing a 1.6x yearly reduction in compute required to reach any fixed loss. This is the engine behind the claim in AI 2027, that “CapEx grows one hundred‑fold in four years.” Long‑timeline authors reply that the best public proxy for capital actually deployed (NVIDIA datacentre revenue, which <a href="https://x.com/charles0neill/status/1919552149392130325">I think is a flawed metric for other reasons</a>) stopped growing exponentially after the ChatGPT launch. Either you extrapolate benchmark/efficiency performance and hope that eventually gets you to automation, or you only believe if the work itself is actually automated, which is what Erdil is trying to proxy with NVIDIA’s revenue.</p>
+
+<p>Overall, I think it’s a good argument for the long-timelines side that we’ve still automated less than probably 0.5% of US GDP with AI. Reasoning models outperform most human mathematicians on FrontierMath, yet we have not seen a single peer‑reviewed theorem produced end‑to‑end by an LLM.<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> If benchmarks elsewhere are saturating, then there’s likely a large disconnect between how economically useful an AI is and progress on evaluation suites + benchmarks (also there’s probably unintentional cheating plus overfitting on hillclimbed metrics; for more see <a href="https://www.lesswrong.com/posts/4mvphwx5pdsZLMmpY/recent-ai-model-progress-feels-mostly-like-bullshit">here</a>).</p>
+
+<p>A bet follows naturally. If by the fourth quarter of 2026 NVIDIA’s datacentre revenue and the combined AI capital expenditures of Google, Meta, OpenAI, etc have doubled year‑over‑year, the hardware curve is still exponential and the short camp scores a point. If they have not, the long camp’s “curve‑bend” story gains credibility.</p>
+
+<h1 id="hinge2-can-softwareonly-recursive-selfimprovement-outrun-atoms">Hinge #2: Can software‑only recursive self‑improvement outrun atoms?</h1>
+
+<p>The second hinge asks whether capability can compound inside existing datacentres faster than the physical economy can supply new wafers, power, and cooling. Short‑timeline writers emphasise the rise of agentic research assistants. They note that Devin, Claude Code, etc can complete medium‑sized GitHub projects, etc etc. Once a model designs better chips, compilers, or curricula, capability doublings might come from pure code for a year or two - the classic “foom” or “phase transition.”</p>
+
+<p>Erdil’s rejoinder is empirical. Every major algorithmic breakthrough so far (attention, RLHF, mixture routing) consumed between a thousand and a hundred‑thousand GPU‑days of brute‑force experimentation. Experimentation, in turn, is limited by hardware delivery times and energy budgets. Data, too, is finite: the <a href="https://arxiv.org/abs/2211.04325">Villalobos et al.</a> paper suggests we exhaust high‑quality language data this decade.</p>
+
+<p>I’m more sympathetic to long timelines once again. Operator, Devin, and Anthropic’s workstation agent still regularly fail a task as mundane as booking a round‑trip flight with seat selection. Devin has all these <a href="https://www.answer.ai/posts/2025-01-08-devin.html">stories</a> of it being successful about 5-20% of the time in the real-world. If we cannot yet automate a travel clerk, claims about near‑total remote‑work automation feel premature. There’s also a strong bottleneck argument around compute and real-world data which people have made countless times, and I’m not sure where I stand on.</p>
+
+<p>A testable prediction is to watch wall‑clock time for frontier training runs. If the fastest models trained in mid‑2027 require one‑quarter the elapsed time of equally large runs eighteen months earlier without a node shrink below four nanometres, that will be strong evidence that software‑only acceleration is real, and is not highly bottlenecked by compute or real-world experiments slowing the AI researchers down.</p>
+
+<h1 id="hinge3-how-efficient-and-how-sudden-is-the-leap-from-compute-to-economic-value">Hinge #3: How efficient (and how sudden) is the leap from compute to economic value?</h1>
+
+<p>Current AI, even after ChatGPT, earns roughly ten‑thousand dollars per H100‑GPU‑year. This is a figure Erdil emphasises precisely because it equals world GDP per capita. Short‑timeline thinkers retort that this measure hides a looming discontinuity. Once reliability crosses the human median, the “train once, deploy many” property kicks in: the marginal cost of the N‑th copy collapses to server depreciation and a few cents of electricity. They also foresee specialised inference hardware such as NVIDIA’s Blackwell or Groq or whatever, plus sparsity and mixture routing, pushing cost per useful token down by two orders of magnitude. Moreover, value is highly uneven: AlphaFold’s acceleration of drug discovery might be worth many millions of average coders.</p>
+
+<p>Long‑timeline writers respond that newer, more agentic models already need one to three orders of magnitude more reasoning tokens per answer, so the inference cost trend is rising, not falling.</p>
+
+<p>A bet here is to revisit revenue per deployed H100 by the end of 2027.  If the number exceeds one‑hundred‑thousand dollars, the efficiency threshold the short camp predicts has arrived. If it remains close to today’s ten‑thousand, the sceptics will have been vindicated.</p>
+
+<h1 id="hinge4-must-we-automate-everything-or-is-half-enough">Hinge #4: Must we automate everything, or is half enough?</h1>
+
+<p>Here the argument turns to macroeconomic theory. Short‑timeline narratives imagine a reaction wheel: once half of remote cognitive labour is cheap, wages plummet, capital reallocates, and the remaining physical bottlenecks fall rapidly because swarms of AI engineers will design better robots, batteries, and even fusion plants. They also note that GDP composition can migrate; maybe more and more value lives in purely digital goods, so traditional <a href="https://en.wikipedia.org/wiki/Baumol_effect">Baumol constraints</a> vanish.</p>
+
+<p>Zheng and Ramani retort that William Baumol’s law is brutal. Aggregate productivity is throttled by the slowest essential sector, whether that’s housing, logistics, healthcare, and energy. For intance, electricity and the internet each boosted sectoral productivity by a factor of a thousand but raised frontier GDP per capita growth by less than one percentage point. Unless AI swiftly unlocks safe autonomous robotics, cheap power, and fast construction, growth will be stuck.</p>
+
+<p>A decisive empirical milestone is whether any G7 country manages three straight years of six‑percent real GDP‑per‑capita growth before general‑purpose manipulation robots are common. If that occurs, the reaction‑wheel model wins.</p>
+
+<h1 id="hinge5-alignmentdriven-and-institutional-drag">Hinge #5: Alignment‑driven and institutional drag</h1>
+
+<p>Finally, even if capability and economics line up, society might want us to slow down anyway. Regulation is already thickening. Physical bottlenecks appear in grid interconnect queues, water‑cooling permits, and limited HBM memory supply. Alignment worries form a special drag: Anthropic’s <a href="https://www.anthropic.com/news/anthropics-responsible-scaling-policy">Responsible Scaling Policy</a> and OpenAI’s <a href="https://openai.com/index/updating-our-preparedness-framework/">Preparedness Framework</a> both envision voluntary pauses.</p>
+
+<p>Short‑timeline optimists counter with the Manhattan‑mode story: once states perceive an existential threat or an opportunity for decisive advantage, they bulldoze barriers. The AI 2027 scenario predicts permissive special‑economic zones where training can continue at maximum speed, while regulators lag behind.</p>
+
+<p>We can measure drag directly. One bet is that, by January 2028, at least one top‑three lab publicly delays a frontier model six or more months for safety reasons. Another is that U.S. datacentre megawatt backlogs fall below six months by 2027 and export‑control stringency remains at 2024 levels.</p>
+
+<h1 id="dependency-structure">Dependency Structure</h1>
+
+<p>These hinges are not independent.  If the hardware and algorithmic curves keep doubling, software‑only RSI is more plausible. If RSI works, agent efficiency is likelier to jump and GDP could surge even before robots. On the other hand, strong alignment or regulatory brakes can nullify the whole chain. In practice, pessimistic answers to any two hinges probably push full‑replacement timelines into the 2040 s; optimistic answers to at least three make the late‑2020 s credible.</p>
+
+<div style="margin: 4em 0;"></div>
+
+<p>Timeline debates are tractable because they hinge on the above five measurable questions, at least to me. We do not need oracular insight, only discipline: decide which side of each hinge you occupy, publish your odds, and update when the world issues new datapoints. The difference between an AGI in 2027 and one in 2047 may feel philosophical, but it will ultimately be written in SEC filings, power‑grid spreadsheets, and lab press releases. Let us read those, not the vibes.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Reasoning models are better than basically all human mathematicians, but still haven’t produced one novel mathematical result, suggesting a disconnect between benchmarks and actual real-world use. For instance, if a human gets 25% on FrontierMath (ie Terence Tao), we assume they’ll produce great maths research because we know those things to be very correlated. However, the correlation doesn’t necessarily hold for LLMs: we could have just hillclimbed on the FrontierMath benchmark and overfitted to that. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.contents')) {
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+
+            function setActiveLink() {
+                let currentActive = null;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100;
+
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>

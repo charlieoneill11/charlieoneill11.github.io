@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-    
-    <!-- Preconnect to Google Fonts for faster loading -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/@tabler/icons-webfont@latest/tabler-icons.min.css">
-    
-    <!-- MathJax Configuration -->
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
     {% if page.math %}
     <script>
         window.MathJax = {
@@ -29,23 +26,19 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     {% endif %}
-    
+
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <div class="container">
         <header>
             <nav>
-                <a href="/index.html" {% if page.url == '/index.html' or page.url == '/' %}class="active"{% endif %}>Home</a>
-                <a href="/research.html" {% if page.url == '/research.html' %}class="active"{% endif %}>Research</a>
-                <a href="/posts" {% if page.url contains '/posts' %}class="active"{% endif %}>Posts</a>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" {% if page.url contains '/research' %}class="active"{% endif %}>Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" {% if page.url contains '/posts' %}class="active"{% endif %}>Posts</a>
             </nav>
-            <div class="theme-toggle">
-                <span class="theme-label"></span>
-                <div class="toggle">
-                    <div class="toggle-circle"></div>
-                </div>
-            </div>
         </header>
 
         <main>
@@ -53,42 +46,8 @@
         </main>
 
         <footer>
-            <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
+            <p>© {{ site.time | date: '%Y' }} Charlie O'Neill</p>
         </footer>
     </div>
-
-    <script>
-        // Dark mode toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggle = document.querySelector('.toggle');
-            const body = document.body;
-            
-            // Check for saved user preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                body.classList.add('dark-theme');
-            }
-            
-            // Toggle theme
-            toggle.addEventListener('click', () => {
-                body.classList.toggle('dark-theme');
-                
-                // Save user preference
-                if (body.classList.contains('dark-theme')) {
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    localStorage.setItem('theme', 'light');
-                }
-            });
-            
-            // Check system preference on first load if no saved preference
-            if (!savedTheme) {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (prefersDark) {
-                    body.classList.add('dark-theme');
-                }
-            }
-        });
-    </script>
 </body>
 </html>

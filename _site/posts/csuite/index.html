@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your MLEs are brilliant, but you’re giving them the wrong job - </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<aside class="contents">
+    <h3>Contents</h3>
+    <div class="contents-list">
+        
+            
+            
+            
+            <a href="#the-prototyping-role-of-mles" class="toc-link">The prototyping role of MLEs</a>
+        
+            
+            
+            
+            <a href="#the-intelligence-mismatch" class="toc-link">The intelligence mismatch</a>
+        
+            
+            
+            
+            <a href="#the-training-trap" class="toc-link">The training trap</a>
+        
+            
+            
+            
+            <a href="#the-social-intelligence-factor" class="toc-link">The social intelligence factor</a>
+        
+            
+            
+            
+            <a href="#the-frontier-problem" class="toc-link">The frontier problem</a>
+        
+            
+            
+            
+            <a href="#the-case-for-specialisation" class="toc-link">The case for specialisation</a>
+        
+            
+            
+            
+            <a href="#bottom-line" class="toc-link">Bottom line</a>
+        
+    </div>
+</aside>
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">Your MLEs are brilliant, but you’re giving them the wrong job</h1>
+        
+        <div class="post-description">A letter to the C-suite</div>
+        
+    </header>
+
+    <div class="post-content">
+        <p>If you’re hiring an engineering team at an AI-native company in domains like healthcare, insurance, legaltech, or insurance, you’ve probably fallen into a trap we see everywhere: assuming your MLEs can double as LLM engineers.</p>
+
+<p>The problem isn’t that they aren’t smart enough. It’s that you’re getting them to do the wrong job. Their job isn’t to reinvent frontier model training inside your startup. Their job is to help get you to product-market fit.</p>
+
+<h1 id="the-prototyping-role-of-mles">The prototyping role of MLEs</h1>
+<p>This doesn’t mean MLEs don’t play a crucial role. In fact, they’re often the best people to help you prototype in the early days.</p>
+
+<p>They can wire up APIs, run small-scale experiments to get you to your first demos. This phase is all about speed, iteration, and exploring whether there’s a real problem-solution fit. MLEs shine here because they’re adaptable, quantitative, and can hack together a proof of concept quickly.</p>
+
+<p>But once you’ve validated the problem and see early signs of product-market fit, the game changes. At that point, you need to shift from hacking together demos to running scalable, reliable post-training loops. And that’s not something you can, or should, expect your MLEs to own. That’s where Parsed comes in.</p>
+
+<h1 id="the-intelligence-mismatch">The intelligence mismatch</h1>
+<p>It’s a fallacy to equate the skills that make someone a good traditional MLE with those required to run an LLM-based engineering team. A PhD in neural tangent kernels, those Kaggle competition wins are orthogonal to what you actually need.</p>
+
+<p>Even if you’re just calling closed-source models through APIs (before we even touch training and inference) LLMs demand a fundamentally different kind of intelligence. Understanding how to scaffold and prompt your way to performance isn’t about gradient-boosted models. It’s about something fuzzier, more qualitative.</p>
+
+<p>Writing LLM-as-a-judge evaluation harnesses requires specific intuition that doesn’t map neatly onto traditional metrics of quantitative intelligence. (This is why companies like Cognition boasting about hiring IMO winners feels misguided to me). Solving International Math Olympiad problems is impressive, but it’s a completely different skillset from understanding, on an intuitive level, how LLMs process tokens. How the subtleties of English as a conditioning mechanism lead to those subtle, pernicious behaviours we all know and love so well.</p>
+
+<h1 id="the-training-trap">The training trap</h1>
+<p>“But surely,” you might think, “training and ML Ops at scale—that’s where my traditional MLE shines?”</p>
+
+<p>Not quite.</p>
+
+<p>Training LLMs isn’t the neat train-test-split and hyperparameter search that Kaggle gurus cut their teeth on. A huge part of successfully training or finetuning a language model comes down to data curation. And this, again, requires that qualitative intelligence: the ability to deeply understand a problem and the requirements imposed by defining it in natural language rather than deterministic code.</p>
+
+<p>When you’re finetuning on outputs from a bigger model and the distillation gap leaves you disappointed after training qwen-32b, where do you go? There’s a massive creative component to generating better data. And reinforcement learning is a whole different beast. How do you write evaluations that go beyond regexes and deterministic Python checks to actually serve as useful reward functions? How do you even measure whether your LLM-as-a-judge is measuring what you want, whether it’s aligned with domain experts, whether it’s well-defined enough for RL post-training?</p>
+
+<p>LLM training is fundamentally harder than spinning up a model in Sklearn. Models are many orders of magnitude bigger. Training requires knowledge of parallelisation, sharding, and distributed systems in ways it never did before. Expecting your MLE to skill up on all this while simultaneously learning a fundamentally different paradigm of how to interact with and control LLMs is a massive ask. You can’t just lump an MLE into the category of “prompt engineer + hardware guru + distributed systems expert + deep transformer guru” when their last job involved training CNNs on OCT scans.</p>
+
+<p>Your team’s scarce cycles should go into defining the problem — not solving the engineering puzzle of training frontier-scale models. Parsed’s role is to absorb that engineering burden and return production-ready models that reflect your definitions.</p>
+
+<h1 id="the-social-intelligence-factor">The social intelligence factor</h1>
+<p>Perhaps most critically, LLM engineering demands social and personable intelligence in ways traditional ML never did.</p>
+
+<p>Tasks don’t exist in isolated boxes anymore. They’re not completely defined by the features and labels you train on. Most LLM tasks are icebergs, with massive underwater components of domain knowledge and implicit context only available to teams expert in your specific vertical.</p>
+
+<p>LLM engineers need to be socially intelligent enough not just to grasp this domain context, but to engage productively with domain experts and end users. They need to hold complex, nuanced discussions with stakeholders and distill all that messy, implicit information into evaluations, generation prompts, and training data.</p>
+
+<p>Parsed takes those definitions and runs the heavy machinery: post-training, evaluation harnessing, RL, infrastructure.</p>
+
+<h1 id="the-frontier-problem">The frontier problem</h1>
+<p>Perhaps the most salient issue is that the frontier of LLM research moves so quickly that it’s impossible for engineers hired for specific vertical use cases to also position themselves on the rapidly expanding frontier.</p>
+
+<p>No offence, but you’re not getting Big Lab-level engineering quality at your app layer company. There’s a reason the best talent goes to the big labs: They’re building AGI, which is sexy. They get to work on fundamental language model problems. They pay better. They don’t have to optimise a system for medical record data summarisation and JSON formatting.</p>
+
+<p>To expect these MLEs to perform at a level where they can post-train the way big labs do, managing these systems at scale, is crazy. Everything is so new that the best commodity to hire for is raw intelligence and horsepower. Experience means less as things move faster. A PhD in convex optimisation doesn’t really give you any relevant experience in spinning up a GRPO run for the first time.</p>
+
+<h1 id="the-case-for-specialisation">The case for specialisation</h1>
+<p>All of this strengthens the argument for specialisation and buying versus building.</p>
+
+<p>We knew this when we started Parsed, and every interaction with teams in these verticals has only strengthened our conviction. The most self-aware companies understand this: They want Big Lab expertise packaged into models and tools their engineers can actually use productively. Sure, some are happy calling closed-source APIs forever. But anyone who wants a cheaper, faster, and most importantly, better model optimised for their specific task will eventually have to bite the bullet on post-training.</p>
+
+<p>That’s not to say tools and frameworks won’t emerge that allow in-house engineering teams to actively participate in this process. Indeed, that’s literally what we’re building Parsed to be. We want to commoditise Big Lab talent so anyone can access it as a nicely packaged product.</p>
+
+<p>But just putting a UI around a finetuning service isn’t the answer. Yes, writing finetuning code is difficult, and automating it solves that problem. But it’s only a tiny piece. The hard part about LLMs is that optimising them requires understanding everything end-to-end: from your generation prompt to your LLM-as-a-judge, through the complex mechanics of RL and SFT, and how to properly integrate all the feedback signals into a system that actually improves at what you want it to improve at.</p>
+
+<h1 id="bottom-line">Bottom line</h1>
+<p>If after all this, you still trust your MLEs to achieve what you want, then good for you. But you wouldn’t build your own server rack with a team of software engineers who only know Java and API development. So why would LLMs be any different?</p>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.contents')) {
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+
+            function setActiveLink() {
+                let currentActive = null;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100;
+
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>

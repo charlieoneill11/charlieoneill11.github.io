@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information bounds in quantum gravity - </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<aside class="contents">
+    <h3>Contents</h3>
+    <div class="contents-list">
+        
+            
+            
+            
+            <a href="#the-classical-expectation" class="toc-link">The Classical Expectation</a>
+        
+            
+            
+            
+            <a href="#the-black-hole-revolution" class="toc-link">The Black Hole Revolution</a>
+        
+            
+            
+            
+            <a href="#resolving-the-paradox" class="toc-link">Resolving the Paradox</a>
+        
+            
+            
+            
+            <a href="#the-holographic-principle" class="toc-link">The Holographic Principle</a>
+        
+            
+            
+            
+            <a href="#the-real-universe" class="toc-link">The Real Universe</a>
+        
+    </div>
+</aside>
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">Information bounds in quantum gravity</h1>
+        
+        <div class="post-description">How information theory links quantum mechanics and general relativity</div>
+        
+    </header>
+
+    <div class="post-content">
+        <p>The deepest fact we know about quantum gravity is that the maximum information content of a region of space scales with its surface area, not its volume.</p>
+
+<h1 id="the-classical-expectation">The Classical Expectation</h1>
+
+<p>Classical physics implies that information storage should scale with volume. Take a region of space and fill it with bits - quantum degrees of freedom that can each store roughly one unit of information. Pack these bits in a three-dimensional lattice, and the total storage capacity grows as the cube of the region’s radius. Each additional layer of bits adds a volume’s worth of storage.</p>
+
+<p>This matches our everyday experience. A stack of hard drives stores information proportional to its volume. Double each dimension, and storage capacity increases eightfold.</p>
+
+<h1 id="the-black-hole-revolution">The Black Hole Revolution</h1>
+
+<p>Black holes shatter this intuition. Bekenstein discovered, and Hawking later refined, a precise formula for black hole entropy:</p>
+
+<p>\[S = A/4G\bar{h}\]</p>
+
+<p>The entropy \(S\) - representing the information content in bits - is proportional to the surface area \(A\) of the black hole’s event horizon. The constants \(G\) (Newton’s gravitational constant) and \(\bar{h}\) (Planck’s constant) link quantum mechanics and gravity.</p>
+
+<p>This area-scaling would be merely curious if it applied only to black holes. But Bekenstein proved something far more profound: black holes represent the maximum possible information density for any region of that size. No object can exceed the entropy of a black hole of the same surface area.</p>
+
+<h1 id="resolving-the-paradox">Resolving the Paradox</h1>
+
+<p>This creates an apparent contradiction. Information seems to scale with volume, yet cannot exceed a bound that scales with area. Since volume grows faster than area, any sufficiently large collection of information should eventually violate the bound.</p>
+
+<p>Gravity itself resolves this paradox. Pack too much information into a region - meaning too much mass-energy, by Einstein’s equivalence - and the region collapses into a black hole before exceeding the area bound. The collapse is not a close call: standard storage media form black holes orders of magnitude before approaching the theoretical maximum.</p>
+
+<h1 id="the-holographic-principle">The Holographic Principle</h1>
+
+<p>This area-scaling reveals something deeper. A region’s information content is bounded by what could be stored on its boundary. The three-dimensional physics inside must be encodable in a two-dimensional surface.</p>
+
+<p>Maldacena made this precise in Anti-de Sitter space - a universe with negative cosmological constant. His AdS/CFT correspondence proves that quantum gravity in the bulk is exactly equivalent to a quantum field theory without gravity on the boundary. Every bulk process has a precise boundary description. Every boundary computation corresponds to a bulk event.</p>
+
+<h1 id="the-real-universe">The Real Universe</h1>
+
+<p>Our universe, with its positive cosmological constant, presents additional challenges. Anti-de Sitter space has a clear spatial boundary where the dual theory lives. Our expanding universe does not. Current proposals place the dual theory on the cosmic horizon - though this differs for each observer - or in the infinite future.</p>
+
+<p>Despite these complications, the core insight holds: information in spacetime is fundamentally holographic. This principle maintains quantum mechanics’ unitarity, resolves the black hole information paradox, and provides our clearest window into quantum gravity.</p>
+
+<p>Understanding how holography works in our expanding universe may reveal whether spacetime itself emerges from more fundamental principles. The truth of quantum gravity may be encoded in the limits of information.</p>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.contents')) {
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+
+            function setActiveLink() {
+                let currentActive = null;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100;
+
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>

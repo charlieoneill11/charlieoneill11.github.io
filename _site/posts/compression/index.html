@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning compressed representations and GPT-5 speculation - </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">Learning compressed representations and GPT-5 speculation</h1>
+        
+        <div class="post-description">Why language models probably get too much from the abstraction we give them for free</div>
+        
+    </header>
+
+    <div class="post-content">
+        <p>Language models are impressive, but I think they are cheating. We give them an abstract vocabulary as a way to compress the external world into a manageable set of 50,257 tokens. Since (almost) any human can understand sequences of these tokens, our compression scheme must have been effective enough to distil a key chunk of our understanding of the world into an abstract vocabulary.</p>
+
+<h2 id="two-lemmas">Two lemmas</h2>
+
+<p>Real-world intelligence obviously doesn’t require the use of language as a compression tool. The common example is cats - much more “intelligent” in terms of planning than any current LLM would be <em>in the real world</em>, and they don’t speak a lick of English. So if you want to take in all the data that humans do every second of our waking day, from visual to audio to sensory, you can’t cleanly and efficiently represent that data in language. <strong>The key point here is that we have no abstract language over these high-dimensional input spaces that make up the real world.</strong> That’s the first lemma.</p>
+
+<p>The second lemma is that (subject to current orders of magnitude of compute) <strong>we have no way of efficiently predicting or learning meaningful representations of these high-dimensional spaces</strong>. The strongest evidence here is probably JEPA - after many years of experiments, even Yann Lecun couldn’t manage to get an efficient predictive model in the original high-dimensional space. This, by deduction, means that we must learn representations in some compressed, latent space, and do our predictions there.</p>
+
+<h2 id="computing-compressed-representations-for-transformers">Computing compressed representations for transformers</h2>
+
+<p>So how do we go about computing these compressed representations? Of course, you could use any old autoencoder. However, if we’re talking about transformers, then you need discrete representations (or at least, it certainly helps). This means you probably want something like a <a href="https://arxiv.org/abs/1711.00937">VQ-VAE</a> (or improved versions like <a href="https://arxiv.org/abs/2309.15505">finite scalar quantisation</a>). You take in some massive high dimensional vector space, learn an abstract vocabulary of “tokens” corresponding to codes in the VQ-VAE, and use a transformer to do prediction over these tokens, and then decode the final sequence back to the high-dimensional space with the decoder from the VQ-VAE. I’m pretty sure this is roughly what OpenAI’s SORA is doing with its “patches” for video generation, but I haven’t read the technical report yet.</p>
+
+<h2 id="a-prediction-for-gpt-5">A prediction for GPT-5</h2>
+
+<p>A perhaps non-obvious implication of the above reasoning process is that you don’t just have to have one abstract vocabulary. What if you had multiple levels of abstraction, each with its own vocabulary? The higher up the level of abstraction you go, the less tokens you have and the bigger the “concept” an individual token represents.</p>
+
+<p>Then, you condition on some reward or end state (which transformers are very good at - see <a href="https://arxiv.org/abs/2106.01345">Decision transformer</a>) and do autoregressive prediction over the highest level of tokens. Then you use a transformer trained on the vocabulary one rung lower on the ladder of abstraction to “decode” these tokens into its own vocabulary. Then you repeat until you get down to our original language (i.e. GPT-4).</p>
+
+<p>I think GPT-4.5 / GPT-5 will be something like this. In reality, it will probably have one high-level planning transformer that does prediction over abstract tokens. These abstract tokens can be learned by simply applying a VQ-VAE to our current corpus of tokenised training data. Then, the high-level generates the whole “sequence” in these abstract tokens, perhaps with some sort of beam search or Q* to determine the best possible paths (this in my mind corresponds to planning). Then, the lower level transformer (i.e. GPT-4) just does what it does best, except conditional on this high-level plan. This overcomes the limitation of our current GPT models: they can’t plan. Once they make a mistake, for instance, it’s hard to go back and correct oneself.</p>
+
+<h2 id="how-do-i-get-involved-at-home">How do I get involved at home</h2>
+
+<p>Without a cluster of H100s it’s probably difficult to get in on any of this action. However, I’m currently looking at:</p>
+<ul>
+  <li>Creating multiple levels of abstraction over language by controlling the number of codes in a vocabulary learnt by a VQ-VAE. Can we compress chunks of 256 tokens down to 128, 64, 32, 16, even 8?</li>
+  <li>Should we have use variable length sequences to compress certain sequences down? This makes the most sense - there’s no direct mapping between the original sequence length and how many abstract concepts it contains.</li>
+  <li>What if we just learn a VQ-VAE over <a href="https://arxiv.org/abs/2205.13147">Matryoshka embeddings</a>? You could cut off at various lengths and learn the vocabulary this way.</li>
+  <li>Create small algorithmic pixelated videos and see if various levels of abstraction can capture the dynamics of the video.</li>
+</ul>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.contents')) {
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+
+            function setActiveLink() {
+                let currentActive = null;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100;
+
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>

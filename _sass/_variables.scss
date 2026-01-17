@@ -1,27 +1,20 @@
 // Font variables
-$font-family-base: "Inter Variable", -apple-system, BlinkMacSystemFont, "Segoe UI",
-                    Roboto, Helvetica, Arial, sans-serif;
-$font-size-base: 16px;
-$line-height-base: 1.7;
+$font-family-base: 'Spectral', Georgia, serif;
+$font-size-base: 17px;
+$line-height-base: 1.6;
 
-$font-size-1: 2.5rem;   // ≈40 px – h1
-$font-size-2: 1.75rem;  // ≈28 px – h2
-$font-size-3: 1.25rem;  // ≈20 px – h3
-$font-size-body: 1.125rem; // 18 px
+$font-size-1: 2rem;
+$font-size-2: 1.5rem;
+$font-size-3: 1.2rem;
+$font-size-body: 17px;
 
 // Colors
-$color-bg:      #FAFAFA;           // Notion off‑white
-$color-text:    #1E1E1E;
-$color-heading: #141414;
-$color-link:    #3478F6;           // calm blue accent
-$color-border:  #E5E7EB;
-$color-meta:    #666;
-
-// Dark‑mode overrides
-$dm-color-bg:      #1C1C1E;
-$dm-color-text:    #E5E5E7;
-$dm-color-heading: #FFFFFF;
-$dm-color-border:  #3A3A3C;
-
-// Durations
-$t-fast: .2s;
+$color-bg: #faf9f5;
+$color-text: #000;
+$color-heading: #000;
+$color-link: #6b5947;
+$color-link-hover: #0066cc;
+$color-border: #d4a27f;
+$color-meta: #555;
+$color-muted: rgba(0,0,0,0.5);
+$color-box-bg: #f8f8f8;

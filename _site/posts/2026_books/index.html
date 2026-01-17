@@ -1,31 +1,47 @@
----
-layout: default
----
-{% assign headers = content | split: '<h1 ' %}
-{% if headers.size > 1 %}
-<aside class="contents">
-    <h3>Contents</h3>
-    <div class="contents-list">
-        {% for header in headers offset: 1 %}
-            {% assign header_content = header | split: '</h1>' | first %}
-            {% assign header_text = header_content | split: '>' | last | strip %}
-            {% assign header_id = header_text | slugify %}
-            <a href="#{{ header_id }}" class="toc-link">{{ header_text }}</a>
-        {% endfor %}
-    </div>
-</aside>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books I read (am reading) in 2026 - </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
 
 <article class="post">
     <header class="post-header">
-        <h1 class="post-title">{{ page.title }}</h1>
-        {% if page.description %}
-        <div class="post-description">{{ page.description }}</div>
-        {% endif %}
+        <h1 class="post-title">Books I read (am reading) in 2026</h1>
+        
+        <div class="post-description">I'm going to be better this year now I'm not a founder</div>
+        
     </header>
 
     <div class="post-content">
-        {{ content }}
+        <ul>
+  <li><a href="https://www.goodreads.com/book/show/145625252-the-years"><em>The Years</em></a> by Annie Ernaux.</li>
+</ul>
+
     </div>
 </article>
 
@@ -78,3 +94,12 @@ layout: default
         }
     });
 </script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>
