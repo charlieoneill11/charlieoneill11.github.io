@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts - </title>
+    <title>Posts - Charlie O'Neill</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,20 +28,34 @@
         <main>
             <h1>Posts</h1>
 
+<div class="filter-buttons">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="ai">AI</button>
+    <button data-filter="other">Everything else</button>
+</div>
+
 <div class="posts-list">
 
 
   <div class="year-header">2026</div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/gratitude/">On gratitude</a></h2>
+    
+    <div class="post-preview" data-tag="other">
+      <h2>
+        <a href="/posts/gratitude/">On gratitude</a>
+        <span class="tag-badge tag-other">Everything else</span>
+      </h2>
       
         <div class="post-description">And consumption of gratitude</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/2026_books/">Books I read (am reading) in 2026</a></h2>
+    
+    <div class="post-preview" data-tag="other">
+      <h2>
+        <a href="/posts/2026_books/">Books I read (am reading) in 2026</a>
+        <span class="tag-badge tag-other">Everything else</span>
+      </h2>
       
         <div class="post-description">I'm going to be better this year now I'm not a founder</div>
       
@@ -50,64 +64,100 @@
 
   <div class="year-header">2025</div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/anna/">Anna Karenina and the arbitrary party</a></h2>
+    
+    <div class="post-preview" data-tag="other">
+      <h2>
+        <a href="/posts/anna/">Anna Karenina and the arbitrary party</a>
+        <span class="tag-badge tag-other">Everything else</span>
+      </h2>
       
         <div class="post-description">From San Francisco</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/csuite/">Your MLEs are brilliant, but you’re giving them the wrong job</a></h2>
+    
+    <div class="post-preview" data-tag="ai">
+      <h2>
+        <a href="/posts/csuite/">Your MLEs are brilliant, but you're giving them the wrong job</a>
+        <span class="tag-badge tag-ai">AI</span>
+      </h2>
       
         <div class="post-description">A letter to the C-suite</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/bitterlessonevals/">The bitter lesson of LLM evals</a></h2>
+    
+    <div class="post-preview" data-tag="ai">
+      <h2>
+        <a href="/posts/bitterlessonevals/">The bitter lesson of LLM evals</a>
+        <span class="tag-badge tag-ai">AI</span>
+      </h2>
       
         <div class="post-description">Scaling care beats scaling compute</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/aitimelines/">Five hinge questions that decide whether AGI is five years away or twenty</a></h2>
+    
+    <div class="post-preview" data-tag="ai">
+      <h2>
+        <a href="/posts/aitimelines/">Five hinge questions that decide whether AGI is five years away or twenty</a>
+        <span class="tag-badge tag-ai">AI</span>
+      </h2>
       
         <div class="post-description">For people who care about falsifiable stakes rather than vibes</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/deathtax/">Born on third base</a></h2>
+    
+    <div class="post-preview" data-tag="other">
+      <h2>
+        <a href="/posts/deathtax/">Born on third base</a>
+        <span class="tag-badge tag-other">Everything else</span>
+      </h2>
       
         <div class="post-description">The Case for Inheriting Nothing and Building Everything</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/multidimfeat/">One-dimensional vs multi-dimensional features in interpretability</a></h2>
+    
+    <div class="post-preview" data-tag="ai">
+      <h2>
+        <a href="/posts/multidimfeat/">One-dimensional vs multi-dimensional features in interpretability</a>
+        <span class="tag-badge tag-ai">AI</span>
+      </h2>
       
         <div class="post-description">How to stop conflating with 768 dimensions</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/korder/">LLMs are really good at k-order thinking (where k is even)</a></h2>
+    
+    <div class="post-preview" data-tag="ai">
+      <h2>
+        <a href="/posts/korder/">LLMs are really good at k-order thinking (where k is even)</a>
+        <span class="tag-badge tag-ai">AI</span>
+      </h2>
       
         <div class="post-description">You still need to tell a language model you want to cure cancer before it can help you cure cancer.</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/information-bounds-quantum-gravity/">Information bounds in quantum gravity</a></h2>
+    
+    <div class="post-preview" data-tag="other">
+      <h2>
+        <a href="/posts/information-bounds-quantum-gravity/">Information bounds in quantum gravity</a>
+        <span class="tag-badge tag-other">Everything else</span>
+      </h2>
       
         <div class="post-description">How information theory links quantum mechanics and general relativity</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/2025_books/">Books I read (am reading) in 2025</a></h2>
+    
+    <div class="post-preview" data-tag="other">
+      <h2>
+        <a href="/posts/2025_books/">Books I read (am reading) in 2025</a>
+        <span class="tag-badge tag-other">Everything else</span>
+      </h2>
       
         <div class="post-description">A dynamic list</div>
       
@@ -116,22 +166,34 @@
 
   <div class="year-header">2024</div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/neurips/">The nihilism of NeurIPS</a></h2>
+    
+    <div class="post-preview" data-tag="ai">
+      <h2>
+        <a href="/posts/neurips/">The nihilism of NeurIPS</a>
+        <span class="tag-badge tag-ai">AI</span>
+      </h2>
       
         <div class="post-description">Some thoughts on our future in AI research</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/vqvae/">Can quantised autoencoders find and interpret circuits in language models?</a></h2>
+    
+    <div class="post-preview" data-tag="ai">
+      <h2>
+        <a href="/posts/vqvae/">Can quantised autoencoders find and interpret circuits in language models?</a>
+        <span class="tag-badge tag-ai">AI</span>
+      </h2>
       
         <div class="post-description">Using VQ-VAEs and categorical decision trees to do automatic circuit identification in LLMs.</div>
       
     </div>
   
-    <div class="post-preview">
-      <h2><a href="/posts/compression/">Learning compressed representations and GPT-5 speculation</a></h2>
+    
+    <div class="post-preview" data-tag="ai">
+      <h2>
+        <a href="/posts/compression/">Learning compressed representations and GPT-5 speculation</a>
+        <span class="tag-badge tag-ai">AI</span>
+      </h2>
       
         <div class="post-description">Why language models probably get too much from the abstraction we give them for free</div>
       
@@ -141,6 +203,44 @@
 </div>
 
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.filter-buttons button');
+    const posts = document.querySelectorAll('.post-preview');
+    const yearHeaders = document.querySelectorAll('.year-header');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+
+            buttons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            posts.forEach(post => {
+                if (filter === 'all' || post.dataset.tag === filter) {
+                    post.style.display = '';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+
+            yearHeaders.forEach(header => {
+                let nextEl = header.nextElementSibling;
+                let hasVisible = false;
+                while (nextEl && !nextEl.classList.contains('year-header')) {
+                    if (nextEl.classList.contains('post-preview') && nextEl.style.display !== 'none') {
+                        hasVisible = true;
+                        break;
+                    }
+                    nextEl = nextEl.nextElementSibling;
+                }
+                header.style.display = hasVisible ? '' : 'none';
+            });
+        });
+    });
+});
+</script>
 
         </main>
 

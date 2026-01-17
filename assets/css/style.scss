@@ -427,6 +427,57 @@ sup {
     font-size: 0.65em;
 }
 
+// Filter buttons
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    button {
+        font-family: $font-family-base;
+        font-size: 0.85em;
+        padding: 6px 14px;
+        border: 1px solid rgba(0,0,0,0.2);
+        border-radius: 3px;
+        background: white;
+        color: $color-text;
+        cursor: pointer;
+        transition: all 0.15s ease;
+
+        &:hover {
+            background: #f5f5f5;
+        }
+
+        &.active {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+    }
+}
+
+// Tag badges
+.tag-badge {
+    display: inline-block;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+
+    &.tag-ai {
+        background: #e8f4f8;
+        color: #1e5a7d;
+    }
+
+    &.tag-other {
+        background: #fdf6e8;
+        color: #b8860b;
+    }
+}
+
 // Post list (works/blog page)
 .posts-list {
     margin-top: 24px;

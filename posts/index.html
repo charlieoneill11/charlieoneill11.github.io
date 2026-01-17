@@ -5,13 +5,23 @@ title: Posts
 
 <h1>Posts</h1>
 
+<div class="filter-buttons">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="ai">AI</button>
+    <button data-filter="other">Everything else</button>
+</div>
+
 <div class="posts-list">
 {% assign posts_by_year = site.posts | where_exp: "post", "post.hidden != true" | group_by_exp: "post", "post.date | date: '%Y'" %}
 {% for year in posts_by_year %}
   <div class="year-header">{{ year.name }}</div>
   {% for post in year.items %}
-    <div class="post-preview">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    {% assign post_tag = post.tag | default: "other" %}
+    <div class="post-preview" data-tag="{{ post_tag }}">
+      <h2>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="tag-badge tag-{{ post_tag }}">{% if post_tag == "ai" %}AI{% else %}Everything else{% endif %}</span>
+      </h2>
       {% if post.description %}
         <div class="post-description">{{ post.description }}</div>
       {% endif %}
@@ -23,3 +33,41 @@ title: Posts
 {% if site.posts.size == 0 %}
   <p>No posts yet.</p>
 {% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.filter-buttons button');
+    const posts = document.querySelectorAll('.post-preview');
+    const yearHeaders = document.querySelectorAll('.year-header');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+
+            buttons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            posts.forEach(post => {
+                if (filter === 'all' || post.dataset.tag === filter) {
+                    post.style.display = '';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+
+            yearHeaders.forEach(header => {
+                let nextEl = header.nextElementSibling;
+                let hasVisible = false;
+                while (nextEl && !nextEl.classList.contains('year-header')) {
+                    if (nextEl.classList.contains('post-preview') && nextEl.style.display !== 'none') {
+                        hasVisible = true;
+                        break;
+                    }
+                    nextEl = nextEl.nextElementSibling;
+                }
+                header.style.display = hasVisible ? '' : 'none';
+            });
+        });
+    });
+});
+</script>

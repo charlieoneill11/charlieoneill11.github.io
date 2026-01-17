@@ -3,6 +3,7 @@ layout: post
 title: Learning compressed representations and GPT-5 speculation
 date: 2024-03-01
 description: Why language models probably get too much from the abstraction we give them for free
+tag: ai
 ---
 
 Language models are impressive, but I think they are cheating. We give them an abstract vocabulary as a way to compress the external world into a manageable set of 50,257 tokens. Since (almost) any human can understand sequences of these tokens, our compression scheme must have been effective enough to distil a key chunk of our understanding of the world into an abstract vocabulary.

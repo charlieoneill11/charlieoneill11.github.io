@@ -4,6 +4,7 @@ title: Middlemarch
 date: 2025-02-18
 description: My thoughts
 hidden: true
+tag: other
 ---
 
 _Middlemarch_ quietly captured something beautiful about ordinary lives. Eliot gently insists, “People are almost always better than their neighbours think they are,” and reading this, I felt that to be true. Her world isn’t one of heroes or villains, but everyday people whose aspirations quietly shape the world around them. She writes about character as something fluid (“not cut in marble,” she says, but “living and changing”) and that felt comforting. We aren’t defined solely by our mistakes, but continuously reshaped by the small choices we make.

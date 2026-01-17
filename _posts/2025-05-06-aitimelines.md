@@ -4,6 +4,7 @@ title: Five hinge questions that decide whether AGI is five years away or twenty
 date: 2025-05-06
 description: For people who care about falsifiable stakes rather than vibes
 math: true
+tag: ai
 ---
 
 # TL;DR

@@ -4,6 +4,7 @@ title: The bitter lesson of LLM evals
 date: 2025-07-15
 description: Scaling care beats scaling compute
 math: true
+tag: ai
 ---
 
 In the history of artificial intelligence, there is a famous principle known as the Bitter Lesson. Coined by Rich Sutton, it observes that the biggest gains in performance have consistently come not from elaborate, human-designed knowledge, but from general methods that leverage massive increases in computation. The lesson is simple and humbling: in the long run, brute-force compute is what wins.
