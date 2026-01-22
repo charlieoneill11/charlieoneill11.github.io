@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What is the future of Rake?
-date: 2025-01-15
+date: 2023-03-03
 description: Something I sent to Kirks when we were building
 tag: ai
 ---

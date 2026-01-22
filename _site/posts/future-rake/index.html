@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is the future of Rake? - Charlie O'Neill</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">What is the future of Rake?</h1>
+        
+        <div class="post-description">Something I sent to Kirks when we were building</div>
+        
+    </header>
+
+    <div class="post-content">
+        <p>I suppose this thought experiment began when I asked myself what would become of Rake after it had obtained a few hundred thousand users and become self-sufficient (at least enough to obtain the parallel compute required to generate both batch and personalised articles daily and on-demand). Initial thoughts tend towards a business model driven by a suite of constantly-training large language models that submit themselves to a reinforcement cycle of generation and feedback, iteratively optimising what it means to deliver a personalised news article. This is all well and good; but there comes a point where we have squeezed every optimisation out of a stagnant process of data collection. There’s only so much you can personalise the same articles from the Times and the Herald before you plateau and your loss curves level off.</p>
+
+<p>This obviously points to the ingestion component of the pipeline. We need a better way to curate and collect the data that constitutes our “news”. There are many ways you could start going about this. For instance, what if we had an opt-in system where everything from emails to social media posts to messages began to constitute a data token; these tokens could be distributed to the most relevant people in a way not dissimilar to the cosine similarity matching we’re doing now. Imagine if, in addition to the global stories, your news feed was littered with posts about so-and-so’s pregnancy or so-and-so’s engagement, or award, or scholarship, or whatever it may be. News gets redefined not as the bulk information that acts as the lowest common denominator of interest, but rather as <em>solid tokens of truth that are most relevant to the person receiving them</em>. Yes, there will still be the traditional news stories that we read today, but the personalisation cuts across the information collection now as well. Rake will have evolved into a harvester as well as mass distributor.</p>
+
+<p>This alone I believe could be a significant enterprise. But why stop there? We’ve abstracted away what a news story might be, down to a component of information. But we don’t want to place more value in the hands of centralised social media and internet platforms. In doing so, we merely multiply the value of their already valuable stranglehold on personal data. This new business is doomed to not live up to its potential because it’s a leaky abstraction at best and an evil corporation-enabling machine at worst. You need a way to wrest back control of data and place it into the hands of the people providing it. This is the only way you’d be able to gain people’s trust for the opt-in system to work. If people are going to contribute their data to the pool of information from which you extract and display the news, then you’d best bet they’re going to want complete and final control over how it gets there and who it gets shown to.</p>
+
+<p>Whilst there doesn’t seem to be an apparent solution to the above problem, I believe the answer lies in one of the buzzwords used above. Tokens. Before I fully elaborate on that, I want to quickly talk about a parallel issue in terms of data provision. Back before LinkedIn there was a company called Jigsaw that operated under a give-to-get model, where users provided data (back in those days, business cards) in exchange for services (other people’s business cards). As AI becomes more and more prominent, data becomes more and more valuable. We’re already seeing this with the Twitter rate limits and Reddit being walled off etc etc. So you need to reward people for providing data to whatever centralised pool you’re planning to use for learning, distributing, whatever. What if you put everything on a blockchain, where every data transaction required a cryptographic key in order to be deciphered? Hence the tokens.</p>
+
+<p>What would this even look like? Well, at this point Rake is no longer a news service. Let’s suppose Rake oversees this blockchain system. Then, every byte that is transmitted over any sort of network has a little token tacked onto the end of it by Rake. This token serves as a certificate and the keyhole which the person at the other end must have the key to, if they want to decode the information. Every transaction has one of these tokens. There would be an optimal way to implement this which I’m not going to pretend to know, but I can think of a rough system off the top of my head.</p>
+
+<p>Every piece of information belongs to some entity. That entity could be a person, or a company, or a community running club. However, every person has a token that gets tacked on to the information transmitted, and certain components of that token allow its distribution to other entities. For instance, you can let your partner see a bank account withdrawal, but your colleague certainly wouldn’t have the decoding token for that information transaction. If you define every entity as the boundaries that encapsulate it, then every cell wall or piece of skin or company intranet gets a token that defines in completeness the permissions attached to its data transactions. The boundaries define the tokens. These tokens can be stacked together to form definitions for organisms as concrete entities. Blockchain tokens literally define something akin to AWS permission-roles. Of course, an immediate problem is how you would stop the whole world from devolving into an infinite jungle of permission management (how exactly can you define who should get exactly which parts of your data). One potential solution would be an accompanying neural net that gets attached to you at birth and learns to manage the permissions of the tokens for you. After a while and continuous active learning, it wouldn’t need to bother you at all to figure out what to share with whom. Everything would be done in the background.</p>
+
+<p>I’m not really sure how this would work, but I think Rake could make money off this as follows. Every piece of information can be embedded in some sort of semantic space of information/truths. Rake makes money (or, at least, derives value) by “skimming” off some of this information from every transaction. However, it’s not like we can skim off a couple of 1s and 0s from the end of an exchange. Instead, the skimming is about compressing the information exchanged down to some appropriately small embedding (literally, the size of the vector controls how much you’re compressing), and then we get to keep that information for free. Every transaction goes about its business just like we do now over any old network, but Rake continuously collects compressed information until it has a fuzzy picture (kind of like a JPEG) of the whole world, filling in the semantic space of this information with all of these skimmings. The compression must be beyond some threshold to ensure anonymity of data, which is where things like information theory could come in and help you derive Pareto-optimal compressions.</p>
+
+<p>Speaking of economics, what would Rake actually use the semantic space of data for? Anything really. You could stick with the old goal of creating news, except now you’d have a source of truth so pure that you’ve almost rendered news irrelevant. You can just send people to whatever parts of the semantic, latent space of embeddings they care about (and that they can access – obviously you still need to wall off parts of this space from certain people). You could obviously go beyond this as well. Train a neural net on literally anything. Try and derive consciousness. Simulate peace negotiations in the Middle East until you find the strategy with the highest probability of working. A really cool idea would be implementing the “everything” app which Kirks and I have talked about previously. Just completely optimise people’s lives – you’d have the information to do it.</p>
+
+<p>Rake would no longer be about news. It would be about data and information and, most importantly, truth, down to the last byte. You can stop at any level of the above abstraction where you start to feel uncomfortable, but the more you can climb up that ladder, the more valuable you realise the trajectory of an optimal Rake could be. You go from making money by exiting to making money by providing real value to not really caring about money at all because you’d be changing the way the world works.</p>
+
+<h2 id="kirkby-reply">Kirkby reply</h2>
+
+<p>If I extract a few thoughts, they primarily centre around the dangers of personalisation, and the hidden control that could arise in this debate around data sovereignty. I am particularly intrigued about this latter point. Having complete control and authority over your own data is seemingly somewhat of a digital utopia, but I think that the points you’ve raised about subsequent permissions may carry more weight.</p>
+
+<p>A quick practical disclaimer/limitation before I go on here: a central issue to this implementation of an <em>information garden</em> (I like this term) that I’ve thought about would be the tokenisation of data that already exists. I don’t think this is worth expanding on heavily here, but worth a practical consideration in future, because it may amount to a large logistical challenge trying to wrest the control of immense vats of data from established social media entities.</p>
+
+<p>To speak to your first point, I suppose the question becomes: why do we require personalisation at all?  Redefining the ‘news’ into personalised tokens of information that are most relevant to an individual or company, would require an incredibly precise balance between ensuring relevance (e.g. birthdays, events etc.), whilst maintaining appropriate interconnectivity and engagement with wider society. The fear would obviously be that if you tokenised all information, you would inherently create echo chambers that prevent cross-pollination, not only of news, but of personal interaction.</p>
+
+<p>This is not to say that I don’t believe in personalisation. I do. But avoiding these echo chambers and playing devil’s advocate has been something I’ve had to consider as I map out the ethical considerations we present for Rake, and it is not something I’ve fully managed to come up with an answer for. The argument I can propose at the moment is that the personalisation of news – and by extension all relevant information in this context – is not mutually exclusive from relevant contextualisation or the injection of occasional randomness into your feed. What do I mean by contextualisation? Presenting opposing viewpoints or information within the content of the article or our <em>information garden</em> itself, whilst maintaining a higher concentration of relevant <em>personalised</em> content. What do I mean by randomisation? The injection of a conflicting or abstract article or piece information at random moments in time. I think both of these points may be of value, because without it, I fear you may inevitably have the creation of echo chambers.</p>
+
+<p>Of course, you may argue that external information which is irrelevant by extension carries little important value in contrast to the “solid tokens of truth” that you would only ever be exposed to. I suppose in my mind, the exposure of individuals to the wider complexity of truths that are carried or experienced by broader humankind is important in shaping how one lives their life and interacts with society at large. This is now getting philosophical and slightly tangential, but in short, I think that the information gain you may get out of only relevant, tokenised truth, would not be enough.</p>
+
+<p>Hence, the need for contextualisation or randomness that would build upon your presentation of relevant truths.</p>
+
+<p>I want to dwell on this point of randomness for a moment. I love your idea of the blockchain <em>information garden</em> where we can build a semantic space of all data. Whilst I completely agree that individuals should own and control the rights to their data within this garden, the level of algorithmic autonomy over the subsequent important part, permissions and viewing, is simultaneously where I believe the real power becomes introduced, potentially in equal quantities to information skimming. Because it does seem technically plausible that a system of tokenised information may be implemented by a major tech power or government in the not-so-distant future (this might be naïve, but the point on technical implementation I think still stands). The real question, as it always is, then becomes <em>who gets to view and access this data</em>?</p>
+
+<p>I think in here you might have undersold the most powerful part of your vision: the effect that such a permission decision neural network would have on society.</p>
+
+<p>This is because data itself is not necessarily as important as who can see it. The corollary of this is that the audience of any data holds greater significance than the data itself. At a primitive level, take an Instagram post with someone passing out blind drunk on a yacht in Greece. The ‘data’ contained within that post – that would subsequently be tokenised in our system – is irrelevant if you have 0 followers. Blow that out to 100 followers, including your parents and boss, and suddenly you have a problem. This argument obviously has flaws, but it quite neatly illustrates the importance of how data and its audience intersect.</p>
+
+<p>By controlling an algorithm that would essentially dictate the entire flow of information in society and between humans, you would be able to control – in a centralised way – the existence of humankind in a singular entity. This begs the question: is this actually viable and/or even desirable? If it is, which I think it is, the question then becomes how do you maximise relevance whilst minimising access? This would be obvious to even a model today, but the question becomes murkier when we skip, let’s say, authentication and medical documents that only need to be seen by a government official or doctor. If we apply this approach to personal or social information, it becomes a balance of ensuring relevance whilst maintaining interconnectivity and ‘open-mindedness’. These are plausible to implement, but even slight changes to such permissions would completely upend information flow, especially if you are optimising for society’s overall gain, unlike social media companies today.</p>
+
+<p>Long story short, this is what I got most excited about in your memo. I think here we could have, in our everything app, am opportunity to design a powerful algorithm that fundamentally influences the way people live and interact. Information would become (it already is to some extent) the true lifeblood of society, whose permissions, in our hands, could be optimised to maximise the economic and social benefits for all individuals. It is perhaps obvious to say, but you’d essentially have many orders of magnitude more influence than the algorithmic control imposed by modern social media companies.</p>
+
+<p>Designing this permission flow is only part one, I think the equally exciting part would be the information skimming. I’ve got some cool ideas on this, but I will leave my discussion to my spare weekend time because I think that is a whole other ripe crop of fruit for picking. And, because I need to go to bed.</p>
+
+    </div>
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.contents')) {
+            const headings = document.querySelectorAll('.post-content h1');
+            headings.forEach(heading => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                }
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.post-content h1');
+
+            function setActiveLink() {
+                let currentActive = null;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const scrollPosition = window.scrollY + 100;
+
+                    if (scrollPosition >= sectionTop) {
+                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                    }
+                });
+
+                tocLinks.forEach(link => link.classList.remove('active'));
+                if (currentActive) currentActive.classList.add('active');
+            }
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            setActiveLink();
+            window.addEventListener('scroll', setActiveLink);
+        }
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>

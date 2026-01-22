@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How I'd build the future of news
-date: 2025-01-15
+date: 2023-05-05
 description: Notes from Rake
 tag: ai
 ---
