@@ -424,6 +424,55 @@ figure {
     color: $color-meta;
 }
 
+// References
+.references {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #ccc;
+
+    h2 {
+        font-size: 1.1em;
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    ol {
+        padding-left: 24px;
+        margin: 0;
+
+        li {
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: $color-text;
+
+            a {
+                color: $color-link;
+
+                &:hover {
+                    color: $color-link-hover;
+                }
+            }
+
+            em {
+                font-style: italic;
+            }
+        }
+    }
+}
+
+// Citation links
+.cite {
+    color: $color-link;
+    font-size: 0.85em;
+    vertical-align: super;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-link-hover;
+    }
+}
+
 sup {
     font-size: 0.65em;
 }

@@ -1,0 +1,12 @@
+{% if page.references %}
+<section class="references">
+    <h2>References</h2>
+    <ol>
+        {% for ref in page.references %}
+        <li id="ref-{{ forloop.index }}">
+            {% if ref.authors %}{{ ref.authors }}. {% endif %}{% if ref.url %}<a href="{{ ref.url }}">{{ ref.title }}</a>{% else %}{{ ref.title }}{% endif %}{% if ref.venue %}. <em>{{ ref.venue }}</em>{% endif %}{% if ref.year %} ({{ ref.year }}){% endif %}.
+        </li>
+        {% endfor %}
+    </ol>
+</section>
+{% endif %}
