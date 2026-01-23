@@ -3,7 +3,7 @@ layout: post
 title: Bitter-Lessoning neat latent structures through self-study
 date: 2026-01-15
 description: Claude's Constitution
-tag: other
+tag: ai
 references:
   - title: "Claude's Constitution"
     url: "https://www.anthropic.com/constitution"
