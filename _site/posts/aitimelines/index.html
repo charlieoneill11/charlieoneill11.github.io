@@ -45,48 +45,65 @@
             
 
 <aside class="contents">
+    <button class="contents-close" aria-label="Close contents">&times;</button>
     <h3>Contents</h3>
     <div class="contents-list">
         
             
             
             
-            <a href="#tl-dr" class="toc-link">TL;DR</a>
+            
+            
+            <a href="#tldr" class="toc-link">1. TL;DR</a>
         
             
             
             
-            <a href="#shared-premises" class="toc-link">Shared premises</a>
+            
+            
+            <a href="#shared-premises" class="toc-link">2. Shared premises</a>
         
             
             
             
-            <a href="#hinge-1-which-curve-do-we-extrapolate" class="toc-link">Hinge #1: Which curve do we extrapolate?</a>
+            
+            
+            <a href="#hinge-1-which-curve-do-we-extrapolate" class="toc-link">3. Hinge #1: Which curve do we extrapolate?</a>
         
             
             
             
-            <a href="#hinge-2-can-software-only-recursive-self-improvement-outrun-atoms" class="toc-link">Hinge #2: Can software‑only recursive self‑improvement outrun atoms?</a>
+            
+            
+            <a href="#hinge2-can-softwareonly-recursive-selfimprovement-outrun-atoms" class="toc-link">4. Hinge #2: Can software‑only recursive self‑improvement outrun atoms?</a>
         
             
             
             
-            <a href="#hinge-3-how-efficient-and-how-sudden-is-the-leap-from-compute-to-economic-value" class="toc-link">Hinge #3: How efficient (and how sudden) is the leap from compute to economic value?</a>
+            
+            
+            <a href="#hinge3-how-efficient-and-how-sudden-is-the-leap-from-compute-to-economic-value" class="toc-link">5. Hinge #3: How efficient (and how sudden) is the leap from compute to economic value?</a>
         
             
             
             
-            <a href="#hinge-4-must-we-automate-everything-or-is-half-enough" class="toc-link">Hinge #4: Must we automate everything, or is half enough?</a>
+            
+            
+            <a href="#hinge4-must-we-automate-everything-or-is-half-enough" class="toc-link">6. Hinge #4: Must we automate everything, or is half enough?</a>
         
             
             
             
-            <a href="#hinge-5-alignment-driven-and-institutional-drag" class="toc-link">Hinge #5: Alignment‑driven and institutional drag</a>
+            
+            
+            <a href="#hinge5-alignmentdriven-and-institutional-drag" class="toc-link">7. Hinge #5: Alignment‑driven and institutional drag</a>
         
             
             
             
-            <a href="#dependency-structure" class="toc-link">Dependency Structure</a>
+            
+            
+            <a href="#dependency-structure" class="toc-link">8. Dependency Structure</a>
         
     </div>
 </aside>
@@ -186,55 +203,56 @@
 </div>
 
     </div>
+
+    
+
 </article>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        if (document.querySelector('.contents')) {
-            const headings = document.querySelectorAll('.post-content h1');
-            headings.forEach(heading => {
-                if (!heading.id) {
-                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+        const contents = document.querySelector('.contents');
+        if (!contents) return;
+
+        const headings = document.querySelectorAll('.post-content h1');
+        headings.forEach(heading => {
+            if (!heading.id) {
+                heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+            }
+        });
+
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('.post-content h1');
+
+        function setActiveLink() {
+            let currentActive = null;
+            sections.forEach(section => {
+                if (window.scrollY + 100 >= section.offsetTop) {
+                    currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
                 }
             });
-
-            const tocLinks = document.querySelectorAll('.toc-link');
-            const sections = document.querySelectorAll('.post-content h1');
-
-            function setActiveLink() {
-                let currentActive = null;
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const scrollPosition = window.scrollY + 100;
-
-                    if (scrollPosition >= sectionTop) {
-                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
-                    }
-                });
-
-                tocLinks.forEach(link => link.classList.remove('active'));
-                if (currentActive) currentActive.classList.add('active');
-            }
-
-            tocLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 20,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            setActiveLink();
-            window.addEventListener('scroll', setActiveLink);
+            tocLinks.forEach(link => link.classList.remove('active'));
+            if (currentActive) currentActive.classList.add('active');
         }
+
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 20, behavior: 'smooth' });
+                }
+            });
+        });
+
+        const closeBtn = document.querySelector('.contents-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                contents.style.display = 'none';
+            });
+        }
+
+        setActiveLink();
+        window.addEventListener('scroll', setActiveLink);
     });
 </script>
 

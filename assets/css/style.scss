@@ -332,34 +332,54 @@ a {
 
 .contents {
     position: fixed;
-    left: max(20px, calc(50% - 600px));
-    top: 120px;
-    width: 180px;
-    padding: 10px 20px;
-    font-size: 13px;
-    background: $color-box-bg;
-    border: 2px solid black;
-    border-radius: 8px;
+    left: max(20px, calc(50% - 620px));
+    top: 100px;
+    width: 200px;
+    padding: 0;
+    font-size: 15px;
+    background: transparent;
     display: none;
 
+    .contents-close {
+        position: absolute;
+        top: -36px;
+        left: 0;
+        background: none;
+        border: none;
+        font-size: 22px;
+        cursor: pointer;
+        color: $color-text;
+        padding: 0;
+        line-height: 1;
+    }
+
     h3 {
-        margin: 0 0 8px 0;
-        font-size: 13px;
+        margin: 0 0 16px 0;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0;
     }
 
     .contents-list {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 10px;
     }
 
     .toc-link {
-        color: $color-meta;
+        color: #b0a99f;
         text-decoration: none;
         line-height: 1.4;
+        font-size: 15px;
+        transition: color 0.15s ease, font-weight 0.15s ease;
 
-        &:hover, &.active {
-            color: $color-link-hover;
+        &:hover {
+            color: $color-text;
+        }
+
+        &.active {
+            color: $color-text;
+            font-weight: 700;
         }
     }
 

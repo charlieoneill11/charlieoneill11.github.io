@@ -282,32 +282,50 @@ a:hover {
 
 .contents {
   position: fixed;
-  left: max(20px, 50% - 600px);
-  top: 120px;
-  width: 180px;
-  padding: 10px 20px;
-  font-size: 13px;
-  background: #f8f8f8;
-  border: 2px solid black;
-  border-radius: 8px;
+  left: max(20px, 50% - 620px);
+  top: 100px;
+  width: 200px;
+  padding: 0;
+  font-size: 15px;
+  background: transparent;
   display: none;
 }
+.contents .contents-close {
+  position: absolute;
+  top: -36px;
+  left: 0;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #000;
+  padding: 0;
+  line-height: 1;
+}
 .contents h3 {
-  margin: 0 0 8px 0;
-  font-size: 13px;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 .contents .contents-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
 }
 .contents .toc-link {
-  color: #555;
+  color: #b0a99f;
   text-decoration: none;
   line-height: 1.4;
+  font-size: 15px;
+  transition: color 0.15s ease, font-weight 0.15s ease;
 }
-.contents .toc-link:hover, .contents .toc-link.active {
-  color: #0066cc;
+.contents .toc-link:hover {
+  color: #000;
+}
+.contents .toc-link.active {
+  color: #000;
+  font-weight: 700;
 }
 @media (min-width: 1300px) {
   .contents {
@@ -365,6 +383,46 @@ figure figcaption {
   border-top: 1px solid #ccc;
   font-size: 0.9em;
   color: #555;
+}
+
+.references {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #ccc;
+}
+.references h2 {
+  font-size: 1.1em;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.references ol {
+  padding-left: 24px;
+  margin: 0;
+}
+.references ol li {
+  margin-bottom: 12px;
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: #000;
+}
+.references ol li a {
+  color: #6b5947;
+}
+.references ol li a:hover {
+  color: #0066cc;
+}
+.references ol li em {
+  font-style: italic;
+}
+
+.cite {
+  color: #6b5947;
+  font-size: 0.85em;
+  vertical-align: super;
+  text-decoration: none;
+}
+.cite:hover {
+  color: #0066cc;
 }
 
 sup {

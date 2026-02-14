@@ -45,48 +45,65 @@
             
 
 <aside class="contents">
+    <button class="contents-close" aria-label="Close contents">&times;</button>
     <h3>Contents</h3>
     <div class="contents-list">
         
             
             
             
-            <a href="#introduction" class="toc-link">Introduction</a>
+            
+            
+            <a href="#introduction" class="toc-link">1. Introduction</a>
         
             
             
             
-            <a href="#executive-summary" class="toc-link">Executive Summary</a>
+            
+            
+            <a href="#executive-summary" class="toc-link">2. Executive Summary</a>
         
             
             
             
-            <a href="#collating-a-dataset-and-training-the-vq-vae" class="toc-link">Collating a dataset and training the VQ-VAE</a>
+            
+            
+            <a href="#collating-a-dataset-and-training-the-vq-vae" class="toc-link">3. Collating a dataset and training the VQ-VAE</a>
         
             
             
             
-            <a href="#determining-importance-and-presence-of-meaning-in-quantised-streams" class="toc-link">Determining importance and presence of meaning in quantised streams</a>
+            
+            
+            <a href="#determining-importance-and-presence-of-meaning-in-quantised-streams" class="toc-link">4. Determining importance and presence of meaning in quantised streams</a>
         
             
             
             
-            <a href="#determining-actual-meaning-of-quantised-streams" class="toc-link">Determining actual meaning of quantised streams</a>
+            
+            
+            <a href="#determining-actual-meaning-of-quantised-streams" class="toc-link">5. Determining actual meaning of quantised streams</a>
         
             
             
             
-            <a href="#retraining-and-regrouping" class="toc-link">Retraining and regrouping</a>
+            
+            
+            <a href="#retraining-and-regrouping" class="toc-link">6. Retraining and regrouping</a>
         
             
             
             
-            <a href="#extending-on-the-decision-tree-as-a-circuit-finder" class="toc-link">Extending on the decision tree as a circuit-finder</a>
+            
+            
+            <a href="#extending-on-the-decision-tree-as-a-circuit-finder" class="toc-link">7. Extending on the decision tree as a circuit-finder</a>
         
             
             
             
-            <a href="#conclusion" class="toc-link">Conclusion</a>
+            
+            
+            <a href="#conclusion" class="toc-link">8. Conclusion</a>
         
     </div>
 </aside>
@@ -500,55 +517,56 @@ while True:
 <p>In general, I’m pretty excited about using VQ-VAEs as a compression scheme for interpretability. I think discrete representations, which can be handled by transformers, make things a lot easier. In conjunction with my automated decision tree circuit analyser (which as far as I’m aware is novel), this could be a powerful tool in the mech interp toolbox.</p>
 
     </div>
+
+    
+
 </article>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        if (document.querySelector('.contents')) {
-            const headings = document.querySelectorAll('.post-content h1');
-            headings.forEach(heading => {
-                if (!heading.id) {
-                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+        const contents = document.querySelector('.contents');
+        if (!contents) return;
+
+        const headings = document.querySelectorAll('.post-content h1');
+        headings.forEach(heading => {
+            if (!heading.id) {
+                heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+            }
+        });
+
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('.post-content h1');
+
+        function setActiveLink() {
+            let currentActive = null;
+            sections.forEach(section => {
+                if (window.scrollY + 100 >= section.offsetTop) {
+                    currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
                 }
             });
-
-            const tocLinks = document.querySelectorAll('.toc-link');
-            const sections = document.querySelectorAll('.post-content h1');
-
-            function setActiveLink() {
-                let currentActive = null;
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const scrollPosition = window.scrollY + 100;
-
-                    if (scrollPosition >= sectionTop) {
-                        currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
-                    }
-                });
-
-                tocLinks.forEach(link => link.classList.remove('active'));
-                if (currentActive) currentActive.classList.add('active');
-            }
-
-            tocLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 20,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            setActiveLink();
-            window.addEventListener('scroll', setActiveLink);
+            tocLinks.forEach(link => link.classList.remove('active'));
+            if (currentActive) currentActive.classList.add('active');
         }
+
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 20, behavior: 'smooth' });
+                }
+            });
+        });
+
+        const closeBtn = document.querySelector('.contents-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                contents.style.display = 'none';
+            });
+        }
+
+        setActiveLink();
+        window.addEventListener('scroll', setActiveLink);
     });
 </script>
 

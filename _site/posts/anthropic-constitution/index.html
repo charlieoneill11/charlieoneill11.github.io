@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitter-Lessoning neat latent structures through self-study - Charlie O'Neill</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">Bitter-Lessoning neat latent structures through self-study</h1>
+        
+        <div class="post-description">Claude's Constitution</div>
+        
+    </header>
+
+    <div class="post-content">
+        <p>Anthropic now has a <a href="https://www.anthropic.com/constitution">Constitution</a> for Claude.<a href="#ref-1" class="cite">[1]</a> Their description says:</p>
+
+<blockquote>
+  <p>“Claude’s constitution is a detailed description of Anthropic’s intentions for Claude’s values and behavior. It plays a crucial role in our training process, and its content directly shapes Claude’s behavior. It’s also the final authority on our vision for Claude, and our aim is for all our other guidance and training to be consistent with it.”</p>
+</blockquote>
+
+<p>This implies that Claude is trained on its Constitution. But if you know much about language models, it probably implies something deeper. When you train a language model on a document, it doesn’t simply memorise that document. It has to compress the likelihood of these tokens, one after another, into its weights; a process quite different from the lossless, short-term memory of the KV cache. And even if Anthropic included the Constitution in the training data tens of thousands of times, even if Claude had memorised the entire document verbatim, it wouldn’t necessarily <em>do anything differently</em>.</p>
+
+<p>A <a href="https://arxiv.org/abs/2309.12288">good example</a><a href="#ref-2" class="cite">[2]</a> of this is a quirk of pretraining discovered early on: even if “Socrates was Plato’s student” appeared in the training data, the model would fail to answer “Who was the teacher of Socrates?” This held even when the model could regurgitate the definitions of “teacher” and “student” perfectly well. What was the failure mode? Well, minimising the negative log likelihood of the next token simply did not produce a holistic latent representation of the concepts required. The model couldn’t answer that Plato was Socrates’ teacher because it hadn’t built the latent bridge between “X being Y’s teacher” and “Y being X’s student.”</p>
+
+<p>I think this points toward something fundamental about language models. In order to learn to approximate latent knowledge, you need such a vast amount of data that you’ve encountered all possible permutations. In the example above, we would have needed many instances of “X is Y’s teacher” and “Y is X’s student” appearing together in order to learn the pattern “A being B’s student implies B is the teacher of A,” and to internalise the different surface forms that could express that relation.</p>
+
+<p>Humans probably do something quite different, by having latent encodings of these concepts and the right latent bridges to link them together. We are not restricted to subword tokens as our only means of thought—though some might push back that the residual stream means language models aren’t either. We think in pictures and hierarchies and fuzzy feelings and <em>latent concepts</em>.</p>
+
+<p>Why outline all of this? Because I think it offers a fundamental clue about language models, and thus a fundamental clue about the future of model shaping. We would all agree that Claude does exhibit a strong internalisation of its values and behaviours. And as established above, you don’t develop strong internalisations from reading data repeatedly if it’s presented as-is. So what’s missing?</p>
+
+<p>I believe Anthropic has already told us what the missing ingredient is, and they told us back in 2021. Anthropic has long been doing <a href="https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback">Constitutional Alignment</a><a href="#ref-3" class="cite">[3]</a>, whereby they use some Constitution to improve the model’s answers, then perform supervised fine-tuning on these improved answers (alongside preference-based RL). This suggests that by continuously having some guided feedback process arising from a core “latent” (the latent in this case being the Constitution) you can implicitly, through pattern matching and the law of large numbers, internalise that latent to some degree. This was the original constitutional alignment, and Anthropic is probably still using some version of it today.</p>
+
+<p>But I think there’s a more explicit approach to learning these latents. <a href="https://arxiv.org/abs/2506.06266">CARTRIDGES</a><a href="#ref-4" class="cite">[4]</a> introduces a self-study procedure where, instead of naively conditioning on a document, the model generates synthetic Q&amp;A pairs and dialogues <em>about</em> the content, essentially quizzing itself from multiple angles. This is then used as training signal to distill the knowledge into a compact cache.</p>
+
+<p>The relevance to constitutional internalisation should be clear: self-study forces the model to encounter the same underlying concepts through many linguistic permutations. If Constitutional AI implicitly creates these permutations via iterative refinement and feedback, CARTRIDGES makes the mechanism explicit. You <em>manufacture</em> the diverse views needed for latent compression. The model doesn’t just read “X is Y’s student” once; it asks “who taught X?”, “what was Y’s role?”, “list X’s mentors,” until the relational structure is genuinely encoded.</p>
+
+<p>So I imagine Anthropic is doing something similar. They have certain behaviours they want Claude to exhibit, explicitly spelled out in the Constitution, and self-study is used to embed these behaviours into the model. It’s clear that Anthropic does this remarkably well; there have been many comments about how <a href="https://www.lesswrong.com/posts/vpNG99GhbBoLov9og/claude-4-5-opus-soul-document">Claude feels like it has a “soul”</a><a href="#ref-5" class="cite">[5]</a>, thanks in large part to Amanda Askell and her work on personality shaping, in a way that distinguishes it from other LLMs. This also has implications for capability enhancement. I could imagine some form of self-study working for improving humanities-based tasks like essay writing, philosophy, and deep thought.</p>
+
+<p>A final observation: my work at Parsed, and now at Baseten, on finetuning and post-training specialisation has, in a funny way, converged toward this same insight. Initially, we developed <a href="https://parsed.com/research/iterative-sft">iSFT</a><a href="#ref-6" class="cite">[6]</a> as a way to take a Constitution of sorts (our evals) and teach a model to improve at those evals by fine-tuning it on data refined with the evals as guide, similar to Constitutional Alignment. We then developed <a href="https://parsed.com/research/upweight-the-strategy-not-the-tokens-faster-training-with-explicit-reasoning">RGT</a><a href="#ref-7" class="cite">[7]</a> as a way to make the “latents” we were trying to learn more explicit, rather than hoping the model would learn them through imitating shadows on Plato’s cave of perfect dances. Our next direction is making the model itself generate its own critiques, evaluations, and reformulations, i.e. its own self-study. This will make everything much more on-policy, which we speculate can only be a good thing.</p>
+
+<p>So I think the takeaway isn’t in the Constitution Anthropic released, but in the very fact they acknowledged its existence. Because it tells us they are still doing some form of constitutional alignment, which tells us it remains worth doing in Anthropic’s highly optimised training setup, which tells us that self-study, to a certain extent, just works.</p>
+
+    </div>
+
+    
+<section class="references">
+    <h2>References</h2>
+    <ol>
+        
+        <li id="ref-1">
+            <a href="https://www.anthropic.com/constitution">Claude's Constitution</a>. <em>Anthropic</em> (2025).
+        </li>
+        
+        <li id="ref-2">
+            Berglund et al.. <a href="https://arxiv.org/abs/2309.12288">The Reversal Curse: LLMs trained on 'A is B' fail to learn 'B is A'</a>. <em>arXiv</em> (2023).
+        </li>
+        
+        <li id="ref-3">
+            Bai et al.. <a href="https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback">Constitutional AI: Harmlessness from AI Feedback</a>. <em>Anthropic</em> (2022).
+        </li>
+        
+        <li id="ref-4">
+            <a href="https://arxiv.org/abs/2506.06266">CARTRIDGES: Compressed Adaptive Retrieval Through Implicit Document Generation and Efficient Storage</a>. <em>arXiv</em> (2025).
+        </li>
+        
+        <li id="ref-5">
+            <a href="https://www.lesswrong.com/posts/vpNG99GhbBoLov9og/claude-4-5-opus-soul-document">Claude 4.5 Opus Soul Document</a>. <em>LessWrong</em> (2025).
+        </li>
+        
+        <li id="ref-6">
+            <a href="https://parsed.com/research/iterative-sft">Iterative SFT</a>. <em>Parsed</em>.
+        </li>
+        
+        <li id="ref-7">
+            <a href="https://parsed.com/research/upweight-the-strategy-not-the-tokens-faster-training-with-explicit-reasoning">Upweight the Strategy, Not the Tokens: Faster Training with Explicit Reasoning</a>. <em>Parsed</em>.
+        </li>
+        
+    </ol>
+</section>
+
+
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const contents = document.querySelector('.contents');
+        if (!contents) return;
+
+        const headings = document.querySelectorAll('.post-content h1');
+        headings.forEach(heading => {
+            if (!heading.id) {
+                heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+            }
+        });
+
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('.post-content h1');
+
+        function setActiveLink() {
+            let currentActive = null;
+            sections.forEach(section => {
+                if (window.scrollY + 100 >= section.offsetTop) {
+                    currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                }
+            });
+            tocLinks.forEach(link => link.classList.remove('active'));
+            if (currentActive) currentActive.classList.add('active');
+        }
+
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 20, behavior: 'smooth' });
+                }
+            });
+        });
+
+        const closeBtn = document.querySelector('.contents-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                contents.style.display = 'none';
+            });
+        }
+
+        setActiveLink();
+        window.addEventListener('scroll', setActiveLink);
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>
