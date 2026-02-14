@@ -13,7 +13,7 @@ layout: default
             {% assign header_id = header_id[1] %}
             {% assign header_tag = header_content | split: '>' | first | append: '>' %}
             {% assign header_text = header_content | remove_first: header_tag | strip %}
-            <a href="#{{ header_id }}" class="toc-link">{{ forloop.index }}. {{ header_text }}</a>
+            <a href="#{{ header_id }}" class="toc-link">{{ header_text }}</a>
         {% endfor %}
     </div>
 </aside>
