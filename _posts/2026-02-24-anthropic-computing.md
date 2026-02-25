@@ -114,7 +114,7 @@ NP asks: "Does a satisfying assignment *exist*?" Now consider a harder question:
 
 This is a counting question rather than a search question. Finding one solution or verifying one isn't enough — you need to know something about the *proportion* of solutions.
 
-The class **PP** (Probabilistic Polynomial time) captures this. Formally, a problem is in PP if there exists a randomised polynomial-time algorithm that gives the right answer with probability strictly greater than 1/2 — but perhaps only barely greater. Maybe it's right with probability $\frac{1}{2} + \frac{1}{2^n}$. That razor-thin margin is what makes PP so powerful and so treacherous.
+The class **PP** (Probabilistic Polynomial time) captures this. Formally, a problem is in PP if there exists a randomised polynomial-time algorithm that gives the right answer with probability strictly greater than 1/2 — but perhaps only barely greater. Maybe it's right with probability $\frac{1}{2} + \frac{1}{2^n}$. That razor-thin margin is what gives PP its power.
 
 PP is believed to be vastly more powerful than NP. It contains the entire **polynomial hierarchy** — an infinite tower of complexity classes built by stacking NP-like quantifiers ("there exists... for all... there exists..."). PP lets you not just find needles in haystacks but compare the *sizes* of haystacks.
 
@@ -124,7 +124,7 @@ The classes, ordered by believed difficulty:
 
 $$P \subseteq NP \subseteq PH \subseteq PP$$
 
-Each inclusion is believed to be strict — each class is thought to contain problems harder than the one before. But none of these separations have been proven. Proving that any two of these classes are different is an open problem of the highest order.
+Each inclusion is believed to be strict — each class is thought to contain problems harder than the one before. But none of these separations have been proven. Proving that any two are different remains open.
 
 # Quantum Mechanics in Five Steps
 
@@ -146,7 +146,7 @@ Between measurements, quantum systems evolve according to **unitary** transforma
 
 Linearity means: if you apply an operation $U$ to a superposition $\alpha\|0\rangle + \beta\|1\rangle$, the result is $\alpha \cdot U\|0\rangle + \beta \cdot U\|1\rangle$. The operation acts on each component independently, and the coefficients pass through untouched. Linearity is a law of physics, not a design choice. All known physical interactions are described by linear, unitary quantum mechanics.
 
-Why does linearity matter so much? Because **you cannot selectively amplify one branch of a superposition without affecting others.** If a state has a tiny component — say $\alpha = 10^{-100}$ — no physically allowed operation can magnify that component while suppressing the rest, without the operation being exponentially costly or violating unitarity.
+Linearity matters because **you cannot selectively amplify one branch of a superposition without affecting others.** If a state has a tiny component — say $\alpha = 10^{-100}$ — no physically allowed operation can magnify that component while suppressing the rest, without the operation being exponentially costly or violating unitarity.
 
 ## Step 3: Measurement and the Born rule
 
@@ -157,7 +157,7 @@ When you measure a qubit in state $\alpha\|0\rangle + \beta\|1\rangle$, you get:
 
 This is the **Born rule**. It connects the mathematical formalism (complex amplitudes) to observable frequencies. After measurement, the system "collapses" into whichever state was observed.
 
-The probabilities are determined by the *squared magnitudes* of the amplitudes. An amplitude of $10^{-100}$ corresponds to a probability of $10^{-200}$ — vanishingly, absurdly, cosmically small. For practical purposes, such outcomes never happen.
+The probabilities are determined by the *squared magnitudes* of the amplitudes. An amplitude of $10^{-100}$ corresponds to a probability of $10^{-200}$ — absurdly small. For practical purposes, such outcomes never happen.
 
 ## Step 4: Entanglement and decoherence
 
@@ -177,7 +177,7 @@ There are $2^n$ amplitudes — one for each possible $n$-bit string. A quantum c
 
 This looks like massive parallelism: $2^n$ components being processed simultaneously. But the bottleneck is *extraction*. When you measure, you get a single outcome $x$ with probability $\|\alpha_x\|^2$. All the other information is lost. You can't "read off" the results of $2^n$ parallel computations.
 
-Quantum algorithms work by carefully engineering interference — arranging the amplitudes so that wrong answers cancel out and right answers reinforce, funnelling probability toward the correct output. This is extraordinarily difficult and only works for problems with specific mathematical structure.
+Quantum algorithms work by carefully engineering interference — arranging the amplitudes so that wrong answers cancel out and right answers reinforce, funnelling probability toward the correct output. This is difficult, and only works for problems with specific mathematical structure.
 
 The class of problems solvable by polynomial-time quantum algorithms is called **BQP** (Bounded-error Quantum Polynomial time). BQP is believed to be larger than P (Shor's algorithm for factoring is the star example), but it is believed to *not* contain all of NP.
 
@@ -251,7 +251,7 @@ You can't make this probability larger without doing exponential work, because *
 - applying exponentially many operations, or
 - violating linearity/unitarity (i.e., breaking quantum mechanics).
 
-"Condition on surviving" is doing, by fiat, exactly what the laws of physics prohibit: selecting the exponentially unlikely outcome as your experience, at zero cost. In the language of quantum information, this is **postselection** — and postselection is not a physically available operation.
+"Condition on surviving" is doing, by fiat, exactly what the laws of physics prohibit: selecting the exponentially unlikely outcome as your experience, at zero cost. In the language of quantum information, this is **postselection**, which is not a physically available operation.
 
 # Postselection — What It Is and What It Costs
 
@@ -275,7 +275,7 @@ He proved:
 
 $$\text{PostBQP} = \text{PP}$$
 
-Recall that PP is the class of problems decidable by a randomised algorithm that's correct with probability just barely above 1/2. It contains the entire polynomial hierarchy. It is believed to be immensely more powerful than NP.
+Recall that PP is the class of problems decidable by a randomised algorithm that's correct with probability just barely above 1/2. It contains the entire polynomial hierarchy. It is believed to be far more powerful than NP.
 
 Postselection doesn't just give you NP. It gives you PP — the ability to count solutions, compare exponentially large sets, and resolve questions well beyond NP-type search.
 
@@ -285,11 +285,9 @@ There is also a classical version. Classical anthropic computing — random gues
 
 If "anthropic computing" were physically realisable — if you could, by any mechanism, condition your experienced reality on computational outputs at polynomial cost — you would have:
 
-- Not just the ability to solve 3SAT efficiently.
-- Not just the ability to break all public-key cryptography.
-- But the ability to solve every problem in PP in polynomial time — a class that dwarfs NP and contains the entire polynomial hierarchy.
-
-The computational structure of reality would be different from anything we currently understand.
+- The ability to solve 3SAT efficiently.
+- The ability to break all public-key cryptography.
+- The ability to solve every problem in PP in polynomial time, a class that contains the entire polynomial hierarchy.
 
 # What Would Have to Be True About the Universe
 
@@ -316,8 +314,6 @@ This is a strange kind of modification. It would mean the probability measure ov
 **Thermodynamic constraints.** Postselection is, in a sense, a Maxwell's demon operating on branches of the wavefunction. It extracts useful information (the satisfying assignment) from a uniform mixture (random guessing) without paying the entropic cost. This violates the spirit, if not the letter, of the second law of thermodynamics.
 
 ## The measure problem: where cosmology meets computation
-
-The argument now reaches its most speculative territory.
 
 In modern cosmology, particularly in models involving **eternal inflation**, there is an unsolved problem called the **measure problem**. In an eternally inflating universe, every possible configuration of matter occurs infinitely many times in infinitely many regions. To make *any* prediction — even "what will we observe next?" — you need a way to assign relative probabilities to different observations. You need a **measure**: a rule for weighting different observer-moments.
 
@@ -353,7 +349,7 @@ Could you try an anthropic approach? Run the program and stipulate: "I only exis
 
 To convert "I haven't observed halting" into a reliable certificate that the program *never* halts, you would need an additional mechanism: something like a cosmic time limit, or a rule that says "if it hasn't halted by time $T$, conclude it won't." But choosing the right $T$ is itself an undecidable problem (it depends on the busy beaver function, which grows faster than any computable function). Any such rule is effectively smuggling in an **oracle** — a source of uncomputable information — which goes beyond mere postselection.
 
-Postselection expands the class of tractable problems from P to PP, but does not cross the boundary between computable and uncomputable. The Turing barrier remains.
+Postselection expands the class of tractable problems from P to PP but does not cross the boundary between computable and uncomputable.
 
 # The Principle
 
@@ -383,7 +379,7 @@ In our universe, this constraint appears to be enforced by several interlocking 
 - **Thermodynamic irreversibility** imposes entropic costs on information extraction that mirror the computational costs of search.
 - **No-signaling constraints** (enforced by relativistic causal structure) prevent the statistical steering tricks that postselection would enable.
 
-No single one of these mechanisms, taken alone, is obviously sufficient to enforce the prohibition. But together they form an interlocking web that makes anthropic computing physically impossible in our universe. Whether this web is a coincidence of our particular physical laws or reflects something deeper is still open.
+No single one of these mechanisms, taken alone, is obviously sufficient to enforce the prohibition. But together they make anthropic computing physically impossible in our universe. Whether this web is a coincidence of our particular physical laws or reflects something deeper is still open.
 
 ## Is the prohibition independent or derived?
 
@@ -391,7 +387,7 @@ No single one of these mechanisms, taken alone, is obviously sufficient to enfor
 
 **Option B: Independent.** The computational constraint is a new principle that is *not* derivable from the existing laws in their standard formulation. It would need to be added as an additional axiom — a "computational postulate" alongside the dynamical postulates of quantum mechanics. This would be more surprising, but also more informative: it would suggest that computation plays a foundational role in physics, not just a descriptive one.
 
-We don't know which is correct. We don't even have a sharp enough formulation of the principle to state the question precisely. But the *direction* — treating computational constraints as potential physical laws — is one of the most interesting ideas at the intersection of physics, computer science, and philosophy.
+We don't know which is correct. We don't even have a sharp enough formulation of the principle to state the question precisely. But treating computational constraints as potential physical laws is an active direction at the boundary of physics and computer science.
 
 ## Postselection as a fictional-but-useful primitive
 
@@ -417,6 +413,6 @@ What it reveals:
 
 4. **Even postselection has limits.** It doesn't cross the Turing barrier. Undecidable problems remain undecidable.
 
-5. **The universe appears to enforce a computational speed limit**: you cannot convert exponentially small measure into guaranteed experience without exponential cost. This prohibition is maintained by the interlocking structure of linearity, the Born rule, thermodynamics, and no-signaling constraints.
+5. **The universe appears to enforce a computational speed limit**: you cannot convert exponentially small measure into guaranteed experience without exponential cost. This prohibition is maintained by linearity, the Born rule, thermodynamics, and no-signaling constraints working together.
 
 6. **Whether this speed limit is a derived theorem or an independent principle remains open.** If it's independent, computation is not just something we do within the universe; it is something the universe itself is constrained by.
