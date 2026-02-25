@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Would It Mean If You Could Cheat? - Charlie O'Neill</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="/" class="nav-name">Charlie O'Neill</a>
+                <span class="nav-sep">|</span>
+                <a href="/research/" >Research</a>
+                <span class="nav-sep">|</span>
+                <a href="/posts/" class="active">Posts</a>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<aside class="contents">
+    <button class="contents-close" aria-label="Close contents">&times;</button>
+    <h3>Contents</h3>
+    <div class="contents-list">
+        
+            
+            
+            
+            
+            
+            <a href="#what-it-means-to-compute" class="toc-link">What It Means to Compute</a>
+        
+            
+            
+            
+            
+            
+            <a href="#the-landscape-of-difficulty" class="toc-link">The Landscape of Difficulty</a>
+        
+            
+            
+            
+            
+            
+            <a href="#quantum-mechanics-in-five-steps" class="toc-link">Quantum Mechanics in Five Steps</a>
+        
+            
+            
+            
+            
+            
+            <a href="#the-many-worlds-interpretation" class="toc-link">The Many-Worlds Interpretation</a>
+        
+            
+            
+            
+            
+            
+            <a href="#the-anthropic-computing-idea" class="toc-link">The Anthropic Computing Idea</a>
+        
+            
+            
+            
+            
+            
+            <a href="#postselection--what-it-is-and-what-it-costs" class="toc-link">Postselection — What It Is and What It Costs</a>
+        
+            
+            
+            
+            
+            
+            <a href="#what-would-have-to-be-true-about-the-universe" class="toc-link">What Would Have to Be True About the Universe</a>
+        
+            
+            
+            
+            
+            
+            <a href="#the-halting-problem-boundary" class="toc-link">The Halting Problem Boundary</a>
+        
+            
+            
+            
+            
+            
+            <a href="#the-principle" class="toc-link">The Principle</a>
+        
+            
+            
+            
+            
+            
+            <a href="#conclusion" class="toc-link">Conclusion</a>
+        
+    </div>
+</aside>
+
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">What Would It Mean If You Could Cheat?</h1>
+        
+        <div class="post-description">On computation, quantum mechanics, the structure of difficulty, and what a universe that allowed shortcuts would have to look like</div>
+        
+    </header>
+
+    <div class="post-content">
+        <h1 id="what-it-means-to-compute">What It Means to Compute</h1>
+
+<h2 id="machines-that-follow-rules">Machines that follow rules</h2>
+
+<p>A computer is a machine that follows instructions. You give it a sequence of steps (“add these two numbers,” “if the result is negative, go to step 7,” “otherwise, write down a 1 and continue”), and it executes them one after another until it reaches a stopping point or runs forever.</p>
+
+<p>In 1936, Alan Turing described an imaginary device — now called a Turing machine — that captures everything we mean by “mechanical computation.”<a href="#ref-1" class="cite">[1]</a> It has a tape (infinite memory), a head that reads and writes symbols, and a finite table of rules telling it what to do next. Every algorithm ever written, every program running on every server and phone and satellite, is equivalent to some Turing machine. The physical details — silicon transistors, vacuum tubes, pen and paper — change the <em>speed</em>, but not what is <em>computable</em>.</p>
+
+<p>This is the Church–Turing thesis: anything that can be computed by any reasonable physical process can be computed by a Turing machine. It has never been proven; it functions more as a law of nature that has never been violated. Every proposed model of computation (lambda calculus, register machines, cellular automata, DNA computing) turns out to compute exactly the same class of functions.</p>
+
+<h2 id="problems-and-their-sizes">Problems and their sizes</h2>
+
+<p>When we talk about a “problem” in computer science, we don’t mean a single question (“is 91 prime?”) but an infinite family of questions parameterised by size:</p>
+
+<ul>
+  <li>“Given a number with <em>n</em> digits, is it prime?”</li>
+  <li>“Given a graph with <em>n</em> nodes, does it contain a triangle?”</li>
+  <li>“Given a logical formula with <em>n</em> variables, is there an assignment of true/false that makes it true?”</li>
+</ul>
+
+<p>The size parameter <em>n</em> determines everything about tractability. An algorithm that works for 10 variables might take longer than the age of the universe for 300 variables, depending on how its running time grows with <em>n</em>.</p>
+
+<h2 id="polynomial-vs-exponential-the-only-distinction-that-matters">Polynomial vs. exponential: the only distinction that matters</h2>
+
+<p>There are many possible growth rates, but for the deepest questions in computer science, only one distinction matters:</p>
+
+<p><strong>Polynomial growth</strong> means the running time is bounded by some fixed power of <em>n</em>: maybe $n^2$ steps, or $n^3$, or $n^{17}$. These are “fast” algorithms. Doubling the input size might multiply the time by 4 (if quadratic) or 8 (if cubic) — annoying, but manageable.</p>
+
+<p><strong>Exponential growth</strong> means the running time is something like $2^n$. Now doubling the input size <em>squares</em> the running time. An algorithm that takes one second for $n = 50$ would take roughly 34 million years for $n = 100$. No amount of engineering helps. Faster hardware and better compilers don’t matter against an exponential.</p>
+
+<p>This is a statement about scaling laws, not current technology. Polynomial-time algorithms are <em>feasible</em>; exponential-time algorithms are <em>not</em>, for any input of practical size.</p>
+
+<h1 id="the-landscape-of-difficulty">The Landscape of Difficulty</h1>
+
+<h2 id="p-problems-we-can-solve-quickly">P: problems we can solve quickly</h2>
+
+<p><strong>P</strong> is the class of problems that some algorithm can solve in polynomial time. Sorting a list, multiplying matrices, finding shortest paths in networks, determining if a number is prime — all in P.</p>
+
+<p>If a problem is in P, we consider it “tractable.” There exists a procedure that will always give you the correct answer, and whose running time is bounded by a polynomial function of the input size.</p>
+
+<h2 id="np-problems-whose-solutions-we-can-check-quickly">NP: problems whose solutions we can check quickly</h2>
+
+<p>Now consider a different kind of question. Suppose someone hands you a massive logical formula — thousands of variables, millions of clauses — and asks: “Is there <em>some</em> assignment of true and false to these variables that makes this formula true?”</p>
+
+<p>You might have no idea how to <em>find</em> such an assignment efficiently. But if someone handed you a candidate assignment, you could <em>check</em> it almost instantly: just plug in the values and see if the formula evaluates to true.</p>
+
+<p>This is the class <strong>NP</strong>: problems where a correct solution, if one exists, can be <em>verified</em> in polynomial time, even if <em>finding</em> one might be hard.</p>
+
+<p>Every problem in P is automatically in NP (if you can solve it quickly, you can certainly check a solution quickly). Whether the reverse holds is the most important open question in computer science, and arguably in all of mathematics:</p>
+
+<p><strong>Does P = NP?</strong></p>
+
+<p>Can every problem whose solutions are easy to <em>check</em> also be solved <em>quickly</em>?</p>
+
+<p>Almost no one believes so, but no one has proven otherwise.</p>
+
+<h2 id="np-completeness-the-hardest-problems-in-np">NP-completeness: the hardest problems in NP</h2>
+
+<p>In 1971, Stephen Cook showed that some problems in NP are, in a precise sense, <em>as hard as anything in NP</em>.<a href="#ref-2" class="cite">[2]</a> If you could solve any one of these problems in polynomial time, you could solve <em>all</em> of NP in polynomial time.</p>
+
+<p>These are called <strong>NP-complete</strong> problems. The canonical example is <strong>3SAT</strong>:</p>
+
+<blockquote>
+  <p>Given a Boolean formula in a specific form — a conjunction (AND) of clauses, where each clause is a disjunction (OR) of exactly three variables or their negations — does there exist an assignment of true/false values that satisfies every clause?</p>
+</blockquote>
+
+<p>For example: $(x_1 \lor \lnot x_2 \lor x_3) \land (\lnot x_1 \lor x_2 \lor x_4) \land \ldots$</p>
+
+<p>With 3 variables, you can check all $2^3 = 8$ possibilities. With 300 variables, there are $2^{300}$ — more than the number of atoms in the observable universe. The best known algorithms are sophisticated forms of brute-force search.</p>
+
+<p>3SAT is NP-complete: if you could solve it in polynomial time, every problem in NP would fall. Scheduling, protein folding, circuit design, logistics — thousands of practical problems are NP-complete or NP-hard. A fast algorithm for any one of them would be a fast algorithm for all of them.</p>
+
+<h2 id="beyond-np-the-class-pp">Beyond NP: the class PP</h2>
+
+<p>NP asks: “Does a satisfying assignment <em>exist</em>?” Now consider a harder question:</p>
+
+<blockquote>
+  <p>“Do <em>more than half</em> of all possible assignments satisfy the formula?”</p>
+</blockquote>
+
+<p>This is a counting question rather than a search question. Finding one solution or verifying one isn’t enough — you need to know something about the <em>proportion</em> of solutions.</p>
+
+<p>The class <strong>PP</strong> (Probabilistic Polynomial time) captures this. Formally, a problem is in PP if there exists a randomised polynomial-time algorithm that gives the right answer with probability strictly greater than 1/2 — but perhaps only barely greater. Maybe it’s right with probability $\frac{1}{2} + \frac{1}{2^n}$. That razor-thin margin is what makes PP so powerful and so treacherous.</p>
+
+<p>PP is believed to be vastly more powerful than NP. It contains the entire <strong>polynomial hierarchy</strong> — an infinite tower of complexity classes built by stacking NP-like quantifiers (“there exists… for all… there exists…”). PP lets you not just find needles in haystacks but compare the <em>sizes</em> of haystacks.</p>
+
+<h2 id="why-this-hierarchy-matters">Why this hierarchy matters</h2>
+
+<p>The classes, ordered by believed difficulty:</p>
+
+\[P \subseteq NP \subseteq PH \subseteq PP\]
+
+<p>Each inclusion is believed to be strict — each class is thought to contain problems harder than the one before. But none of these separations have been proven. Proving that any two of these classes are different is an open problem of the highest order.</p>
+
+<h1 id="quantum-mechanics-in-five-steps">Quantum Mechanics in Five Steps</h1>
+
+<h2 id="step-1-states-are-vectors">Step 1: States are vectors</h2>
+
+<p>In classical physics, a coin is either heads or tails. A bit is either 0 or 1. The state of the system is a definite configuration.</p>
+
+<p>In quantum mechanics, the state of a system is a <strong>vector</strong> in an abstract mathematical space (a Hilbert space). For the simplest quantum system — a <strong>qubit</strong>, the quantum analog of a bit — the state is:</p>
+
+\[|\psi\rangle = \alpha|0\rangle + \beta|1\rangle\]
+
+<p>where $\alpha$ and $\beta$ are complex numbers satisfying $|\alpha|^2 + |\beta|^2 = 1$.</p>
+
+<p>This is not a statement about ignorance. The system is not “really” in state $|0\rangle$ or $|1\rangle$ with the answer hidden from us. The superposition is the physical state. The system has no definite value until something forces one.</p>
+
+<h2 id="step-2-evolution-is-linear-and-unitary">Step 2: Evolution is linear and unitary</h2>
+
+<p>Between measurements, quantum systems evolve according to <strong>unitary</strong> transformations — linear operations that preserve the total “length” of the state vector.</p>
+
+<p>Linearity means: if you apply an operation $U$ to a superposition $\alpha|0\rangle + \beta|1\rangle$, the result is $\alpha \cdot U|0\rangle + \beta \cdot U|1\rangle$. The operation acts on each component independently, and the coefficients pass through untouched. Linearity is a law of physics, not a design choice. All known physical interactions are described by linear, unitary quantum mechanics.</p>
+
+<p>Why does linearity matter so much? Because <strong>you cannot selectively amplify one branch of a superposition without affecting others.</strong> If a state has a tiny component — say $\alpha = 10^{-100}$ — no physically allowed operation can magnify that component while suppressing the rest, without the operation being exponentially costly or violating unitarity.</p>
+
+<h2 id="step-3-measurement-and-the-born-rule">Step 3: Measurement and the Born rule</h2>
+
+<p>When you measure a qubit in state $\alpha|0\rangle + \beta|1\rangle$, you get:</p>
+
+<ul>
+  <li>outcome $0$ with probability $|\alpha|^2$</li>
+  <li>outcome $1$ with probability $|\beta|^2$</li>
+</ul>
+
+<p>This is the <strong>Born rule</strong>. It connects the mathematical formalism (complex amplitudes) to observable frequencies. After measurement, the system “collapses” into whichever state was observed.</p>
+
+<p>The probabilities are determined by the <em>squared magnitudes</em> of the amplitudes. An amplitude of $10^{-100}$ corresponds to a probability of $10^{-200}$ — vanishingly, absurdly, cosmically small. For practical purposes, such outcomes never happen.</p>
+
+<h2 id="step-4-entanglement-and-decoherence">Step 4: Entanglement and decoherence</h2>
+
+<p>When two quantum systems interact, they can become <strong>entangled</strong>: their joint state cannot be described by specifying each system’s state independently. Measuring one system instantaneously determines facts about the other, regardless of distance.</p>
+
+<p>In practice, quantum systems constantly interact with their environments — air molecules, photons, thermal fluctuations. This process, called <strong>decoherence</strong>, entangles the system with the environment so thoroughly that the delicate interference effects characteristic of quantum mechanics are destroyed. The system’s behaviour becomes, for all practical purposes, classical.</p>
+
+<p>Decoherence is why you don’t see cats in superpositions. Quantum mechanics doesn’t stop applying at large scales; the quantum coherence required for quantum effects is destroyed almost instantaneously by environmental interactions.</p>
+
+<h2 id="step-5-quantum-computing--what-it-actually-buys-you">Step 5: Quantum computing — what it actually buys you</h2>
+
+<p>A quantum computer maintains a register of $n$ qubits. The state of this register is a vector in a $2^n$-dimensional space:</p>
+
+\[|\psi\rangle = \sum_{x \in \{0,1\}^n} \alpha_x |x\rangle\]
+
+<p>There are $2^n$ amplitudes — one for each possible $n$-bit string. A quantum computation applies a sequence of unitary operations (quantum gates) to this state, then measures.</p>
+
+<p>This looks like massive parallelism: $2^n$ components being processed simultaneously. But the bottleneck is <em>extraction</em>. When you measure, you get a single outcome $x$ with probability $|\alpha_x|^2$. All the other information is lost. You can’t “read off” the results of $2^n$ parallel computations.</p>
+
+<p>Quantum algorithms work by carefully engineering interference — arranging the amplitudes so that wrong answers cancel out and right answers reinforce, funnelling probability toward the correct output. This is extraordinarily difficult and only works for problems with specific mathematical structure.</p>
+
+<p>The class of problems solvable by polynomial-time quantum algorithms is called <strong>BQP</strong> (Bounded-error Quantum Polynomial time). BQP is believed to be larger than P (Shor’s algorithm for factoring is the star example), but it is believed to <em>not</em> contain all of NP.</p>
+
+<p>Quantum mechanics gives you some speedup over classical computation, but not an unlimited one. It does not, as far as anyone can tell, let you solve NP-complete problems efficiently.</p>
+
+<h1 id="the-many-worlds-interpretation">The Many-Worlds Interpretation</h1>
+
+<h2 id="what-it-says">What it says</h2>
+
+<p>The <strong>many-worlds interpretation</strong> of quantum mechanics, proposed by Hugh Everett III in 1957, takes the mathematical formalism at face value and refuses to add anything to it.<a href="#ref-5" class="cite">[5]</a></p>
+
+<p>In the standard (“Copenhagen”) interpretation, measurement causes a real, physical collapse: the state $\alpha|0\rangle + \beta|1\rangle$ becomes <em>either</em> $|0\rangle$ <em>or</em> $|1\rangle$, with Born-rule probabilities. Collapse is sudden, irreversible, and not described by the Schrödinger equation. It is a second law of nature grafted onto the first.</p>
+
+<p>Everett asked: what if there is no collapse? What if the Schrödinger equation — linear, unitary evolution — is the <em>only</em> law, applying always and everywhere, including during measurement?</p>
+
+<p>The consequence: when a measurement occurs, the universe doesn’t collapse into one outcome. <em>All</em> outcomes occur. The measuring device, the observer, the entire environment become entangled with the quantum system, and the universal wavefunction branches:</p>
+
+\[|\text{observer sees 0}\rangle \otimes |0\rangle + |\text{observer sees 1}\rangle \otimes |1\rangle\]
+
+<p>Each branch is equally real. In one branch, you see 0. In another, you see 1. Neither branch has access to the other; decoherence ensures they evolve independently from that point on. You experience one branch because <em>you</em> are in one branch. The “you” in the other branch is having the complementary experience.</p>
+
+<h2 id="what-it-does-not-say">What it does not say</h2>
+
+<p>Many-worlds says all branches exist. It does <strong>not</strong> say:</p>
+
+<ol>
+  <li>You can choose which branch you end up in.</li>
+  <li>You can communicate between branches.</li>
+  <li>You can influence the Born-rule probabilities governing which branch “you” experience.</li>
+  <li>The existence of all branches gives you computational power beyond BQP.</li>
+</ol>
+
+<p>Point 4 is the important one. Yes, in some branch, a quantum computer “computes” every possible answer. But this is true of an ordinary coin flip in many-worlds too — in some branch, the coin lands heads. That doesn’t help you <em>use</em> the heads-branch result if you’re in the tails-branch. The branches are causally disconnected after decoherence.</p>
+
+<p>Many-worlds provides no computational upgrade. It is an interpretive framework.</p>
+
+<h1 id="the-anthropic-computing-idea">The Anthropic Computing Idea</h1>
+
+<h2 id="the-provocation">The provocation</h2>
+
+<p>The idea, phrased as a thought experiment:</p>
+
+<p>Suppose you want to solve 3SAT. You have a formula $\varphi$ with $n$ variables. You proceed as follows:</p>
+
+<ol>
+  <li>Generate a uniformly random assignment $x \in {0,1}^n$.</li>
+  <li>Check whether $x$ satisfies $\varphi$.</li>
+  <li>If it does not — eliminate the current branch.</li>
+</ol>
+
+<p>If you take “eliminate the branch” literally in a many-worlds context, then: across all $2^n$ branches of the random assignment, only the branches where $x$ satisfies $\varphi$ survive (contain observers). If you are observing anything at all, you must be in a branch where $x$ satisfies $\varphi$. You’ve solved 3SAT, and all you did was guess randomly and apply a filter.</p>
+
+<p>There’s a subtlety for unsatisfiable formulas (what if no assignment works, and you’ve eliminated yourself in every branch?). This is handled by adding a small escape clause: with some tiny probability, say $2^{-2n}$, you skip the whole procedure and do nothing. If the formula is satisfiable, you’ll almost certainly end up in a branch that found a satisfying assignment. If you find yourself in the “did nothing” branch, you can conclude with overwhelming probability that the formula was unsatisfiable.</p>
+
+<p>The term for this is <strong>anthropic computing</strong>: computation in which the probability of the observer’s own existence depends on the computational output.</p>
+
+<h2 id="why-it-seems-to-work">Why it seems to work</h2>
+
+<p>The logic runs:</p>
+
+<ol>
+  <li>In many-worlds, all random outcomes occur in some branch.</li>
+  <li>If you arrange for your existence to be contingent on a correct answer, then conditional on existing, you have the correct answer.</li>
+  <li>The conditioning is free — you don’t need to search; you just need to <em>be</em>.</li>
+</ol>
+
+<p>This appears to give polynomial-time solutions to NP-complete problems (just guess and check — the checking is polynomial, and the “search” is handled by the branching).</p>
+
+<h2 id="why-it-doesnt-work-in-known-physics">Why it doesn’t work (in known physics)</h2>
+
+<p>The problem is the conditioning step. In standard quantum mechanics, you cannot “condition on existing” in the way the argument requires.</p>
+
+<p>The Born rule assigns probabilities to measurement outcomes based on squared amplitudes. If $\varphi$ has exactly $k$ satisfying assignments out of $2^n$ total, the probability of landing in a satisfying branch (by random guessing) is $k / 2^n$. For a hard instance, $k$ might be 1, making the probability $2^{-n}$ — exponentially small.</p>
+
+<p>You can’t make this probability larger without doing exponential work, because <strong>the laws of physics are linear</strong>. No unitary operation can take an exponentially small amplitude and boost it to a constant without either:</p>
+
+<ul>
+  <li>applying exponentially many operations, or</li>
+  <li>violating linearity/unitarity (i.e., breaking quantum mechanics).</li>
+</ul>
+
+<p>“Condition on surviving” is doing, by fiat, exactly what the laws of physics prohibit: selecting the exponentially unlikely outcome as your experience, at zero cost. In the language of quantum information, this is <strong>postselection</strong> — and postselection is not a physically available operation.</p>
+
+<h1 id="postselection--what-it-is-and-what-it-costs">Postselection — What It Is and What It Costs</h1>
+
+<h2 id="definition">Definition</h2>
+
+<p><strong>Postselection</strong> means: perform a computation that produces some output with probability $p &gt; 0$, then act <em>as if</em> that output is guaranteed.</p>
+
+<p>Concretely: run a quantum (or classical) computation, measure a qubit (or bit), and condition on the outcome being 1 — ignoring all runs where it was 0, no matter how many there are. If the probability of seeing 1 is $2^{-n}$, you’d need to repeat the experiment roughly $2^n$ times before you’d actually see it. But postselection says: pretend you saw it on the first try.</p>
+
+<p>In a many-worlds framing, postselection is: “only count the branches where the desired outcome occurred.” It is anthropic selection — the observer exists only in favourable branches.</p>
+
+<h2 id="as-a-mathematical-tool-its-well-defined">As a mathematical tool, it’s well-defined</h2>
+
+<p>There’s nothing wrong with postselection as a theoretical device. You can define complexity classes based on it and prove rigorous theorems. The question is whether it corresponds to a physically realisable operation.</p>
+
+<h2 id="aaronsons-theorem-postbqp--pp">Aaronson’s theorem: PostBQP = PP</h2>
+
+<p>In 2005, Scott Aaronson defined <strong>PostBQP</strong>: the class of problems solvable by a quantum polynomial-time computer augmented with the ability to postselect on measurement outcomes (provided those outcomes have nonzero probability).<a href="#ref-4" class="cite">[4]</a></p>
+
+<p>He proved:</p>
+
+\[\text{PostBQP} = \text{PP}\]
+
+<p>Recall that PP is the class of problems decidable by a randomised algorithm that’s correct with probability just barely above 1/2. It contains the entire polynomial hierarchy. It is believed to be immensely more powerful than NP.</p>
+
+<p>Postselection doesn’t just give you NP. It gives you PP — the ability to count solutions, compare exponentially large sets, and resolve questions well beyond NP-type search.</p>
+
+<p>There is also a classical version. Classical anthropic computing — random guessing plus postselection, without quantum mechanics — gives power equivalent to a class called <strong>BPP$_{\text{path}}$</strong>, which sits between MA (a randomised version of NP) and BPP$^{\text{NP}}$. Weaker than PP, but still far beyond what we believe is possible in polynomial time.</p>
+
+<h2 id="what-this-means">What this means</h2>
+
+<p>If “anthropic computing” were physically realisable — if you could, by any mechanism, condition your experienced reality on computational outputs at polynomial cost — you would have:</p>
+
+<ul>
+  <li>Not just the ability to solve 3SAT efficiently.</li>
+  <li>Not just the ability to break all public-key cryptography.</li>
+  <li>But the ability to solve every problem in PP in polynomial time — a class that dwarfs NP and contains the entire polynomial hierarchy.</li>
+</ul>
+
+<p>The computational structure of reality would be different from anything we currently understand.</p>
+
+<h1 id="what-would-have-to-be-true-about-the-universe">What Would Have to Be True About the Universe</h1>
+
+<h2 id="the-question-restated">The question, restated</h2>
+
+<p>Many-worlds alone doesn’t give you postselection. Quantum mechanics, as we understand it, doesn’t give you postselection. So if anthropic computing <em>were</em> possible — if, by some mechanism, you could reliably end up in the branch where the computation succeeded — what would that tell us about the laws of physics?</p>
+
+<p>The algorithm doesn’t work in known physics. The interesting question is what the universe would have to look like for it to work.</p>
+
+<h2 id="something-would-have-to-give">Something would have to give</h2>
+
+<p>For postselection to be physically available, at least one of the following must be false:</p>
+
+<p><strong>Linearity of quantum mechanics.</strong> If the evolution of quantum states is not linear — if there exist physical processes described by nonlinear modifications of the Schrödinger equation — then it becomes possible to amplify exponentially small amplitudes without exponential cost. The tiny branch where you guessed the right answer could be “boosted” to macroscopic probability.</p>
+
+<p>As a hypothesis this is not exotic, but the consequences are severe. In the early 1990s, Nicolas Gisin and Joseph Polchinski independently showed that <em>any</em> nonlinear modification of quantum mechanics — however small — enables <strong>faster-than-light signaling</strong>. The nonlinearity allows you to distinguish non-orthogonal quantum states with certainty, which can be leveraged through entanglement to transmit information superluminally. This destroys relativistic causal structure.</p>
+
+<p><strong>The Born rule as the correct measure over outcomes.</strong> The Born rule says you experience outcome $x$ with probability $|\alpha_x|^2$. If the actual rule were different — if there were a physical law that said “observers preferentially find themselves in branches with certain computational properties” — then you could, in principle, experience the satisfying branch disproportionately often.</p>
+
+<p>This is a strange kind of modification. It would mean the probability measure over observer-experiences is not determined by the dynamics (unitary evolution + Born rule) but by something else — something that depends on <em>what the computation computes</em>. Physics would have to “know” about the semantic content of computations, not just their physical implementation.</p>
+
+<p><strong>No-signaling / relativistic causal structure.</strong> Postselection is closely related to the ability to signal faster than light. If you can condition your experienced reality on events in your future light cone (as anthropic computing requires — you “survive” based on a future computation’s outcome), you are introducing a form of retrocausality or nonlocal influence that sits uneasily with relativity.</p>
+
+<p><strong>Thermodynamic constraints.</strong> Postselection is, in a sense, a Maxwell’s demon operating on branches of the wavefunction. It extracts useful information (the satisfying assignment) from a uniform mixture (random guessing) without paying the entropic cost. This violates the spirit, if not the letter, of the second law of thermodynamics.</p>
+
+<h2 id="the-measure-problem-where-cosmology-meets-computation">The measure problem: where cosmology meets computation</h2>
+
+<p>The argument now reaches its most speculative territory.</p>
+
+<p>In modern cosmology, particularly in models involving <strong>eternal inflation</strong>, there is an unsolved problem called the <strong>measure problem</strong>. In an eternally inflating universe, every possible configuration of matter occurs infinitely many times in infinitely many regions. To make <em>any</em> prediction — even “what will we observe next?” — you need a way to assign relative probabilities to different observations. You need a <strong>measure</strong>: a rule for weighting different observer-moments.</p>
+
+<p>Different choices of measure lead to different empirical predictions. Some measures predict we should observe a very young universe (the “Boltzmann brain” problem). Others predict different values of cosmological constants. The “right” measure is not determined by the equations of general relativity or quantum field theory alone. It is an additional input.</p>
+
+<p>Anthropic computing is a proposal for a very specific kind of measure: one that weights observer-moments by <em>computational outcomes</em>. You find yourself disproportionately in branches where the computation succeeded, not because of any dynamical mechanism, but because the measure over histories is rigged in your favour.</p>
+
+<p>The cosmological measure problem, weaponised as a computational resource. And the fact that cosmologists cannot currently solve the measure problem — cannot determine, from first principles, which measure is correct — means that dismissing anthropic computing is harder than it might seem. You can’t say “obviously the Born rule is the right measure” because, in the context of eternal inflation and many-worlds, what constitutes “the right measure” is precisely what’s in dispute.</p>
+
+<p>There is a strong pragmatic argument against computation-dependent measures: they would imply a universe so different from the one we observe that the resulting predictions would likely be falsified immediately. If our measure over experiences were biased by computational outcomes, we would expect to see all sorts of statistically anomalous patterns in our observations — and we don’t.</p>
+
+<h1 id="the-halting-problem-boundary">The Halting Problem Boundary</h1>
+
+<h2 id="what-even-postselection-cannot-do">What even postselection cannot do</h2>
+
+<p>Suppose we grant postselection. Suppose the universe really does allow you to condition on computational outcomes at polynomial cost. Does this give you unlimited computational power?</p>
+
+<p>There is a hard boundary, and it has nothing to do with complexity classes.</p>
+
+<p>The <strong>halting problem</strong> asks: given an arbitrary program $M$ and input $x$, does $M$ eventually halt (stop running), or does it run forever?</p>
+
+<p>Alan Turing proved in 1936 that no algorithm can decide this for all programs. It is <strong>undecidable</strong> — not merely hard (like NP-complete problems), but provably impossible for any Turing machine, regardless of time or resources.</p>
+
+<p>This is a different kind of impossibility than NP-completeness. NP-complete problems are (probably) hard because the best algorithms take exponential time, but they are decidable — given enough time, you can always determine the answer by exhaustive search. The halting problem cannot be decided by <em>any</em> algorithm in <em>any</em> amount of time.</p>
+
+<h2 id="why-postselection-doesnt-cross-this-boundary">Why postselection doesn’t cross this boundary</h2>
+
+<p>3SAT is decidable. For a formula with $n$ variables, you can check all $2^n$ assignments; the answer is always determined in finite (though possibly exponential) time. Postselection speeds this up — it collapses the exponential search into a polynomial-time conditioning trick — but the underlying problem was always solvable in finite time.</p>
+
+<p>The halting problem is different. A program might run for a googol steps and then halt, or it might run forever. To decide halting, you would need to resolve an <em>infinite-time</em> property of a computation. Postselection operates on finite computations with definite outcomes; it conditions on a specific measurement result. It doesn’t help you with questions whose answers require observing a computation for an <em>unbounded</em> amount of time.</p>
+
+<p>Could you try an anthropic approach? Run the program and stipulate: “I only exist in branches where I eventually observe the program halting.” If the program halts, you observe it halting — fine. But if it doesn’t halt, what do you experience? You’d need to experience “not halting” as a definite outcome in finite time. But “this program hasn’t halted yet” is not evidence that it <em>won’t</em> halt — it might halt in the next step, or in $10^{10^{10}}$ steps.</p>
+
+<p>To convert “I haven’t observed halting” into a reliable certificate that the program <em>never</em> halts, you would need an additional mechanism: something like a cosmic time limit, or a rule that says “if it hasn’t halted by time $T$, conclude it won’t.” But choosing the right $T$ is itself an undecidable problem (it depends on the busy beaver function, which grows faster than any computable function). Any such rule is effectively smuggling in an <strong>oracle</strong> — a source of uncomputable information — which goes beyond mere postselection.</p>
+
+<p>Postselection expands the class of tractable problems from P to PP, but does not cross the boundary between computable and uncomputable. The Turing barrier remains.</p>
+
+<h1 id="the-principle">The Principle</h1>
+
+<h2 id="what-kind-of-law-would-forbid-anthropic-computing">What kind of law would forbid anthropic computing?</h2>
+
+<p>We’ve mapped out the consequences: if anthropic computing worked, you’d get PP in polynomial time, you’d likely break no-signaling, and you’d need a non-Born measure over observer-moments that depends on computational outcomes. Our universe appears to forbid all of this.</p>
+
+<p>What <em>kind</em> of law is doing the forbidding?</p>
+
+<p>Consider an analogy. Before Einstein, the speed of light was a measured quantity — something that happened to be about $3 \times 10^8$ metres per second. Einstein’s move was to promote this empirical fact to a <strong>structural principle</strong>: the speed of light is not just fast; it is a <em>speed limit</em>, a constraint that shapes the geometry of spacetime and dictates the form of every physical law.</p>
+
+<p>This was not a discovery of a new fact. It was a change in the <em>status</em> of a known fact. The numerical value didn’t change; its role in the architecture of physics did. The speed of light went from being a property of electromagnetism to being a property of <em>spacetime itself</em>.</p>
+
+<h2 id="the-computational-speed-limit">The computational speed limit</h2>
+
+<p>There may be an analogous principle at work in the relationship between physics and computation:</p>
+
+<blockquote>
+  <p><strong>No physical process can convert exponentially small measure into guaranteed experienced outcomes at polynomial cost.</strong></p>
+</blockquote>
+
+<p>This is a statement about what the laws of physics permit, not about any particular algorithm or physical system. It says that the structure of physical law — whatever its specific form — respects a constraint on the relationship between computational difficulty and physical feasibility.</p>
+
+<p>In our universe, this constraint appears to be enforced by several interlocking mechanisms:</p>
+
+<ul>
+  <li><strong>Linearity and unitarity</strong> prevent the selective amplification of exponentially small amplitudes.</li>
+  <li><strong>The Born rule</strong> ties experienced probabilities to squared amplitudes, ensuring that low-amplitude branches are experienced with correspondingly low probability.</li>
+  <li><strong>Decoherence</strong> destroys the coherence needed to access other branches, making inter-branch interference (and thus inter-branch information transfer) impossible at macroscopic scales.</li>
+  <li><strong>Thermodynamic irreversibility</strong> imposes entropic costs on information extraction that mirror the computational costs of search.</li>
+  <li><strong>No-signaling constraints</strong> (enforced by relativistic causal structure) prevent the statistical steering tricks that postselection would enable.</li>
+</ul>
+
+<p>No single one of these mechanisms, taken alone, is obviously sufficient to enforce the prohibition. But together they form an interlocking web that makes anthropic computing physically impossible in our universe. Whether this web is a coincidence of our particular physical laws or reflects something deeper is still open.</p>
+
+<h2 id="is-the-prohibition-independent-or-derived">Is the prohibition independent or derived?</h2>
+
+<p><strong>Option A: Derived.</strong> The inability to postselect is a <em>consequence</em> of linearity, the Born rule, and relativistic causality. No new principle is needed; the existing laws are sufficient. The “computational speed limit” is a theorem, not an axiom. This is plausible — linearity alone arguably rules out the relevant kinds of amplitude amplification, and the Born rule fixes the measure over outcomes.</p>
+
+<p><strong>Option B: Independent.</strong> The computational constraint is a new principle that is <em>not</em> derivable from the existing laws in their standard formulation. It would need to be added as an additional axiom — a “computational postulate” alongside the dynamical postulates of quantum mechanics. This would be more surprising, but also more informative: it would suggest that computation plays a foundational role in physics, not just a descriptive one.</p>
+
+<p>We don’t know which is correct. We don’t even have a sharp enough formulation of the principle to state the question precisely. But the <em>direction</em> — treating computational constraints as potential physical laws — is one of the most interesting ideas at the intersection of physics, computer science, and philosophy.</p>
+
+<h2 id="postselection-as-a-fictional-but-useful-primitive">Postselection as a fictional-but-useful primitive</h2>
+
+<p>Even if postselection is physically impossible — even if anthropic computing is definitively ruled out — the <em>mathematical framework</em> of postselection has proven useful.</p>
+
+<p>Aaronson’s proof that PostBQP = PP provides a clean, conceptually transparent route to structural results about complexity classes. The original proof that PP is closed under intersection (due to Beigel, Reingold, and Spielman in 1995) used hard classical combinatorics.<a href="#ref-6" class="cite">[6]</a> The PostBQP = PP proof gives you the same result through a quantum argument that feels almost obvious in comparison.</p>
+
+<p>This pattern recurs in theoretical physics and mathematics: imaginary capabilities, taken seriously as formal devices, yield real insight. Feynman’s path integrals sum over physically impossible trajectories. Boltzmann’s statistical mechanics imagines ensembles of systems that don’t exist. The “many worlds” of the many-worlds interpretation may or may not be real, but the mathematics works either way.</p>
+
+<p>Postselection is another such device. It doesn’t need to be physical to be useful — the mathematical relationships it reveals are properties of computation and physics, independent of whether any universe actually allows it.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>The “anthropic computing” thought experiment starts as a trick — guess and die, survive only if you guessed right — and opens into a probe of the relationship between physics and computation.</p>
+
+<p>What it reveals:</p>
+
+<ol>
+  <li>
+    <p><strong>Many-worlds alone doesn’t help.</strong> The existence of all branches does not let you select among them. Branching gives you BQP, not NP or PP.</p>
+  </li>
+  <li>
+    <p><strong>The real primitive is postselection</strong> — the ability to condition experienced reality on computational outcomes at polynomial cost. Quantum mechanics as we understand it does not provide this.</p>
+  </li>
+  <li>
+    <p><strong>If postselection were physical, you wouldn’t just get NP. You’d get PP</strong> — a class that dwarfs NP and contains the entire polynomial hierarchy.</p>
+  </li>
+  <li>
+    <p><strong>Even postselection has limits.</strong> It doesn’t cross the Turing barrier. Undecidable problems remain undecidable.</p>
+  </li>
+  <li>
+    <p><strong>The universe appears to enforce a computational speed limit</strong>: you cannot convert exponentially small measure into guaranteed experience without exponential cost. This prohibition is maintained by the interlocking structure of linearity, the Born rule, thermodynamics, and no-signaling constraints.</p>
+  </li>
+  <li>
+    <p><strong>Whether this speed limit is a derived theorem or an independent principle remains open.</strong> If it’s independent, computation is not just something we do within the universe; it is something the universe itself is constrained by.</p>
+  </li>
+</ol>
+
+    </div>
+
+    
+<section class="references">
+    <h2>References</h2>
+    <ol>
+        
+        <li id="ref-1">
+            Alan Turing. <a href="https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf">On Computable Numbers, with an Application to the Entscheidungsproblem</a>. <em>Proceedings of the London Mathematical Society</em> (1936).
+        </li>
+        
+        <li id="ref-2">
+            Stephen Cook. <a href="https://dl.acm.org/doi/10.1145/800157.805047">The Complexity of Theorem-Proving Procedures</a>. <em>STOC</em> (1971).
+        </li>
+        
+        <li id="ref-3">
+            Scott Aaronson. <a href="https://www.cambridge.org/core/books/quantum-computing-since-democritus/197A4CD77E1B61E8B0E585EA7E4BF723">Quantum Computing since Democritus</a>. <em>Cambridge University Press</em> (2013).
+        </li>
+        
+        <li id="ref-4">
+            Scott Aaronson. <a href="https://arxiv.org/abs/quant-ph/0408035">Quantum Computing and Hidden Variables</a>. <em>Physical Review A</em> (2005).
+        </li>
+        
+        <li id="ref-5">
+            Hugh Everett III. <a href="https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.29.454">'Relative State' Formulation of Quantum Mechanics</a>. <em>Reviews of Modern Physics</em> (1957).
+        </li>
+        
+        <li id="ref-6">
+            Beigel, Reingold, Spielman. <a href="https://www.sciencedirect.com/science/article/pii/S0022000005800248">PP is closed under intersection</a>. <em>Journal of Computer and System Sciences</em> (1995).
+        </li>
+        
+    </ol>
+</section>
+
+
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const contents = document.querySelector('.contents');
+        if (!contents) return;
+
+        const headings = document.querySelectorAll('.post-content h1');
+        headings.forEach(heading => {
+            if (!heading.id) {
+                heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+            }
+        });
+
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('.post-content h1');
+
+        function setActiveLink() {
+            let currentActive = null;
+            sections.forEach(section => {
+                if (window.scrollY + 100 >= section.offsetTop) {
+                    currentActive = document.querySelector(`.toc-link[href="#${section.id}"]`);
+                }
+            });
+            tocLinks.forEach(link => link.classList.remove('active'));
+            if (currentActive) currentActive.classList.add('active');
+        }
+
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 20, behavior: 'smooth' });
+                }
+            });
+        });
+
+        const closeBtn = document.querySelector('.contents-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                contents.style.display = 'none';
+            });
+        }
+
+        setActiveLink();
+        window.addEventListener('scroll', setActiveLink);
+    });
+</script>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Charlie O'Neill</p>
+        </footer>
+    </div>
+</body>
+</html>
