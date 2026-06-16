@@ -1,20 +1,40 @@
 // Font variables
 $font-family-base: 'Spectral', Georgia, serif;
-$font-size-base: 17px;
-$line-height-base: 1.6;
+$font-size-base: 18px;
+$line-height-base: 1.65;
 
 $font-size-1: 2rem;
 $font-size-2: 1.5rem;
 $font-size-3: 1.2rem;
-$font-size-body: 17px;
+$font-size-body: 1rem;
 
-// Colors
-$color-bg: #faf9f5;
-$color-text: #000;
-$color-heading: #000;
-$color-link: #6b5947;
-$color-link-hover: #0066cc;
-$color-border: #d4a27f;
-$color-meta: #555;
-$color-muted: rgba(0,0,0,0.5);
-$color-box-bg: #f8f8f8;
+// Colour system — warm throughout, light and dark
+:root {
+    color-scheme: light dark;
+
+    --bg: #faf9f5;
+    --text: #211d16;
+    --heading: #211d16;
+    --link: #6b5947;
+    --link-hover: #3d3128;
+    --accent: #d4a27f;
+    --meta: #6f675c;
+    --muted: #948b7d;
+    --box-bg: #f3efe5;
+    --hairline: #e6e0d3;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #181511;
+        --text: #e6dfd2;
+        --heading: #efe8da;
+        --link: #c09a77;
+        --link-hover: #e2c3a1;
+        --accent: #b3865f;
+        --meta: #a89e8e;
+        --muted: #7d7466;
+        --box-bg: #221e18;
+        --hairline: #332d24;
+    }
+}

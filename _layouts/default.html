@@ -34,10 +34,10 @@
         <header>
             <nav>
                 <a href="/" class="nav-name">Charlie O'Neill</a>
-                <span class="nav-sep">|</span>
-                <a href="/research/" {% if page.url contains '/research' %}class="active"{% endif %}>Research</a>
-                <span class="nav-sep">|</span>
-                <a href="/posts/" {% if page.url contains '/posts' %}class="active"{% endif %}>Posts</a>
+                <div class="nav-links">
+                    <a href="/research/" {% if page.url contains '/research' %}class="active"{% endif %}>Research</a>
+                    <a href="/posts/" {% if page.url contains '/posts' %}class="active"{% endif %}>Posts</a>
+                </div>
             </nav>
         </header>
 

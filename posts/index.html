@@ -18,10 +18,10 @@ title: Posts
   {% for post in year.items %}
     {% assign post_tag = post.tag | default: "other" %}
     <div class="post-preview" data-tag="{{ post_tag }}">
-      <h2>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <span class="tag-badge tag-{{ post_tag }}">{% if post_tag == "ai" %}AI{% else %}Everything else{% endif %}</span>
-      </h2>
+      <div class="post-line">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%-d %b' }}</time>
+      </div>
       {% if post.description %}
         <div class="post-description">{{ post.description }}</div>
       {% endif %}
