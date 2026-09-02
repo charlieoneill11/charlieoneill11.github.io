@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The amnesiac intern
+title: Trying to actually define continual learning
 date: 2026-09-02
 description: Continual learning is not one problem
 tag: ai
