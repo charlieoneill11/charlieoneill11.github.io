@@ -1,0 +1,88 @@
+# Technical notes written with the team at Baseten Research, newest first. `date` is YYYY-MM.
+- title: Post-training frontier legal agents with Baseten Research
+  url: https://www.baseten.co/research/post-training-frontier-legal-agents-with-baseten-research/
+  date: 2026-04
+  with: Mudith Jayasekara, Matthew Blau, Aaron Ellis-Bloor, Niko Grupen and Gabe Pereyra
+
+- title: "Towards infinite context windows: neural KV cache compaction"
+  url: https://www.baseten.co/research/towards-infinite-context-windows-neural-kv-cache-compaction/
+  date: 2026-03
+  with: Alex Sandomirsky and Harry Partridge
+
+- title: Dense, on-policy, or both?
+  url: https://www.baseten.co/research/dense-on-policy-or-both/
+  date: 2026-03
+  with: Max Kirkby
+
+- title: Repeated KV cache for long-running agents
+  url: https://www.baseten.co/research/repeated-kv-cache-for-long-running-agents/
+  date: 2026-02
+
+- title: Distillation without the dark
+  url: https://www.baseten.co/research/distillation-without-the-dark/
+  date: 2026-02
+  with: Max Kirkby and Mudith Jayasekara
+
+- title: If we can't design neat latent structures, then maybe we can Bitter Lesson it through self-study
+  url: https://www.baseten.co/research/self-study/
+  date: 2026-01
+
+- title: "BYO SWE-grep: automatically train blazing fast search sub-agents on your knowledge base"
+  url: https://www.baseten.co/research/byo-swe-grep/
+  date: 2025-10
+  with: Jonathon Liu
+
+- title: "Lumina: building self-improving evaluation through customer-in-the-loop refinement"
+  url: https://www.baseten.co/research/lumina-building-self-improving-evaluation-through-customer-in-the-loop-refinement/
+  date: 2025-10
+  with: Harry Partridge, Max Kirkby, Jonathon Liu, Paras Stefanopoulos and Mudith Jayasekara
+
+- title: "Upweight the strategy, not the tokens: faster training with explicit reasoning through RGT"
+  url: https://www.baseten.co/research/upweight-the-strategy-not-the-tokens-faster-training-with-explicit-reasoning-thro/
+  date: 2025-10
+  with: Harry Partridge and Mudith Jayasekara
+
+- title: "Attention-based attribution: what your model is actually looking at"
+  url: https://www.baseten.co/research/attention-based-attribution/
+  date: 2025-10
+  with: Jonathon Liu, Kimbrian Canavan, Max Kirkby and Mudith Jayasekara
+
+- title: Training loss predicts evaluation performance, even for non-verifiable tasks
+  url: https://www.baseten.co/research/training-loss-predicts-evaluation-performance-even-for-non-verifiable-tasks/
+  date: 2025-10
+  with: Max Kirkby
+
+- title: Robust, sample-efficient SFT with prompt mutations
+  url: https://www.baseten.co/research/robust-sample-efficient-sft-with-prompt-mutations/
+  date: 2025-10
+  with: Harry Partridge
+
+- title: "Iterative SFT: dense reward learning"
+  url: https://www.baseten.co/research/iterative-sft/
+  date: 2025-10
+  with: Jonathon Liu, Harry Partridge, Max Kirkby and Mudith Jayasekara
+
+- title: "Write small, learn forever: rank-1 LoRA for continual learning"
+  url: https://www.baseten.co/research/write-small-learn-forever/
+  date: 2025-10
+  with: Max Kirkby, Harry Partridge and Jonathon Liu
+
+- title: Practical LoRA research
+  url: https://www.baseten.co/research/practical-lora-research/
+  date: 2025-09
+  with: Max Kirkby
+
+- title: Do transformers notice their own mistakes? Finding a linear hallucination detector inside LLMs
+  url: https://www.baseten.co/research/do-transformers-notice-their-own-mistakes/
+  date: 2025-02
+  with: Mudith Jayasekara, Max Kirkby, Sviatoslav Chalnev and Rune Chi Zhao
+
+- title: "Resurrecting the salmon: seeing clearer inside LLMs with domain-specific SAEs"
+  url: https://www.baseten.co/research/resurrecting-the-salmon/
+  date: 2025-01
+  with: Mudith Jayasekara and Max Kirkby
+
+- title: Why mechanistic interpretability needs a paradigm inversion
+  url: https://www.baseten.co/research/mechanistic-interpretability/
+  date: 2025-01
+  with: Mudith Jayasekara and Max Kirkby

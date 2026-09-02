@@ -1,73 +1,60 @@
 ---
 layout: default
-title: Posts
+title: Writing
+description: Essays, mostly about training language models; sometimes about books and cities.
 ---
 
-<h1>Posts</h1>
+<h1 class="page-title">Writing</h1>
+<p class="deck">{{ page.description }}</p>
 
-<div class="filter-buttons">
+<div class="filters asc">
     <button class="active" data-filter="all">All</button>
     <button data-filter="ai">AI</button>
     <button data-filter="other">Everything else</button>
 </div>
 
-<div class="posts-list">
-{% assign posts_by_year = site.posts | where_exp: "post", "post.hidden != true" | group_by_exp: "post", "post.date | date: '%Y'" %}
+<div class="year-groups">
+{% assign visible = site.posts | where_exp: "post", "post.hidden != true" %}
+{% assign posts_by_year = visible | group_by_exp: "post", "post.date | date: '%Y'" %}
 {% for year in posts_by_year %}
-  <div class="year-header">{{ year.name }}</div>
-  {% for post in year.items %}
-    {% assign post_tag = post.tag | default: "other" %}
-    <div class="post-preview" data-tag="{{ post_tag }}">
-      <div class="post-line">
-        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%-d %b' }}</time>
-      </div>
-      {% if post.description %}
-        <div class="post-description">{{ post.description }}</div>
-      {% endif %}
-    </div>
-  {% endfor %}
+    <section class="year-group">
+        <div class="year asc">{{ year.name }}</div>
+        <div class="rows">
+        {% for post in year.items %}
+            <div class="row" data-tag="{{ post.tag | default: 'other' }}">
+                <div>
+                    <a class="row-title plain" href="{{ post.url }}">{{ post.title }}</a>
+                    {% if post.description %}
+                    <div class="row-sub">{{ post.description }}</div>
+                    {% endif %}
+                </div>
+                <time class="row-date asc" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%-d %b' }}</time>
+            </div>
+        {% endfor %}
+        </div>
+    </section>
 {% endfor %}
 </div>
 
-{% if site.posts.size == 0 %}
-  <p>No posts yet.</p>
-{% endif %}
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.filter-buttons button');
-    const posts = document.querySelectorAll('.post-preview');
-    const yearHeaders = document.querySelectorAll('.year-header');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filter = this.dataset.filter;
-
-            buttons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-
-            posts.forEach(post => {
-                if (filter === 'all' || post.dataset.tag === filter) {
-                    post.style.display = '';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-
-            yearHeaders.forEach(header => {
-                let nextEl = header.nextElementSibling;
-                let hasVisible = false;
-                while (nextEl && !nextEl.classList.contains('year-header')) {
-                    if (nextEl.classList.contains('post-preview') && nextEl.style.display !== 'none') {
-                        hasVisible = true;
-                        break;
-                    }
-                    nextEl = nextEl.nextElementSibling;
-                }
-                header.style.display = hasVisible ? '' : 'none';
+    document.addEventListener('DOMContentLoaded', function () {
+        var buttons = document.querySelectorAll('.filters button');
+        var groups = document.querySelectorAll('.year-group');
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var filter = button.dataset.filter;
+                buttons.forEach(function (b) { b.classList.remove('active'); });
+                button.classList.add('active');
+                groups.forEach(function (group) {
+                    var shown = 0;
+                    group.querySelectorAll('.row').forEach(function (row) {
+                        var show = filter === 'all' || row.dataset.tag === filter;
+                        row.hidden = !show;
+                        if (show) shown++;
+                    });
+                    group.hidden = shown === 0;
+                });
             });
         });
     });
-});
 </script>

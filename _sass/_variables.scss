@@ -1,40 +1,40 @@
-// Font variables
-$font-family-base: 'Spectral', Georgia, serif;
-$font-size-base: 18px;
-$line-height-base: 1.65;
+$font-family-base: 'EB Garamond', Garamond, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+$font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+$font-size-base: 20px;
+$line-height-base: 1.5;
 
-$font-size-1: 2rem;
-$font-size-2: 1.5rem;
-$font-size-3: 1.2rem;
-$font-size-body: 1rem;
+$container-width: 680px;
+$margin-gap: 44px;
+$margin-width: 200px;
 
-// Colour system — warm throughout, light and dark
+// Margin notes need the column plus a 244px gutter on the right.
+$bp-margin: 1180px;
+$bp-narrow: 640px;
+
 :root {
     color-scheme: light dark;
 
-    --bg: #faf9f5;
-    --text: #211d16;
-    --heading: #211d16;
-    --link: #6b5947;
-    --link-hover: #3d3128;
-    --accent: #d4a27f;
-    --meta: #6f675c;
-    --muted: #948b7d;
-    --box-bg: #f3efe5;
-    --hairline: #e6e0d3;
+    --bg: #ffffff;
+    --text: #141414;
+    --muted: #6a6a6a;
+    --hairline: #e4e4e4;
+    --rule: #141414;
+    --underline: #bdbdbd;
+    --box: #fafafa;
+    --box-border: #d9d9d9;
+    --photo-border: #cfcfcf;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #181511;
-        --text: #e6dfd2;
-        --heading: #efe8da;
-        --link: #c09a77;
-        --link-hover: #e2c3a1;
-        --accent: #b3865f;
-        --meta: #a89e8e;
-        --muted: #7d7466;
-        --box-bg: #221e18;
-        --hairline: #332d24;
+        --bg: #121212;
+        --text: #e7e5e1;
+        --muted: #a3a09b;
+        --hairline: #2b2b2b;
+        --rule: #e7e5e1;
+        --underline: #5c5c5c;
+        --box: #1a1a1a;
+        --box-border: #333333;
+        --photo-border: #3a3a3a;
     }
 }

@@ -3,13 +3,48 @@ layout: default
 title: Home
 ---
 
-<section class="about-section">
-    <img src="images/charles_oxford.jpeg" alt="Charlie O'Neill" class="profile-photo">
-    <div class="bio-content">
+<section class="about">
+    <img src="/images/charles_oxford_portrait.jpg" alt="Charlie O’Neill" class="portrait" width="212" height="283">
+    <div class="about-text">
+        <h1 class="name">Charlie O’Neill</h1>
+        <p class="strap">Model development at Baseten. Formerly Parsed, Oxford, ANU.</p>
         <p>I cofounded <a href="https://parsed.com/">Parsed</a> to build specialised open-source models that outperform the frontier labs. We raised a seed, got acquired by <a href="https://www.baseten.co/blog/parsed-baseten/#models-need-to-touch-grass">Baseten</a> end of 2025, and I now lead their Model Development Team. Briefly a DPhil student in Machine Learning at <a href="https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/computer-science">Oxford</a> under <a href="https://www.jakobfoerster.com/">Jakob Foerster</a>, <a href="https://www.johnmonash.com/">General Sir John Monash Scholar</a> and <a href="https://tuckwell.anu.edu.au/">Tuckwell Scholar</a> at ANU. Previously co-founded <a href="https://rake.news/">Rake News</a> for personalised, debiased news with language models. I like basketball, writing, and reading anything my mum recommends.</p>
+        <div class="elsewhere asc plain">
+            <a href="mailto:{{ site.author.email }}">Email</a>
+            <a href="https://github.com/charlieoneill11">GitHub</a>
+            <a href="https://scholar.google.com/citations?user=-P4K8hsAAAAJ">Scholar</a>
+            <a href="https://www.linkedin.com/in/charles-o-neill/">LinkedIn</a>
+            <a href="/feed.xml">RSS</a>
+        </div>
     </div>
 </section>
 
-<section class="contact-info">
-    <p><a href="mailto:cponeill00@gmail.com">cponeill00@gmail.com</a></p>
-</section>
+<div class="home-sections">
+    <section class="section">
+        <h2 class="section-head">Recent writing</h2>
+        <div class="rows">
+            {% assign recent = site.posts | where_exp: "post", "post.hidden != true" %}
+            {% for post in recent limit: 4 %}
+            <div class="row">
+                <a class="row-title plain" href="{{ post.url }}">{{ post.title }}</a>
+                <time class="row-date asc" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %Y' }}</time>
+            </div>
+            {% endfor %}
+        </div>
+        <a class="more asc plain" href="/posts/">All writing</a>
+    </section>
+
+    <section class="section">
+        <h2 class="section-head">Selected papers</h2>
+        <div class="rows">
+            {% assign selected = site.data.papers | where_exp: "paper", "paper.selected == true" %}
+            {% for paper in selected %}
+            <div class="row stack">
+                <a class="row-title plain" href="{% if paper.links %}{{ paper.links[0].url }}{% else %}/research/{% endif %}">{{ paper.title }}</a>
+                <div class="row-sub">{{ paper.venue }}, {{ paper.year }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <a class="more asc plain" href="/research/">All papers</a>
+    </section>
+</div>

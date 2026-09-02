@@ -1,0 +1,94 @@
+# Research papers, newest first. `selected: true` puts a paper on the home page.
+- title: "Still: Amortized KV Cache Compaction in a Single Forward Pass"
+  authors: [Charles O'Neill, Alex Sandomirsky, Harry Partridge, Mudith Jayasekara, Max Kirkby]
+  venue: arXiv preprint
+  year: 2026
+  selected: true
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2606.07878"}
+
+- title: Compute Optimal Inference and Provable Amortisation Gap in Sparse Autoencoders
+  authors: [Charles O'Neill]
+  venue: ICML
+  year: 2025
+  selected: true
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2411.13117"}
+
+- title: "From superposition to sparse codes: interpretable representations in neural networks"
+  authors: [David Klindt, Charles O'Neill, Patrik Reizinger, Harald Maurer, Nina Miolane]
+  venue: arXiv preprint
+  year: 2025
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2503.01824"}
+
+- title: Sparse Autoencoders for Disentangling Dense Embeddings of Scientific Concepts
+  authors: [Charles O'Neill]
+  venue: NeurIPS workshop on Foundation Models for Science (oral)
+  year: 2024
+  selected: true
+  links:
+    - {label: OpenReview, url: "https://openreview.net/forum?id=mPq3R6jdtD"}
+
+- title: Sparse autoencoders for dense text embeddings reveal hierarchical feature sub-structure
+  authors: [Charles O'Neill]
+  venue: NeurIPS workshop on Scientific Methods for Understanding Deep Learning
+  year: 2024
+  links:
+    - {label: OpenReview, url: "https://openreview.net/forum?id=hjROYyfxfO"}
+
+- title: Steering semantic search with interpretable features from sparse autoencoders
+  authors: [Charles O'Neill]
+  venue: NeurIPS workshop on Foundation Model Interventions
+  year: 2024
+
+- title: Disentangling Dense Embeddings with Sparse Autoencoders
+  authors: [Charles O'Neill]
+  venue: arXiv preprint
+  year: 2024
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2408.00657"}
+
+- title: Sparse Autoencoders Enable Scalable and Reliable Circuit Identification in Language Models
+  authors: [Charles O'Neill, Thang Bui]
+  venue: arXiv preprint
+  year: 2024
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2405.12522"}
+
+- title: "Steering Language Generation: Harnessing Contrastive Expert Guidance and Negative Prompting for Coherent and Diverse Synthetic Data Generation"
+  authors: [Charles O'Neill, Yuan-Sen Ting, Ioana Ciuca, Roberta Raileanu, Jack Miller, Thang Bui]
+  venue: arXiv preprint
+  year: 2023
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2308.07645"}
+
+- title: "AstroLLaMA: Towards specialised foundation models in astronomy"
+  authors: [Tuan Dung Nguyen, Yuan-Sen Ting, Ioana Ciuca, Charles O'Neill]
+  etal: true
+  venue: IJCNLP-AACL
+  year: 2023
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2309.06126"}
+
+- title: "Grokking Beyond Neural Networks: An Empirical Exploration with Model Complexity"
+  authors: [Jack Miller, Charles O'Neill, Thang Bui]
+  venue: TMLR
+  year: 2024
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2310.17247"}
+
+- title: "AstroLLaMA-Chat: Scaling AstroLLaMA with Conversational and Diverse Datasets"
+  authors: [Ernest Perkowski, Rui Pan, Tuan Dung Nguyen, Yuan-Sen Ting, Sandor Kruk, Tong Zhang, Charles O'Neill]
+  etal: true
+  venue: Research Notes of the AAS
+  year: 2024
+  links:
+    - {label: Journal, url: "https://iopscience.iop.org/article/10.3847/2515-5172/ad1abe/meta"}
+
+- title: Measuring Sharpness in Grokking
+  authors: [Jack Miller, Patrick Gleeson, Charles O'Neill, Thang Bui, Noam Levi]
+  venue: "ICLR workshop: Bridging the Gap Between Practice and Theory"
+  year: 2024
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2402.08946"}

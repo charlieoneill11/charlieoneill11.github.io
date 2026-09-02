@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-
+    {% assign page_description = page.description | default: site.description | strip_html | strip_newlines | escape %}
+    <title>{% if page.title and page.url != "/" %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ page_description }}">
+    <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+    <meta property="og:title" content="{% if page.title and page.url != "/" %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:description" content="{{ page_description }}">
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="/assets/fonts/EBGaramond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/EBGaramond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    {% feed_meta %}
     {% if page.math %}
     <script>
         window.MathJax = {
@@ -26,18 +32,14 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     {% endif %}
-
-    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <nav>
-                <a href="/" class="nav-name">Charlie O'Neill</a>
-                <div class="nav-links">
-                    <a href="/research/" {% if page.url contains '/research' %}class="active"{% endif %}>Research</a>
-                    <a href="/posts/" {% if page.url contains '/posts' %}class="active"{% endif %}>Posts</a>
-                </div>
+        <header class="masthead">
+            <a href="/" class="site-name asc plain">Charlie O’Neill</a>
+            <nav class="plain">
+                <a href="/posts/" class="asc{% if page.url contains '/posts' %} active{% endif %}">Writing</a>
+                <a href="/research/" class="asc{% if page.url contains '/research' %} active{% endif %}">Papers</a>
             </nav>
         </header>
 
@@ -45,8 +47,12 @@
             {{ content }}
         </main>
 
-        <footer>
-            <p>© {{ site.time | date: '%Y' }} Charlie O'Neill</p>
+        <footer class="asc plain">
+            <span>© {{ site.time | date: '%Y' }} Charlie O’Neill</span>
+            <span class="footer-links">
+                <a href="mailto:{{ site.author.email }}">Email</a>
+                <a href="/feed.xml">RSS</a>
+            </span>
         </footer>
     </div>
 </body>
