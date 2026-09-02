@@ -252,28 +252,35 @@ footer {
     white-space: nowrap;
 }
 
-// Home
+// Home: portrait beside the name, then the bio at full column width.
 .about {
     display: grid;
-    grid-template-columns: 224px minmax(0, 1fr);
-    gap: 44px;
-    align-items: start;
+    grid-template-columns: 172px minmax(0, 1fr);
+    gap: 36px;
+    align-items: center;
 }
 
 .portrait {
     display: block;
-    width: 212px;
-    height: 283px;
+    width: 172px;
+    height: 229px;
     object-fit: cover;
     border: 1px solid var(--photo-border);
     padding: 5px;
     background: var(--bg);
 }
 
+.about-head {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .about-text {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-top: 36px;
 
     p {
         margin: 0;
@@ -310,12 +317,11 @@ footer {
 @media (max-width: $bp-narrow) {
     .about {
         grid-template-columns: minmax(0, 1fr);
-        gap: 28px;
+        gap: 24px;
     }
 
-    .portrait {
-        width: 170px;
-        height: 227px;
+    .about-text {
+        margin-top: 28px;
     }
 }
 
