@@ -1,4 +1,20 @@
 # Research papers, newest first. `selected: true` puts a paper on the home page.
+- title: Post-Training Science for Supervised Fine-Tuning
+  authors: [Charles O'Neill, Mudith Jayasekara, Harry Partridge]
+  venue: arXiv preprint
+  year: 2026
+  selected: true
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2609.01244"}
+
+- title: Can a Language Model Learn Facts Continually in Its Weights?
+  authors: [Charles O'Neill]
+  venue: arXiv preprint
+  year: 2026
+  selected: true
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2607.11020"}
+
 - title: "Still: Amortized KV Cache Compaction in a Single Forward Pass"
   authors: [Charles O'Neill, Alex Sandomirsky, Harry Partridge, Mudith Jayasekara, Max Kirkby]
   venue: arXiv preprint
@@ -7,11 +23,32 @@
   links:
     - {label: arXiv, url: "https://arxiv.org/abs/2606.07878"}
 
+- title: "DiscoGen: Procedural Generation of Algorithm Discovery Tasks in Machine Learning"
+  authors: [Alexander D. Goldie, Zilin Wang, Adrian Hayler, Deepak Nathani, Charles O'Neill]
+  etal: true
+  venue: ICML
+  year: 2026
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2603.17863"}
+
+- title: "Resurrecting the Salmon: Rethinking Mechanistic Interpretability with Domain-Specific Sparse Autoencoders"
+  authors: [Charles O'Neill, Mudith Jayasekara, Max Kirkby]
+  venue: arXiv preprint
+  year: 2025
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2508.09363"}
+
+- title: "A Single Direction of Truth: An Observer Model's Linear Residual Probe Exposes and Steers Contextual Hallucinations"
+  authors: [Charles O'Neill, Slava Chalnev, Chi Chi Zhao, Max Kirkby, Mudith Jayasekara]
+  venue: arXiv preprint
+  year: 2025
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2507.23221"}
+
 - title: Compute Optimal Inference and Provable Amortisation Gap in Sparse Autoencoders
   authors: [Charles O'Neill]
   venue: ICML
   year: 2025
-  selected: true
   links:
     - {label: arXiv, url: "https://arxiv.org/abs/2411.13117"}
 
@@ -26,7 +63,6 @@
   authors: [Charles O'Neill]
   venue: NeurIPS workshop on Foundation Models for Science (oral)
   year: 2024
-  selected: true
   links:
     - {label: OpenReview, url: "https://openreview.net/forum?id=mPq3R6jdtD"}
 
