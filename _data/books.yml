@@ -1,0 +1,21 @@
+# Books on the reading lists. `pages` is approximate and only sets how thick a spine is drawn on the
+# shelf; titles must match the reading-list posts. Add `mum: true` to pencil an m on the spine of
+# anything Mum recommended.
+- {title: Free Food for Millionaires, pages: 560}
+- {title: The Sirens of Titan, pages: 320}
+- {title: Reality Is Not What It Seems, pages: 288}
+- {title: Pale Fire, pages: 315}
+- {title: Middlemarch, pages: 880}
+- {title: Flowers for Algernon, pages: 310}
+- {title: "Tess of the D'Urbervilles", pages: 520}
+- {title: Stay True, pages: 200}
+- {title: The Candy House, pages: 350}
+- {title: Heroides, pages: 260}
+- {title: "A Man's Place", pages: 100}
+- {title: Anna Karenina, pages: 860}
+- {title: The Years, pages: 240}
+- {title: The Count of Monte Cristo, pages: 1270}
+- {title: "Pudd'nhead Wilson", pages: 220}
+- {title: The Snow Leopard, pages: 340}
+- {title: East of Eden, pages: 600}
+- {title: The Death of Ivan Ilyich, pages: 110}

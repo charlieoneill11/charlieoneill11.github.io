@@ -26,6 +26,12 @@ LLMs currently have two native forms of memory. The first is perfectly lossless 
 
 The second is incredibly compressed and stable: the weights themselves. An enormous amount of information and capability is packed into them, and retrieving that information at inference time is extremely cheap. But updating the weights without breaking the model is very hard. There is almost nothing in between.
 
+<figure class="ink-figure">
+    <canvas id="kv-cache-figure" role="img" aria-label="Memory for Llama 3.1 70B in bf16 against tokens of context. The weights are a flat 141 GB. The KV cache rises in a straight line, reaching 43 GB at the 128K window, crossing the weights at about 431,000 tokens and reaching 328 GB at a million tokens."></canvas>
+    <figcaption>Llama 3.1 70B in bf16. The weights are a fixed 141 GB. The KV cache adds 320 KiB for every token of context (keys and values, 80 layers, 8 KV heads of 128 dimensions, 2 bytes each), so it outgrows the whole model at about 431,000 tokens.</figcaption>
+</figure>
+<script src="/assets/js/kv-cache-figure.js" defer></script>
+
 We as a field have therefore pushed on a few different directions.
 
 The first is extending the context window. People have tried linear attention and its variants, where we maintain some fixed-size hidden state that information can be written into, alongside many other tricks for making attention and KV caches cheaper. But we have not really managed to go orders of magnitude beyond current context lengths (around a million tokens) without giving something up. This feels very hard to scale.

@@ -1,0 +1,9 @@
+<div class="bookplate" aria-hidden="true">
+    <div class="bookplate-inner">
+        <canvas></canvas>
+        <p class="exl">Ex libris</p>
+        <p class="owner">Charlie O’Neill</p>
+    </div>
+</div>
+<div class="shelf" data-year="{{ page.date | date: '%Y' }}"></div>
+<script type="application/json" id="book-data">{{ site.data.books | jsonify }}</script>

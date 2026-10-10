@@ -11,30 +11,85 @@ $margin-width: 200px;
 $bp-margin: 1180px;
 $bp-narrow: 640px;
 
+// Paper tooth: fractal noise lit from the upper left. Faces turned from the light take a trace of
+// warm ink by day and catch a trace of moonlight by night. The alpha rows of the two colour matrices
+// set the strength; these are tuned to read as paper only up close.
+@function paper-grain($ink, $tooth, $fibre) {
+    $svg: "<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360'>"
+        + "<filter id='p' filterUnits='userSpaceOnUse' x='0' y='0' width='360' height='360' color-interpolation-filters='sRGB'>"
+        + "<feTurbulence type='fractalNoise' baseFrequency='0.055' numOctaves='4' seed='4' stitchTiles='stitch' result='t'/>"
+        + "<feDiffuseLighting in='t' surfaceScale='2' lighting-color='white' result='l'><feDistantLight azimuth='225' elevation='56'/></feDiffuseLighting>"
+        + "<feColorMatrix in='l' values='#{$ink} #{$tooth}' result='tooth'/>"
+        + "<feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='11' stitchTiles='stitch' result='g'/>"
+        + "<feColorMatrix in='g' values='#{$ink} #{$fibre}' result='fibre'/>"
+        + "<feComposite in='tooth' in2='fibre' operator='arithmetic' k2='1' k3='1'/>"
+        + "</filter><rect width='360' height='360' filter='url(%23p)'/></svg>";
+    @return url("data:image/svg+xml,#{$svg}");
+}
+
+$grain-day: paper-grain('0 0 0 0 0.30 0 0 0 0 0.25 0 0 0 0 0.17', '-0.032 0 0 0 0.027', '0.0056 0 0 0 -0.003');
+$grain-night: paper-grain('0 0 0 0 0.80 0 0 0 0 0.85 0 0 0 0 0.93', '0.024 0 0 0 -0.020', '0.004 0 0 0 -0.002');
+
+// Barely-warm paper by day, blue-black paper by night. --paint-blend is how the home page
+// watercolours sit on it: pigment multiplies into paper by day, moonlight screens over it by night.
 :root {
     color-scheme: light dark;
 
-    --bg: #ffffff;
-    --text: #141414;
-    --muted: #6a6a6a;
-    --hairline: #e4e4e4;
-    --rule: #141414;
-    --underline: #bdbdbd;
-    --box: #fafafa;
-    --box-border: #d9d9d9;
-    --photo-border: #cfcfcf;
+    --bg: #fbfaf6;
+    --grain: #{$grain-day};
+    --text: #191816;
+    --muted: #6b6963;
+    --hairline: #e6e3db;
+    --rule: #191816;
+    --underline: #c0bcb2;
+    --box: #f5f3ed;
+    --box-border: #d8d4ca;
+    --photo-border: #d1cdc3;
+    --paint-blend: multiply;
+
+    // The one red, kept for initials, end marks and note numbers, as a scribe kept red ink.
+    --rubric: #a33a2c;
+    --bay: #6f8fa6;
+    --corner: #2b2825;
+    // Paper props (a photographic print, an envelope, a bookplate, a library card) dim at night,
+    // like paper under a lamp, but keep their dark ink.
+    --print: #fdfcf8;
+    --prop: #f8f6ef;
+    --prop-ink: #1d1c1a;
+    --prop-muted: #6b6963;
+    --prop-edge: #d9d3c4;
+    --manila: #f0e7d0;
+    --manila-rule: #c9b98f;
+    --manila-muted: #6b5f45;
+}
+
+// Essays warm toward old paper as they age; the post layout sets --age between 0 and 1.
+@supports (color: color-mix(in srgb, red, blue)) {
+    :root {
+        --bg: color-mix(in srgb, #ecdfc0 calc(var(--age, 0) * 100%), #fbfaf6);
+    }
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #121212;
-        --text: #e7e5e1;
-        --muted: #a3a09b;
-        --hairline: #2b2b2b;
-        --rule: #e7e5e1;
-        --underline: #5c5c5c;
-        --box: #1a1a1a;
-        --box-border: #333333;
-        --photo-border: #3a3a3a;
+        --bg: #10141c;
+        --grain: #{$grain-night};
+        --text: #e6e3dc;
+        --muted: #9ea2a9;
+        --hairline: #252b35;
+        --rule: #e6e3dc;
+        --underline: #4c5462;
+        --box: #151a23;
+        --box-border: #2c333e;
+        --photo-border: #333b47;
+        --paint-blend: screen;
+        --rubric: #d27863;
+        --bay: #7f9bb8;
+        --corner: #c9c1b1;
+        --print: #d9d4c7;
+        --prop: #d8d2c4;
+        --prop-edge: #b9b1a1;
+        --manila: #cbbf9f;
+        --manila-rule: #a8996f;
     }
 }
