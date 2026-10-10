@@ -3,8 +3,13 @@ layout: default
 title: Home
 ---
 
+<div class="harbour" aria-hidden="true"></div>
+
 <section class="about">
-    <img src="/images/charles_oxford_portrait.jpg" alt="Charlie O’Neill" class="portrait" width="160" height="213">
+    <span class="mount">
+        <img src="/images/charles_oxford_portrait.jpg" alt="Charlie O’Neill" class="portrait" width="160" height="213">
+        <span class="photo-corner tl"></span><span class="photo-corner tr"></span><span class="photo-corner br"></span><span class="photo-corner bl"></span>
+    </span>
     <div class="about-head">
         <h1 class="name">Charlie O’Neill</h1>
         <p class="strap">Base Labs, a research lab by Baseten. Before that Parsed, Oxford and ANU.</p>
@@ -53,3 +58,11 @@ title: Home
         <a class="more asc plain" href="/research/">All papers</a>
     </section>
 </div>
+
+<a class="envelope plain" href="mailto:{{ site.author.email }}">
+    <span class="stamp"><span class="stamp-inner"><canvas aria-hidden="true"></canvas><span class="stamp-value">1st</span><span class="stamp-name">Charlie O’Neill</span></span></span>
+    <svg class="postmark" viewBox="0 0 150 84" aria-hidden="true"></svg>
+    <span class="envelope-address">Write to me<br><span class="addr">{{ site.author.email }}</span></span>
+</a>
+
+<script src="/assets/js/sails.js" defer></script>
