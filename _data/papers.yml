@@ -1,4 +1,19 @@
 # Research papers, newest first. `selected: true` puts a paper on the home page.
+- title: The Optimization Landscape of Learning Compacted Context Models
+  authors: [Thomas Villeneuve, Alex Sandomirsky, Charles O'Neill, Max Kirkby, Michael Psenka]
+  venue: NeurIPS Workshop on Continual Learning
+  year: 2026
+  links:
+    - {label: arXiv, url: "https://arxiv.org/abs/2610.05885"}
+    - {label: OpenReview, url: "https://openreview.net/forum?id=rU9vaYxJeB"}
+
+- title: Can a Language Model Continually Learn Facts in its Weights?
+  authors: [Charles O'Neill, Max Kirkby, Jonathon Liu, Michael Psenka]
+  venue: NeurIPS Workshop on Continual Learning
+  year: 2026
+  links:
+    - {label: OpenReview, url: "https://openreview.net/forum?id=0uTGGKnTkc"}
+
 - title: Post-Training Science for Supervised Fine-Tuning
   authors: [Charles O'Neill, Mudith Jayasekara, Harry Partridge]
   venue: arXiv preprint
