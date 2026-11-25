@@ -2,7 +2,7 @@
 layout: post
 title: A weekend of machine mathematics
 date: 2026-11-25
-description: Six results, some miscalibration, and a rush I'd only felt at the pokies
+description: A rush I'd only felt at the pokies
 math: true
 tag: ai
 ---
